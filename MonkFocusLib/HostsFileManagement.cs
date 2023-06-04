@@ -46,15 +46,58 @@
 
         public void blockWebsite(string websiteAddress)
         {
-            if (!IsRunningAsAdmin())
+            List<string> hostsFile = File.ReadAllLines(FilePath).ToList();
+            bool containsThatWebsite = hostsFile
+                .Any(line => line
+                    .Contains("127.0.0.1 " + websiteAddress) || line
+                    .Contains("127.0.0.1 www." + websiteAddress));
+
+            if (containsThatWebsite)
             {
-                Console.WriteLine("Please run the program as administrator to edit the hosts file.");
+                Console.WriteLine("Website already blocked.");
+                return;
+            }
+            else
+            {
+                using (StreamWriter writer = File.AppendText(FilePath))
+                {
+                    writer.WriteLine("127.0.0.1 " + websiteAddress);
+                    writer.WriteLine("127.0.0.1 www." + websiteAddress);
+                }
+                Console.WriteLine("Blocked website: "+websiteAddress);
+
+            }
+
+            foreach (string host in hostsFile)
+            {
+                Console.WriteLine(host);
+            }
+        }
+
+        public void unblockWebsite(string websiteAddress)
+        {
+            List<string> hostsFile = File.ReadAllLines(FilePath).ToList();
+            bool containsThatWebsite = hostsFile
+                .Any(line => line
+                    .Contains("127.0.0.1 " + websiteAddress) || line
+                    .Contains("127.0.0.1 www." + websiteAddress));
+
+            if (!containsThatWebsite)
+            {
+                Console.WriteLine("Website was not blocked.");
                 return;
             }
 
-            using (StreamWriter writer = File.AppendText(FilePath))
+            hostsFile.RemoveAll(line => line.Contains("127.0.0.1 " + websiteAddress));
+            hostsFile.RemoveAll(line => line.Contains("127.0.0.1 www." + websiteAddress));
+
+            File.WriteAllLines(FilePath, hostsFile);
+
+            Console.WriteLine("Unblocked website: " + websiteAddress);
+
+            foreach (string host in hostsFile)
             {
-                writer.WriteLine("127.0.0.1 " + websiteAddress);
+                Console.WriteLine(host);
             }
         }
 

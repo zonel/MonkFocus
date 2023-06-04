@@ -8,6 +8,33 @@ public class Program
     {
         HostsFileManagement hfm = new HostsFileManagement();
         Console.WriteLine(hfm.FilePath);
+        var siteToBlock = Console.ReadLine();
+        hfm.blockWebsite(siteToBlock);
+        Console.WriteLine("Enter website to block: ");
+        Console.ReadKey();
+
+        bool exit = false;
+        while (!exit)
+        {
+            Console.WriteLine("Enter = add website | Backspace = remove website | Escape = exit");
+            ConsoleKeyInfo key = Console.ReadKey();
+            switch (key.Key)
+            {
+                case ConsoleKey.Enter:
+                    Console.WriteLine("Enter website to block: ");
+                    siteToBlock = Console.ReadLine();
+                    hfm.blockWebsite(siteToBlock);
+                    break;
+                case ConsoleKey.Backspace:
+                    Console.WriteLine("Enter website to unblock: ");
+                    siteToBlock = Console.ReadLine();
+                    hfm.unblockWebsite(siteToBlock);
+                    break;
+                case ConsoleKey.Escape:
+                    exit = true;
+                    break;
+            }
+        }
     }
 }}
 
