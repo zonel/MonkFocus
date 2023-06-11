@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusLib", "MonkFocusLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusUI", "MonkFocusUI\MonkFocusUI.csproj", "{F5707859-8268-4BEB-ACD2-6915A0DDFCE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkFocusModels", "MonkFocusModels\MonkFocusModels.csproj", "{603A18FC-5BB7-4635-8850-96B9381817EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocus.Domain", "MonkFocusModels\MonkFocus.Domain.csproj", "{603A18FC-5BB7-4635-8850-96B9381817EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkFocus.Infrastructure", "MonkFocus.Infrastructure\MonkFocus.Infrastructure.csproj", "{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{603A18FC-5BB7-4635-8850-96B9381817EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{603A18FC-5BB7-4635-8850-96B9381817EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{603A18FC-5BB7-4635-8850-96B9381817EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
