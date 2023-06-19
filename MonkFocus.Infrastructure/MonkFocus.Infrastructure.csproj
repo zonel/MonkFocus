@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MonkFocusModels\MonkFocus.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

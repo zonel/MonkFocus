@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusConsoleEnvironment", "MonkFocusConsoleEnvironment\MonkFocusConsoleEnvironment.csproj", "{CC2FD835-4B19-4CDB-94D8-0D293ADC738F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkFocusApp", "MonkFocusApp\MonkFocusApp.csproj", "{04E47424-1029-4836-8CAA-28F3072F41AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusLib", "MonkFocusLib\MonkFocusLib.csproj", "{591B0704-10DC-4B4A-849F-218D656CCB1D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusUI", "MonkFocusUI\MonkFocusUI.csproj", "{F5707859-8268-4BEB-ACD2-6915A0DDFCE7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocus.Domain", "MonkFocusModels\MonkFocus.Domain.csproj", "{603A18FC-5BB7-4635-8850-96B9381817EE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkFocus.Infrastructure", "MonkFocus.Infrastructure\MonkFocus.Infrastructure.csproj", "{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkFocusDataAccess", "MonkFocusDataAccess\MonkFocusDataAccess.csproj", "{A70283AB-D511-4ECE-8C15-7D1010C08466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,26 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CC2FD835-4B19-4CDB-94D8-0D293ADC738F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC2FD835-4B19-4CDB-94D8-0D293ADC738F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC2FD835-4B19-4CDB-94D8-0D293ADC738F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC2FD835-4B19-4CDB-94D8-0D293ADC738F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{591B0704-10DC-4B4A-849F-218D656CCB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{591B0704-10DC-4B4A-849F-218D656CCB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{591B0704-10DC-4B4A-849F-218D656CCB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{591B0704-10DC-4B4A-849F-218D656CCB1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5707859-8268-4BEB-ACD2-6915A0DDFCE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5707859-8268-4BEB-ACD2-6915A0DDFCE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5707859-8268-4BEB-ACD2-6915A0DDFCE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5707859-8268-4BEB-ACD2-6915A0DDFCE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{603A18FC-5BB7-4635-8850-96B9381817EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{603A18FC-5BB7-4635-8850-96B9381817EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{603A18FC-5BB7-4635-8850-96B9381817EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{603A18FC-5BB7-4635-8850-96B9381817EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A56DD20-5F8B-4592-A1CC-2CBE0DB3C031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04E47424-1029-4836-8CAA-28F3072F41AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E47424-1029-4836-8CAA-28F3072F41AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E47424-1029-4836-8CAA-28F3072F41AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E47424-1029-4836-8CAA-28F3072F41AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A70283AB-D511-4ECE-8C15-7D1010C08466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A70283AB-D511-4ECE-8C15-7D1010C08466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A70283AB-D511-4ECE-8C15-7D1010C08466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A70283AB-D511-4ECE-8C15-7D1010C08466}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

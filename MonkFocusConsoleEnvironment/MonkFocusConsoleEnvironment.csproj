@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MonkFocus.Infrastructure\MonkFocus.Infrastructure.csproj" />
-    <ProjectReference Include="..\MonkFocusLib\MonkFocusLib.csproj" />
+    <ProjectReference Include="..\MonkFocusApp\MonkFocusApp.csproj" />
+    <ProjectReference Include="..\MonkFocusDataAccess\MonkFocusDataAccess.csproj" />
   </ItemGroup>
 
 </Project>
