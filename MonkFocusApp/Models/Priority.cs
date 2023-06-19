@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonkFocusModels
+namespace MonkFocusApp.Models
 {
-    public class WebsitesToBlock
+    public class Priority
     {
         [Key]
-        public int WebsitesToBlockId { get; set; }
-        public string Domain { get; set; }
+        public int PriorityId { get; set; }
+        public string PriorityName { get; set; }
     }
 }

@@ -46,7 +46,7 @@ namespace MonkFocusLib
 
         #endregion
 
-        private bool IsRunningAsAdmin()
+        private static bool IsRunningAsAdmin()
         {
             using (System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent())
             {
