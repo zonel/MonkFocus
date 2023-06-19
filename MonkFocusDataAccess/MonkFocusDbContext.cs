@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.Configuration;
-using Microsoft.IdentityModel.Protocols;
+﻿using Microsoft.EntityFrameworkCore;
+using MonkFocusModels;
 
 
-namespace MonkFocusModels
+namespace MonkFocusDataAccess
 {
     public class MonkFocusDbContext : DbContext
     {
@@ -31,7 +24,7 @@ namespace MonkFocusModels
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlServer();
+            //optionsBuilder.UseSqlServer();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace MonkFocusModels
+﻿using System;
+
+namespace MonkFocusModels
 {
     public class WorkSession
     {

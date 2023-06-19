@@ -1,8 +1,13 @@
-﻿namespace MonkFocusLib
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace MonkFocusLib
 {
     public class HostsFileManagement
     {
-        private OperatingSystem OS = Environment.OSVersion;
+        private readonly OperatingSystem OS;
 
         #region FilePath
         private Dictionary<PlatformID, string> HostsFilePaths { get; } = new Dictionary<PlatformID, string>
@@ -26,14 +31,19 @@
         }
         #endregion
 
+        #region Ctor
+
         public HostsFileManagement()
         {
+            OS = Environment.OSVersion;
             if (!IsRunningAsAdmin())
             {
                 Console.WriteLine("Please run the program as administrator to edit the hosts file.");
                 return;
             }
         }
+
+        #endregion
 
         private static bool IsRunningAsAdmin()
         {
