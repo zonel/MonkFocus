@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using MonkFocusApp.HostsFileManagement;
 
 namespace MonkFocusLib
 {
-    public class HostsFileManagement
+    public class HostsFileManagement : IHostsFileManagement
     {
-        private readonly OperatingSystem OS;
 
-        #region FilePath
+        #region Properties
+        private readonly OperatingSystem OS;
         private Dictionary<PlatformID, string> HostsFilePaths { get; } = new Dictionary<PlatformID, string>
         {
             [PlatformID.Win32NT] = "C:\\Windows\\System32\\drivers\\etc\\hosts",
@@ -45,7 +46,7 @@ namespace MonkFocusLib
 
         #endregion
 
-        private static bool IsRunningAsAdmin()
+        private bool IsRunningAsAdmin()
         {
             using (System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent())
             {
