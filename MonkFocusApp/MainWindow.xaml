@@ -4,9 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonkFocusApp"
+        xmlns:views1="clr-namespace:MonkFocusApp.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" 
+        Height="900" 
+        Width="1200" 
+        ResizeMode="NoResize" 
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
 
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Views/BackgroundImages/wanderer.jpg"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--this is a bar with exit and minimize buttons-->
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button x:Name="MinimizeButton" Background="Transparent" Foreground="White" Content="-" Width="40" Height="40" Click="MinimizeButton_Click" HorizontalAlignment="Right" BorderThickness="0,0,0,0" FontSize="30" FontWeight="Bold" FontFamily="MS UI Gothic"/>
+            <Button x:Name="CloseButton" Padding="0 0 0 6" Background="Transparent" Foreground="White" Content="x" Width="40" Height="40" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0 0 20 0" BorderThickness="0,0,0,0" FontSize="25" FontFamily="MS UI Gothic"/>
+        </StackPanel>
+        </Border>
+
+        <views1:LoginView Grid.Row="1" />
     </Grid>
+
 </Window>

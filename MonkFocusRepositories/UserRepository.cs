@@ -36,5 +36,14 @@ namespace MonkFocusRepositories
         {
             return _context.Users.FirstOrDefault(u => u.UserId == userId);
         }
+
+        public bool ValidateUser(string username, string password)
+        {
+            var userToValidate = _context.Users.FirstOrDefault(u => u.Username == username);
+
+            if (userToValidate is null) return false;
+
+            return userToValidate.Password == password;
+        }
     }
 }

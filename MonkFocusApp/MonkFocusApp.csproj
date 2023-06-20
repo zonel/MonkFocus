@@ -8,8 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <None Remove="Views\BackgroundImages\hill.jpg" />
+    <None Remove="Views\BackgroundImages\wanderer.jpg" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\BackgroundImages\hill.jpg" />
+    <Resource Include="Views\BackgroundImages\wanderer.jpg" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MonkFocusDataAccess\MonkFocusDataAccess.csproj" />
+		<ProjectReference Include="..\MonkFocusRepositories\MonkFocusRepositories.csproj" />
+	</ItemGroup>
+
 
 </Project>
