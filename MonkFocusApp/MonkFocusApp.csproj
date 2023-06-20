@@ -17,10 +17,6 @@
     <Resource Include="Views\BackgroundImages\wanderer.jpg" />
   </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\MonkFocusDataAccess\MonkFocusDataAccess.csproj" />
-		<ProjectReference Include="..\MonkFocusRepositories\MonkFocusRepositories.csproj" />
-	</ItemGroup>
 
 
 </Project>
