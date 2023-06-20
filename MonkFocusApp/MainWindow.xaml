@@ -20,7 +20,11 @@
     </Window.Effect>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Views/BackgroundImages/wanderer.jpg"/>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Image Source="/Views/BackgroundImages/mountains.jpg" />
+                </VisualBrush.Visual>
+            </VisualBrush>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -36,7 +40,7 @@
         </StackPanel>
         </Border>
 
-        <views1:LoginView Grid.Row="1" />
+        <views1:LoginView Grid.Row="1" Loaded="LoginView_Loaded" />
     </Grid>
 
 </Window>

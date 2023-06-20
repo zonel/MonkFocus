@@ -18,31 +18,44 @@
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="250"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" Height="90" CornerRadius="20" Background="White">
-                    <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"
-                               FontSize="55" FontWeight="Bold" Text="MONK FOCUS" Foreground="{DynamicResource PrimaryBlueColor}" Background="White"/>
+                <Border Grid.Row="0" Height="auto" Width="auto" CornerRadius="30,30,0,0" Background="LightGray" Opacity="0.9">
+                    <Rectangle  Fill="Transparent" Opacity="0" />
                 </Border>
-                <Border Grid.Row="1" Height="90" CornerRadius="20" Background="White" MouseDown="Username_focus">
+                <Rectangle Grid.Row="1" Fill="LightGray" Opacity="0.9"/>
+                <Rectangle Grid.Row="2" Fill="LightGray" Opacity="0.9"/>
+                <Rectangle Grid.Row="3" Fill="LightGray" Opacity="0.9"/>
+                <Rectangle Grid.Row="4" Fill="LightGray" Opacity="0.9"/>
+                <Rectangle Grid.Row="5" Fill="LightGray" Opacity="0.9"/>
+                <Border Grid.Row="6" Height="auto" Width="auto" CornerRadius="0,0,30,30" Background="LightGray" Opacity="0.9">
+                    <Rectangle  Fill="Transparent" Opacity="0" />
+                </Border>
+
+                <Border Grid.Row="1" Height="90" Width="350" CornerRadius="20" Background="White">
+                    <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"
+                               FontSize="45" FontWeight="Bold" Text="MONK FOCUS" Foreground="{DynamicResource PrimaryBlueColor}" Background="White"/>
+                </Border>
+                <Border Grid.Row="3" Height="90" Width="350" CornerRadius="20" Background="White" MouseDown="Username_focus">
                     <TextBox x:Name="Username" Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus"  Text="username"
                              Tag="username" SelectionBrush="#FFD0D0D0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                             FontSize="45" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
+                             FontSize="25" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
-                <Border Grid.Row="2" Height="90" CornerRadius="20" Background="White" MouseDown="Password_focus">
+                <Border Grid.Row="4" Height="90" Width="350" CornerRadius="20" Background="White" MouseDown="Password_focus">
                     <TextBox x:Name="Password" Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus" SelectionBrush="#FFE0E0E0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                             FontSize="45" FontWeight="Bold" Tag="password" Text="password" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
+                             FontSize="25" FontWeight="Bold" Tag="password" Text="password" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
-                <Border Grid.Row="3" Height="90" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" MouseDown="LoginButton_Click">
+                <Border Grid.Row="5" Height="90" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" MouseDown="LoginButton_Click">
                     <Button  Click="LoginButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="45" FontWeight="Bold" Content="LOGIN" Foreground="White" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
-                
             </Grid>
         </Grid>
 </UserControl>

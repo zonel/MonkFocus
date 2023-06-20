@@ -43,5 +43,9 @@ namespace MonkFocusApp
             }
         }
 
+        private void LoginView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
