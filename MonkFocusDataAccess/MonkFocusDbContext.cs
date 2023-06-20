@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MonkFocusApp.Models;
 using MonkFocusModels;
-using Task = MonkFocusModels.Task;
 
 
 namespace MonkFocusDataAccess
@@ -9,7 +8,7 @@ namespace MonkFocusDataAccess
     public class MonkFocusDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<UserTask> Tasks { get; set; }
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Priority> Priorities { get; set; }
@@ -19,6 +18,9 @@ namespace MonkFocusDataAccess
 
         private readonly string CONNECTION_STRING = "Data Source=Monkfocus.db";
 
+        public MonkFocusDbContext(DbContextOptions options) : base(options)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,9 +40,9 @@ namespace MonkFocusDataAccess
 
             #endregion
 
-            #region Task
+            #region UserTask
 
-            modelBuilder.Entity<Task>(entity =>
+            modelBuilder.Entity<UserTask>(entity =>
             {
                 entity.HasKey(t => t.TaskId);
                 entity.Property(t => t.TaskName).IsRequired();

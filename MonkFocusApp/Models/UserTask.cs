@@ -8,7 +8,7 @@ using MonkFocusApp.Models;
 
 namespace MonkFocusModels
 {
-    public class Task
+    public class UserTask
     {
         [Key]
         public int TaskId { get; set; }

@@ -22,6 +22,6 @@ namespace MonkFocusModels
         public TimeOnly BedTime { get; set; }
         public TimeSpan WorkTimeGoal { get; set; }
         public IEnumerable<WorkSession> WorkSessions { get; set; } //skonfiguruj relacje user - worksession
-        public IEnumerable<Task> Task { get; set; }
+        public IEnumerable<UserTask> Task { get; set; }
     }
 }

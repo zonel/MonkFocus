@@ -66,7 +66,7 @@ namespace MonkFocusDataAccess.Migrations
                     b.ToTable("Quotes");
                 });
 
-            modelBuilder.Entity("MonkFocusModels.Task", b =>
+            modelBuilder.Entity("MonkFocusModels.UserTask", b =>
                 {
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
@@ -186,7 +186,7 @@ namespace MonkFocusDataAccess.Migrations
                     b.ToTable("WorkSessions");
                 });
 
-            modelBuilder.Entity("MonkFocusModels.Task", b =>
+            modelBuilder.Entity("MonkFocusModels.UserTask", b =>
                 {
                     b.HasOne("MonkFocusApp.Models.Priority", "Priority")
                         .WithMany()
@@ -201,7 +201,7 @@ namespace MonkFocusDataAccess.Migrations
                         .IsRequired();
 
                     b.HasOne("MonkFocusModels.User", "User")
-                        .WithMany("Task")
+                        .WithMany("UserTask")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -226,7 +226,7 @@ namespace MonkFocusDataAccess.Migrations
 
             modelBuilder.Entity("MonkFocusModels.User", b =>
                 {
-                    b.Navigation("Task");
+                    b.Navigation("UserTask");
 
                     b.Navigation("WorkSessions");
                 });
