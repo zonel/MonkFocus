@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MonkFocusRepositories\MonkFocusRepositories.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Views\BackgroundImages\hill.jpg" />
     <Resource Include="Views\BackgroundImages\mountains.jpg" />
     <Resource Include="Views\BackgroundImages\wanderer.jpg" />

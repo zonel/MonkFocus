@@ -15,8 +15,5 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MonkFocusApp\MonkFocusApp.csproj" />
-  </ItemGroup>
 
 </Project>

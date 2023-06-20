@@ -40,7 +40,7 @@
         </StackPanel>
         </Border>
 
-        <views1:LoginView Grid.Row="1" Loaded="LoginView_Loaded" />
+        <views1:LoginView Grid.Row="1" />
     </Grid>
 
 </Window>
