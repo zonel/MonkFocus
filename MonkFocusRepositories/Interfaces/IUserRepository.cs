@@ -8,5 +8,5 @@ public interface IUserRepository
     public void DeleteUserById(int userId);
     public User GetUserById(int id);
 
-    public bool ValidateUser(string username, string password); //TODO 
+    public bool AuthenticateUser(string username, string password); //TODO 
 }

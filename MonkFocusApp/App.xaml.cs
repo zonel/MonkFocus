@@ -31,12 +31,13 @@ namespace MonkFocusApp
         {
             //Set up your dependency injection container and register services
            var services = new ServiceCollection();
+           services.AddDbContext<MonkFocusDbContext>();
 
             // Register the MonkFocusDbContext and other services
-            services.AddDbContext<MonkFocusDbContext>(options =>
-                options.UseSqlite("DataSource=Monkfocus.db"));
+            //services.AddDbContext<MonkFocusDbContext>(options =>
+            //    options.UseSqlite("DataSource=Monkfocus.db"));
 
-            services.AddTransient<DatabaseSeeder>();
+            //services.AddTransient<DatabaseSeeder>();
 
             // Add other services and repositories
 

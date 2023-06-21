@@ -13,17 +13,18 @@ namespace MonkFocusDataAccess
         public MonkFocusDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<MonkFocusDbContext>();
-            optionsBuilder.UseSqlite("DataSource=Monkfocus.db");
+            optionsBuilder.UseSqlite("DataSource=C:\\monkfocus\\Monkfocus.db");
 
             return new MonkFocusDbContext(optionsBuilder.Options);
         }
 
         public MonkFocusDbContext CreateDbContext()
         {
-            var optionsBuilder = new DbContextOptionsBuilder<MonkFocusDbContext>();
-            optionsBuilder.UseSqlite("DataSource=Monkfocus.db");
+            //var optionsBuilder = new DbContextOptionsBuilder<MonkFocusDbContext>();
+            //optionsBuilder.UseSqlite("DataSource=Monkfocus.db");
 
-            return new MonkFocusDbContext(optionsBuilder.Options);
+            return new MonkFocusDbContext();
+
         }
     }
 }

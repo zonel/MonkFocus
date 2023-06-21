@@ -16,8 +16,6 @@ namespace MonkFocusDataAccess
         public DbSet<WorkSession> WorkSessions { get; set; }
         public DbSet<WebsitesToBlock> WebsitesToBlock { get; set; }
 
-        protected readonly string CONNECTION_STRING = "Data Source=Monkfocus.db";
-
         public MonkFocusDbContext(DbContextOptions options) : base(options)
         {
         }
@@ -26,6 +24,9 @@ namespace MonkFocusDataAccess
         {
         }
 
+        //TODO :Change absolute path to relative
+       private readonly string _connectionString = "C:\\Users\\Bartek\\source\\MonkFocus\\MonkFocusDataAccess\\Monkfocus.db";
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region User
@@ -123,7 +124,7 @@ namespace MonkFocusDataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("DataSource=Monkfocus.db").EnableSensitiveDataLogging(true);
+            optionsBuilder.UseSqlite($"Data Source={_connectionString}");
         }
     }
 }

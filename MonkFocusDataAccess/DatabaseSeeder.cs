@@ -1,4 +1,6 @@
-﻿using MonkFocusApp.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MonkFocusApp.Models;
+using MonkFocusModels;
 
 namespace MonkFocusDataAccess
 {
@@ -11,10 +13,10 @@ namespace MonkFocusDataAccess
             this.dbContext = dbContext;
         }
 
-        public void SeedData()
+        public async void SeedData()
         {
-            var content = dbContext.Statuses.ToList();
-            var quotess = dbContext.Quotes.ToList();
+            var content = await dbContext.Statuses.ToListAsync();
+            var quotess = await dbContext.Quotes.ToListAsync();
 
 
             if (!dbContext.Statuses.Any())
@@ -25,7 +27,7 @@ namespace MonkFocusDataAccess
                     new Status { StatusId = 2, StatusName = "Done" },
                     new Status { StatusId = 3, StatusName = "On Hold" },
                 };
-                dbContext.Statuses.AddRange(statuses);
+                await dbContext.Statuses.AddRangeAsync(statuses);
 
             }
 
@@ -33,14 +35,36 @@ namespace MonkFocusDataAccess
             {
                 var priorities = new List<Priority>()
                 {
-                    new Priority { PriorityId = 1, PriorityName = "Low" },
-                    new Priority { PriorityId = 2, PriorityName = "Medium" },
-                    new Priority { PriorityId = 3, PriorityName = "Crucial" },
+                    new Priority { PriorityId = 1,PriorityName = "Low" },
+                    new Priority { PriorityId = 2,PriorityName = "Medium" },
+                    new Priority { PriorityId = 3,PriorityName = "Crucial" },
                 };
-                dbContext.Priorities.AddRange(priorities);
+                await dbContext.Priorities.AddRangeAsync(priorities);
             }
 
-            dbContext.SaveChanges();
+            //seeding test users
+            if (!dbContext.Users.Any())
+            {
+                var testusers = new List<User>()
+                {
+                    new User
+                    {
+                        Username = "root",
+                        Name = "Robert",
+                        Password = "toor",
+                        City = "Kraków",
+                        Email = "root@root.com",
+                        JoinDate = new System.DateTime(2019, 1, 1),
+                        Points = 1337,
+                        WakeUpTime = new System.TimeOnly(8, 0, 0),
+                        BedTime = new System.TimeOnly(23, 0, 0),
+                        WorkTimeGoal = new System.TimeSpan(8, 0, 0),
+                    },
+                };
+                await dbContext.Users.AddRangeAsync(testusers);
+            }
+
+            await dbContext.SaveChangesAsync();
         }
     }
 }

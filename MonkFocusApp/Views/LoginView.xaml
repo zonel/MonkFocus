@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MonkFocusApp.Views"
+             xmlns:vms="clr-namespace:MonkFocusApp.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1200">
     <UserControl.Resources>
@@ -44,16 +45,16 @@
                                FontSize="45" FontWeight="Bold" Text="MONK FOCUS" Foreground="{DynamicResource PrimaryBlueColor}" Background="White"/>
                 </Border>
                 <Border Grid.Row="3" Height="90" Width="350" CornerRadius="20" Background="White" MouseDown="Username_focus">
-                    <TextBox x:Name="Username" Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus"  Text="username"
+                    <TextBox x:Name="Username" Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus"  Text="{Binding Username}"
                              Tag="username" SelectionBrush="#FFD0D0D0" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="25" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
                 <Border Grid.Row="4" Height="90" Width="350" CornerRadius="20" Background="White" MouseDown="Password_focus">
                     <TextBox x:Name="Password" Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus" SelectionBrush="#FFE0E0E0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                             FontSize="25" FontWeight="Bold" Tag="password" Text="password" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
+                             FontSize="25" FontWeight="Bold" Tag="password" Text="{Binding Password}" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
                 <Border Grid.Row="5" Height="90" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" MouseDown="LoginButton_Click">
-                    <Button  Click="LoginButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    <Button  Command="{Binding LoginCommand}" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="45" FontWeight="Bold" Content="LOGIN" Foreground="White" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
             </Grid>

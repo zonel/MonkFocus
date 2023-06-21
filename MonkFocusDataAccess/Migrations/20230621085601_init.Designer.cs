@@ -11,8 +11,8 @@ using MonkFocusDataAccess;
 namespace MonkFocusDataAccess.Migrations
 {
     [DbContext(typeof(MonkFocusDbContext))]
-    [Migration("20230620211001_test")]
-    partial class test
+    [Migration("20230621085601_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
