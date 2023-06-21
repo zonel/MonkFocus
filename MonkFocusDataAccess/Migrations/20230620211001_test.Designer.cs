@@ -11,8 +11,8 @@ using MonkFocusDataAccess;
 namespace MonkFocusDataAccess.Migrations
 {
     [DbContext(typeof(MonkFocusDbContext))]
-    [Migration("20230619165539_initialize")]
-    partial class initialize
+    [Migration("20230620211001_test")]
+    partial class test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,36 +69,6 @@ namespace MonkFocusDataAccess.Migrations
                     b.ToTable("Quotes");
                 });
 
-            modelBuilder.Entity("MonkFocusModels.Task", b =>
-                {
-                    b.Property<int>("TaskId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("PriorityId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("StatusId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("TaskName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("TaskId");
-
-                    b.HasIndex("PriorityId");
-
-                    b.HasIndex("StatusId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Tasks");
-                });
-
             modelBuilder.Entity("MonkFocusModels.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -145,6 +115,36 @@ namespace MonkFocusDataAccess.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("MonkFocusModels.UserTask", b =>
+                {
+                    b.Property<int>("TaskId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PriorityId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("TaskName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("TaskId");
+
+                    b.HasIndex("PriorityId");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tasks");
+                });
+
             modelBuilder.Entity("MonkFocusModels.WebsitesToBlock", b =>
                 {
                     b.Property<int>("WebsitesToBlockId")
@@ -189,7 +189,7 @@ namespace MonkFocusDataAccess.Migrations
                     b.ToTable("WorkSessions");
                 });
 
-            modelBuilder.Entity("MonkFocusModels.Task", b =>
+            modelBuilder.Entity("MonkFocusModels.UserTask", b =>
                 {
                     b.HasOne("MonkFocusApp.Models.Priority", "Priority")
                         .WithMany()

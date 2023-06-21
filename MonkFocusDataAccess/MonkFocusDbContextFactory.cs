@@ -4,20 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace MonkFocusDataAccess
 {
-    public class MonkFocusDbContextFactory
+    public class MonkFocusDbContextFactory : IDesignTimeDbContextFactory<MonkFocusDbContext>
     {
-        private readonly string CONNECTION_STRING = "Data Source=Monkfocus.db"; //TODO: move to config file
+        public MonkFocusDbContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<MonkFocusDbContext>();
+            optionsBuilder.UseSqlite("DataSource=Monkfocus.db");
+
+            return new MonkFocusDbContext(optionsBuilder.Options);
+        }
 
         public MonkFocusDbContext CreateDbContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<MonkFocusDbContext>();
-            optionsBuilder.UseSqlite(CONNECTION_STRING);
-            var context = new MonkFocusDbContext(optionsBuilder.Options);
-            context.Database.EnsureCreated();
-            return context;
+            optionsBuilder.UseSqlite("DataSource=Monkfocus.db");
+
+            return new MonkFocusDbContext(optionsBuilder.Options);
         }
     }
 }

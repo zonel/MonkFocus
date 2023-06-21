@@ -16,9 +16,13 @@ namespace MonkFocusDataAccess
         public DbSet<WorkSession> WorkSessions { get; set; }
         public DbSet<WebsitesToBlock> WebsitesToBlock { get; set; }
 
-        private readonly string CONNECTION_STRING = "Data Source=Monkfocus.db";
+        protected readonly string CONNECTION_STRING = "Data Source=Monkfocus.db";
 
         public MonkFocusDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public MonkFocusDbContext()
         {
         }
 
@@ -70,7 +74,6 @@ namespace MonkFocusDataAccess
             {
                 entity.HasKey(ws => ws.WorkSessionId);
 
-                //user has many worksessions
                 entity.HasOne(ws => ws.User)
                     .WithMany(u => u.WorkSessions)
                     .HasForeignKey(ws => ws.UserId)
@@ -120,7 +123,7 @@ namespace MonkFocusDataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(CONNECTION_STRING, b => b.MigrationsAssembly("MonkFocusDataAccess"));
+            optionsBuilder.UseSqlite("DataSource=Monkfocus.db").EnableSensitiveDataLogging(true);
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MonkFocusApp.Models;
-using MonkFocusModels;
+﻿using MonkFocusApp.Models;
 
 namespace MonkFocusDataAccess
 {
@@ -19,6 +13,10 @@ namespace MonkFocusDataAccess
 
         public void SeedData()
         {
+            var content = dbContext.Statuses.ToList();
+            var quotess = dbContext.Quotes.ToList();
+
+
             if (!dbContext.Statuses.Any())
             {
                 var statuses = new List<Status>()
