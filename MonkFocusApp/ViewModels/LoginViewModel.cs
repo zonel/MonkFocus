@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using MonkFocusApp.Commands;
 using MonkFocusApp.Services;
 using MonkFocusApp.Services.Interfaces;
+using MonkFocusApp.Views;
 using MonkFocusDataAccess;
 using MonkFocusRepositories;
 using SQLitePCL;
@@ -64,17 +66,19 @@ namespace MonkFocusApp.ViewModels
             _userRepository = new UserRepository(_context);
         }
 
+        ContentControl viewContainer = Application.Current.MainWindow.FindName("viewContainer") as ContentControl;
         private void Login()
         {
             bool isAuthenticated = _userRepository.AuthenticateUser(Username, Password);
 
             if (isAuthenticated)
             {
-                MessageBox.Show("Login successful!");
-                _navigationService.NavigateToMainScreen();
+                DashboardView dashboardViewModel = new DashboardView();
+                viewContainer.Content = dashboardViewModel;
             }
             else
             {
+                Password = "";
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
         }

@@ -79,7 +79,7 @@ namespace MonkFocusApp.Views
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
         }
-        private bool IsValidCredentials(string username, string password)
+        private bool IsValidCredentials(string username, string password) //TO REMOVE / UNUSED
         {
             // Add your login validation logic here
             // Compare the username and password against your stored credentials or perform authentication checks
@@ -106,6 +106,7 @@ namespace MonkFocusApp.Views
             Border border = (Border)sender;
             border.Background = new SolidColorBrush(Color.FromArgb(255,60,155,176)); // Change to your original color
         }
+
 
     }
 }

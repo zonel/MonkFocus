@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MonkFocusApp.ViewModels;
 
 namespace MonkFocusApp.Views
 {
@@ -23,6 +24,19 @@ namespace MonkFocusApp.Views
         public DashboardView()
         {
             InitializeComponent();
+            DataContext = new DashboardViewModel();
+        }
+
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Border border = (Border)sender;
+            border.Background = new SolidColorBrush(Color.FromArgb(255,33,84,95)); // Change to your desired hover color
+        }
+
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Border border = (Border)sender;
+            border.Background = new SolidColorBrush(Color.FromArgb(255,60,155,176)); // Change to your original color
         }
     }
 }

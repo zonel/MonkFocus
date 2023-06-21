@@ -5,8 +5,221 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MonkFocusApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="900" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#3C9BB0"/>
+        <SolidColorBrush x:Key="PrimaryWhiteColor" Color="White"/>
+    </UserControl.Resources>
     <Grid>
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="440"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.Row="1" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="2" Fill="LightGray" Opacity="0.8"/>
+
+                <Border Grid.Row="1" Height="400" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 0 0 10">
+                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
+                            FontSize="25"  Text="TASKS" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" BorderThickness="0,0,0,0">
+                    </TextBox>
+                </Border>
+
+
+                <Border Grid.Row="2" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 25" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                             FontSize="25"  Content="TASKS MANAGER" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="230"/>
+                    <RowDefinition Height="218"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Height="auto" Width="auto" CornerRadius="30,30,0,0" Background="LightGray" Opacity="0.9">
+                            <Rectangle  Fill="Transparent" Opacity="0" />
+                        </Border>
+                <Rectangle Grid.Row="1" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="2" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="3" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="4" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="5" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="6" Fill="LightGray" Opacity="0.8"/>
+
+
+                
+                <Border Grid.Row="0" Height="60" Width="350" CornerRadius="20" Background="White" VerticalAlignment="Bottom" Margin="0 0 0 10">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                            FontSize="40"  Text="MONK FOCUS" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" >
+
+                    </TextBlock>
+                </Border>
+
+                <Border Grid.Row="1" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 15">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                            FontSize="25"  Content="22 : 16" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Border Grid.Row="3" Height="60" Width="170" CornerRadius="20" Background="White" VerticalAlignment="Bottom" Margin="0 0 10 0">
+                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                FontSize="25"  Content="Hi, Bartek!" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" BorderThickness="0,0,0,0">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
+                    <Border Grid.Row="3" Height="60" Width="170" CornerRadius="20" Background="White" VerticalAlignment="Bottom" Margin="0 0 0 0">
+                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                FontSize="22"  Content="KRAKÓW, 24 C" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" BorderThickness="0,0,0,0">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
+                </StackPanel>
+
+                <Border Grid.Row="3" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                            FontSize="25"  Content="START WORK SESSION" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+
+                <Border Grid.Row="4" Height="187" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 5">
+                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
+                             FontSize="25"  Text="YOUR LATEST SESSIONS" Foreground="{DynamicResource PrimaryWhiteColor}" Background="Transparent" BorderThickness="0,0,0,0">
+                    </TextBox>
+                </Border>
+
+                <Border Grid.Row="5" Height="188" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 0 0 10">
+                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
+                            FontSize="25"  Text="LEADERBOARD" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" BorderThickness="0,0,0,0">
+                    </TextBox>
+                </Border>
+
+
+                <Border Grid.Row="6" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 25" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                             FontSize="25"  Content="WEBSITES BLOCKER" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+
+            </Grid>
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="146"/>
+                    <RowDefinition Height="146"/>
+                    <RowDefinition Height="146"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.Row="1" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="2" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="3" Fill="LightGray" Opacity="0.8"/>
+                <Rectangle Grid.Row="4" Fill="LightGray" Opacity="0.8"/>
+
+                <Border Grid.Row="1" Height="120" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 -3">
+                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
+                            FontSize="25"  Text="STOIC QUOTE" Foreground="{DynamicResource PrimaryWhiteColor}" Background="Transparent" BorderThickness="0,0,0,0">
+                    </TextBox>
+                </Border>
+                <Border Grid.Row="2" Height="120" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 0 0 5">
+                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
+                             FontSize="25"  Text="TIME UNTIL BEDTIME" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" BorderThickness="0,0,0,0">
+                    </TextBox>
+                </Border>
+                <Border Grid.Row="3" Height="120" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 10">
+                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
+                             FontSize="25"  Text="DAILY WORK TIME GOAL" Foreground="{DynamicResource PrimaryWhiteColor}" Background="Transparent" BorderThickness="0,0,0,0">
+                    </TextBox>
+                </Border>
+
+
+                <Border Grid.Row="5" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 25" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                             FontSize="25"  Content="SETTINGS" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+
+            </Grid>
+
     </Grid>
 </UserControl>
