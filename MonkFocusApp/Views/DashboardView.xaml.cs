@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MonkFocusApp.Views
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for DashboardView.xaml
     /// </summary>
-    public partial class Dashboard : UserControl
+    public partial class DashboardView : UserControl
     {
-        public Dashboard()
+        public DashboardView()
         {
             InitializeComponent();
         }
