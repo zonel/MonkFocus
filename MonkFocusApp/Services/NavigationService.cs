@@ -19,7 +19,7 @@ namespace MonkFocusApp.Services
         }
         public void NavigateToMainScreen()
         {
-            Dashboard Dashboard = new Dashboard();
+            DashboardView Dashboard = new DashboardView();
             Dashboard.DataContext = new ViewModels.DashboardViewModel();
             _currentWindow.Content = Dashboard;
         }
