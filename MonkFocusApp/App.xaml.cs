@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MonkFocusApp.Services;
+using MonkFocusApp.Services.Interfaces;
+using MonkFocusApp.ViewModels;
+using MonkFocusApp.Views;
 using MonkFocusDataAccess;
 
 namespace MonkFocusApp
@@ -20,11 +24,28 @@ namespace MonkFocusApp
         {
             base.OnStartup(e);
             var serviceProvider = ConfigureServices();
-
             var dbContext = new MonkFocusDbContextFactory().CreateDbContext();
+
+            #region Seeding
             var DatabaseSeeder = new DatabaseSeeder(dbContext);
             DatabaseSeeder.SeedData();
+            #endregion
 
+            // Create the main window
+            //MainWindow mainWindow = new MainWindow();
+
+            //// Create the login view
+            //LoginView loginView = new LoginView();
+
+            //// Set the login view as the content of the main window
+            //mainWindow.Content = loginView;
+
+            //// Create the navigation service and pass the current window to it
+            //NavigationService navigationService = new NavigationService(MainWindow);
+            //LoginViewModel loginViewModel = new LoginViewModel(navigationService);
+            //loginView.DataContext = loginViewModel;
+
+            //mainWindow.Show();
         }
 
         private IServiceProvider ConfigureServices()

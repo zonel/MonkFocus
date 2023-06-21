@@ -37,7 +37,7 @@ namespace MonkFocusRepositories
             return _context.Users.FirstOrDefault(u => u.UserId == userId);
         }
 
-        public bool AuthenticateUser(string username, string password)
+        public bool AuthenticateUser(string username, string password) //TODO: strip input from whitespaces
         {
             var userToValidate = _context.Users.FirstOrDefault(u => u.Username == username);
 

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using MonkFocusApp.Commands;
+using MonkFocusApp.Services;
+using MonkFocusApp.Services.Interfaces;
 using MonkFocusDataAccess;
 using MonkFocusRepositories;
 using SQLitePCL;
@@ -15,6 +17,15 @@ namespace MonkFocusApp.ViewModels
 {
     class LoginViewModel : BaseViewModel
     {
+        private readonly NavigationService _navigationService;
+
+        public LoginViewModel(NavigationService navigationService)
+        {
+            LoginCommand = new RelayCommand(Login);
+            _userRepository = new UserRepository(_context);
+            _navigationService = navigationService;
+        }
+
         private string _username;
         private string _password;
 
@@ -60,6 +71,7 @@ namespace MonkFocusApp.ViewModels
             if (isAuthenticated)
             {
                 MessageBox.Show("Login successful!");
+                _navigationService.NavigateToMainScreen();
             }
             else
             {

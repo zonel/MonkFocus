@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MonkFocusApp.ViewModels
 {
-    class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

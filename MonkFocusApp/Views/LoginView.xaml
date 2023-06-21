@@ -53,10 +53,25 @@
                     <TextBox x:Name="Password" Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus" SelectionBrush="#FFE0E0E0" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="25" FontWeight="Bold" Tag="password" Text="{Binding Password}" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
-                <Border Grid.Row="5" Height="90" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" MouseDown="LoginButton_Click">
+                <Border Grid.Row="5" Height="90" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" MouseDown="LoginButton_Click" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
                     <Button  Command="{Binding LoginCommand}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                             FontSize="45" FontWeight="Bold" Content="LOGIN" Foreground="White" Background="{x:Null}" BorderThickness="0,0,0,0"/>
+                             FontSize="45" FontWeight="Bold" Content="LOGIN" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </Border>
+
+
+
+
             </Grid>
         </Grid>
 </UserControl>
