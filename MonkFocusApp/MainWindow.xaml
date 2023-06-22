@@ -18,32 +18,33 @@
     <Window.Effect>
         <DropShadowEffect/>
     </Window.Effect>
-    <Grid>
-        <Grid.Background>
-            <VisualBrush>
-                <VisualBrush.Visual>
-                    <Image Source="/Views/BackgroundImages/mountains.jpg" />
-                </VisualBrush.Visual>
-            </VisualBrush>
-        </Grid.Background>
+        <Grid>
+            <Grid.Background>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Image Source="/Views/BackgroundImages/mountainsRounded.png" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Grid.Background>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <!--this is a bar with exit and minimize buttons-->
-        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button x:Name="MinimizeButton" Background="Transparent" Foreground="White" Content="-" Width="40" Height="40" Click="MinimizeButton_Click" HorizontalAlignment="Right" BorderThickness="0,0,0,0" FontSize="30" FontWeight="Bold" FontFamily="MS UI Gothic"/>
-            <Button x:Name="CloseButton" Padding="0 0 0 6" Background="Transparent" Foreground="White" Content="x" Width="40" Height="40" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0 0 20 0" BorderThickness="0,0,0,0" FontSize="25" FontFamily="MS UI Gothic"/>
-        </StackPanel>
-        </Border>
+            <!--this is a bar with exit and minimize buttons-->
+            <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button x:Name="MinimizeButton" Background="Transparent" Foreground="White" Content="-" Width="40" Height="40" Click="MinimizeButton_Click" HorizontalAlignment="Right" BorderThickness="0,0,0,0" FontSize="30" FontWeight="Bold" FontFamily="MS UI Gothic"/>
+                    <Button x:Name="CloseButton" Padding="0 0 0 6" Background="Transparent" Foreground="White" Content="x" Width="40" Height="40" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0 0 20 0" BorderThickness="0,0,0,0" FontSize="25" FontFamily="MS UI Gothic"/>
+                </StackPanel>
+            </Border>
 
-        <!--<views1:LoginView Grid.Row="1" />-->
-        <ContentControl Grid.Row="1" x:Name="viewContainer">
-            <views1:LoginView Grid.Row="1" />
-        </ContentControl>
-    </Grid>
+            <!--<views1:LoginView Grid.Row="1" />-->
+            <ContentControl Grid.Row="1" x:Name="viewContainer">
+                <views1:LoginView Grid.Row="1" />
+            </ContentControl>
+        </Grid>
+   
 
 </Window>
