@@ -19,15 +19,6 @@ namespace MonkFocusApp.ViewModels
 {
     class LoginViewModel : BaseViewModel
     {
-        private readonly NavigationService _navigationService;
-
-        public LoginViewModel(NavigationService navigationService)
-        {
-            LoginCommand = new RelayCommand(Login);
-            _userRepository = new UserRepository(_context);
-            _navigationService = navigationService;
-        }
-
         private string _username;
         private string _password;
 
@@ -73,12 +64,12 @@ namespace MonkFocusApp.ViewModels
 
             if (isAuthenticated)
             {
-                DashboardView dashboardViewModel = new DashboardView();
+                var UserId = _userRepository.GetUserByUsername(Username).UserId;
+                DashboardView dashboardViewModel = new DashboardView(UserId, _context);
                 viewContainer.Content = dashboardViewModel;
             }
             else
             {
-                Password = "";
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
         }

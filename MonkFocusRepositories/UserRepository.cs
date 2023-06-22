@@ -34,11 +34,18 @@ namespace MonkFocusRepositories
         }
         public User GetUserById(int userId)
         {
-            return _context.Users.FirstOrDefault(u => u.UserId == userId);
+            return _context.Users.FirstOrDefault(u => u.UserId == userId) ?? throw new NullReferenceException();
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            return _context.Users.FirstOrDefault(u => u.Username == username) ?? throw new NullReferenceException();
         }
 
         public bool AuthenticateUser(string username, string password) //TODO: strip input from whitespaces
         {
+            if (username == "" || password == "") return false;
+
             var userToValidate = _context.Users.FirstOrDefault(u => u.Username == username);
 
             if (userToValidate is null) return false;

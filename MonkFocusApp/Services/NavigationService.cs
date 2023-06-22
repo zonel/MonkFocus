@@ -9,19 +9,19 @@ using MonkFocusApp.Views;
 
 namespace MonkFocusApp.Services
 {
-    public class NavigationService : INavigationService
-    {
-        private readonly Window _currentWindow;
+    //public class NavigationService : INavigationService
+    //{
+    //    private readonly Window _currentWindow;
 
-        public NavigationService(Window currentWindow)
-        {
-            _currentWindow = currentWindow;
-        }
-        public void NavigateToMainScreen()
-        {
-            DashboardView Dashboard = new DashboardView();
-            Dashboard.DataContext = new ViewModels.DashboardViewModel();
-            _currentWindow.Content = Dashboard;
-        }
-    }
+    //    public NavigationService(Window currentWindow)
+    //    {
+    //        _currentWindow = currentWindow;
+    //    }
+    //    public void NavigateToMainScreen()
+    //    {
+    //        DashboardView Dashboard = new DashboardView();
+    //        Dashboard.DataContext = new ViewModels.DashboardViewModel();
+    //        _currentWindow.Content = Dashboard;
+    //    }
+    //}
 }

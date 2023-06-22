@@ -27,30 +27,30 @@ namespace MonkFocusApp.Views
             DataContext = new LoginViewModel();
         }
 
-        private void UsernameTextBox_GotFocus(object sender, RoutedEventArgs e)
+        private void UsernameTextBox_GotFocus(object sender, RoutedEventArgs e) //TODO REMOVE
         {
-            TextBox textBox = (TextBox)sender;
-            if (textBox.Text == textBox.Tag?.ToString())
-            {
-                textBox.Text = string.Empty;
-            }
+            //TextBox textBox = (TextBox)sender;
+            //if (textBox.Text == textBox.Tag?.ToString())
+            //{
+            //    textBox.Text = string.Empty;
+            //}
         }
 
-        private void UsernameTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void UsernameTextBox_LostFocus(object sender, RoutedEventArgs e) //TODO REMOVE
         {
-            TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Text = textBox.Tag?.ToString();
-            }
+            //TextBox textBox = (TextBox)sender;
+            //if (string.IsNullOrWhiteSpace(textBox.Text))
+            //{
+            //    textBox.Text = textBox.Tag?.ToString();
+            //}
         }
 
-        private void MyTextBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
+        //private void MyTextBox_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    TextBox textBox = (TextBox)sender;
 
-            textBox.Text = "username";
-        }
+        //    textBox.Text = "username";
+        //}
 
         private void Username_focus(object sender, MouseButtonEventArgs e)
         {
@@ -62,38 +62,7 @@ namespace MonkFocusApp.Views
             Password.Focus();
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            string username = Username.Text;
-            string password = Password.Text;
-
-            // Perform login validation
-            if (IsValidCredentials(username, password))
-            {
-                // Successful login
-                MessageBox.Show("Login successful!");
-            }
-            else
-            {
-                // Failed login
-                MessageBox.Show("Invalid username or password. Please try again.");
-            }
-        }
-        private bool IsValidCredentials(string username, string password) //TO REMOVE / UNUSED
-        {
-            // Add your login validation logic here
-            // Compare the username and password against your stored credentials or perform authentication checks
-            // Return true if the credentials are valid, otherwise return false
-            // Example validation logic:
-            if (username == "admin" && password == "password")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        #region ButtonCosmetics
 
         private void Border_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -106,6 +75,8 @@ namespace MonkFocusApp.Views
             Border border = (Border)sender;
             border.Background = new SolidColorBrush(Color.FromArgb(255,60,155,176)); // Change to your original color
         }
+
+        #endregion
 
 
     }

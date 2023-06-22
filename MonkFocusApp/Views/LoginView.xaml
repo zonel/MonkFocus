@@ -44,14 +44,14 @@
                     <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"
                                FontSize="45" FontWeight="Bold" Text="MONK FOCUS" Foreground="{DynamicResource PrimaryBlueColor}" Background="White"/>
                 </Border>
-                <TextBlock Grid.Row="3" FontWeight="Bold" FontSize="20" Margin="40 -5 0 0" Text="username" Foreground="{DynamicResource PrimaryBlueColor}" ></TextBlock>
+                <TextBlock Grid.Row="3" FontWeight="Normal" FontSize="20" Margin="40 -5 0 0" Text="username" Foreground="{DynamicResource PrimaryBlueColor}" ></TextBlock>
 
                 <Border Grid.Row="3" Height="60" Width="350" CornerRadius="20" Background="White" MouseDown="Username_focus" Margin="0 0 0 -10">
                     <TextBox x:Name="Username" Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus"  Text="{Binding Username}"
                              Tag="username" SelectionBrush="#FFD0D0D0" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="25" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
-                <TextBlock Grid.Row="4" FontWeight="Bold" FontSize="20" Margin="40 -10 0 0" Text="password" Foreground="{DynamicResource PrimaryBlueColor}" ></TextBlock>
+                <TextBlock Grid.Row="4" FontWeight="Normal" FontSize="20" Margin="40 -10 0 0" Text="password" Foreground="{DynamicResource PrimaryBlueColor}" ></TextBlock>
 
                 <Border Grid.Row="4" Height="60" Width="350" CornerRadius="20" Background="White" MouseDown="Password_focus">
                     <TextBox x:Name="Password"  Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus" SelectionBrush="#FFE0E0E0" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -71,7 +71,7 @@
                         </TextBox.Style>
                     </TextBox>
                 </Border>
-                <Border Grid.Row="5" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" MouseDown="LoginButton_Click" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                <Border Grid.Row="5" Height="60" Width="350" CornerRadius="20" VerticalAlignment="Bottom" Background="{DynamicResource PrimaryBlueColor}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
                     <Button  Command="{Binding LoginCommand}" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="35" Content="LOGIN" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
                         <Button.Template>
@@ -86,6 +86,19 @@
                         </Button.Template>
                     </Button>
                 </Border>
+                <Button Grid.Row="6" 
+                        FontWeight="Normal" 
+                        Height="30" 
+                        Width="280" 
+                        FontSize="15" 
+                        Margin="40 10 0 0" 
+                        Content="don't have an account yet? Register now!" 
+                        Foreground="{DynamicResource PrimaryBlueColor}" 
+                        Background="Transparent"
+BorderThickness="0,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        />
 
 
 

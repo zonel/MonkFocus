@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MonkFocusApp.ViewModels;
+using MonkFocusDataAccess;
 
 namespace MonkFocusApp.Views
 {
@@ -21,10 +22,10 @@ namespace MonkFocusApp.Views
     /// </summary>
     public partial class DashboardView : UserControl
     {
-        public DashboardView()
+        public DashboardView(int userId, MonkFocusDbContext context)
         {
             InitializeComponent();
-            DataContext = new DashboardViewModel();
+            DataContext = new DashboardViewModel(userId, context);
         }
 
         private void Border_MouseEnter(object sender, MouseEventArgs e)

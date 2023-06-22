@@ -47,18 +47,31 @@ namespace MonkFocusDataAccess
             {
                 var testusers = new List<User>()
                 {
+                    //new User
+                    //{
+                    //    Username = "root",
+                    //    Name = "Robert",
+                    //    Password = "toor",
+                    //    City = "Kraków",
+                    //    Email = "root@root.com",
+                    //    JoinDate = new System.DateTime(2019, 1, 1),
+                    //    Points = 1337,
+                    //    WakeUpTime = new System.TimeOnly(8, 0, 0),
+                    //    BedTime = new System.TimeOnly(23, 0, 0),
+                    //    WorkTimeGoal = new System.TimeSpan(8, 0, 0),
+                    //},
                     new User
                     {
-                        Username = "root",
-                        Name = "Robert",
-                        Password = "toor",
-                        City = "Kraków",
-                        Email = "root@root.com",
-                        JoinDate = new System.DateTime(2019, 1, 1),
-                        Points = 1337,
-                        WakeUpTime = new System.TimeOnly(8, 0, 0),
-                        BedTime = new System.TimeOnly(23, 0, 0),
-                        WorkTimeGoal = new System.TimeSpan(8, 0, 0),
+                        Username = "adam",
+                        Name = "Adam",
+                        Password = "adam321",
+                        City = "Katowice",
+                        Email = "adam@gmail.com",
+                        JoinDate = new System.DateTime(2023, 2, 25),
+                        Points = 37,
+                        WakeUpTime = new System.TimeOnly(6, 0, 0),
+                        BedTime = new System.TimeOnly(22, 0, 0),
+                        WorkTimeGoal = new System.TimeSpan(6, 0, 0),
                     },
                 };
                 await dbContext.Users.AddRangeAsync(testusers);
