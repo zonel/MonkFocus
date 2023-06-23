@@ -52,5 +52,13 @@ namespace MonkFocusRepositories
 
             return userToValidate.Password == password;
         }
+
+        public IEnumerable<WorkSession> GetTop3LatestSessionsForUser(int userId)
+        {
+            return _context.WorkSessions
+                .Where(t => t.UserId == userId)
+                .Take(3)
+                .ToList();
+        }
     }
 }

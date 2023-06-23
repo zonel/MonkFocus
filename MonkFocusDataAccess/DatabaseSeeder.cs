@@ -157,6 +157,48 @@ namespace MonkFocusDataAccess
                 await dbContext.Tasks.AddRangeAsync(testTasks);
             }
 
+            //seeding test users
+            if (!dbContext.WorkSessions.Any())
+            {
+                var worksessions = new List<WorkSession>()
+                {
+
+                    new WorkSession()
+                    {
+                         StartTime   = DateTime.Now.AddHours(-1),
+                         EndTime     = DateTime.Now,
+                         Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
+                         Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
+                         UserId      = 1,
+                    },
+                    new WorkSession()
+                    {
+                        StartTime   = DateTime.Now.AddHours(-2),
+                        EndTime     = DateTime.Now.AddHours(-1),
+                        Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
+                        Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
+                        UserId      = 1,
+                    },
+                    new WorkSession()
+                    {
+                        StartTime   = DateTime.Now.AddHours(-4),
+                        EndTime     = DateTime.Now.AddHours(-3),
+                        Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
+                        Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
+                        UserId      = 1,
+                    },
+                    new WorkSession()
+                    {
+                        StartTime   = DateTime.Now.AddHours(-5),
+                        EndTime     = DateTime.Now.AddHours(-4),
+                        Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
+                        Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
+                        UserId      = 1,
+                    },
+                };
+                await dbContext.WorkSessions.AddRangeAsync(worksessions);
+            }
+
             await dbContext.SaveChangesAsync();
         }
     }

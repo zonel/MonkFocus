@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Accessibility;
 using MonkFocusApp.DTO;
 using MonkFocusDataAccess;
 using MonkFocusModels;
@@ -19,24 +20,41 @@ namespace MonkFocusApp.ViewModels
         private readonly int _userId;
         private UserRepository _userRepository;
         private TaskRepository _taskRepository;
+        private MonkFocusRepository _monkRepository;
+
         private User _user;
         private string _welcome;
         private string _clock;
+
         private readonly IEnumerable<UserTask> _tasks;
-        //private  ObservableCollection<UserTask> _userTasks;
         private  ObservableCollection<UserTaskDTO> _userTasks;
+
+        private readonly IEnumerable<WorkSession> _userLatestSessions;
+        private ObservableCollection<LatestSessionsDTO> _userLatestSessionsDTOd;
+
+        private readonly IEnumerable<User> _Leaderboard;
+        private ObservableCollection<LeaderboardDTO> _LeaderboardDTOd;
 
         public DashboardViewModel(int userId, MonkFocusDbContext context)
         {
             _userId = userId;
             _taskRepository = new TaskRepository(context);
             _userRepository = new UserRepository(context);
+            _monkRepository = new MonkFocusRepository(context);
             _user = _userRepository.GetUserById(_userId);
 
             _tasks = _taskRepository.GetTop10NotCompletedTasksForUser(_userId);
             IEnumerable<UserTaskDTO> userTaskDTOs = _tasks.Select(t => new UserTaskDTO(t));
-
             _userTasks = new ObservableCollection<UserTaskDTO>(userTaskDTOs);
+
+            _userLatestSessions = _userRepository.GetTop3LatestSessionsForUser(_userId);
+            IEnumerable<LatestSessionsDTO> latestSessionsDTOs = _userLatestSessions.Select(s => new LatestSessionsDTO(s));
+            _userLatestSessionsDTOd = new ObservableCollection<LatestSessionsDTO>(latestSessionsDTOs);
+
+            _Leaderboard = _monkRepository.GetTop3Leaderboard();
+            IEnumerable<LeaderboardDTO> LeaderboardDto = _Leaderboard.Select(s => new LeaderboardDTO(s));
+            _LeaderboardDTOd = new ObservableCollection<LeaderboardDTO>(LeaderboardDto);
+
 
             ClockInitialize();
         }
@@ -66,6 +84,26 @@ namespace MonkFocusApp.ViewModels
             set
             {
                 _userTasks = value;
+                OnPropertyChanged(nameof(Tasks));
+            }
+        }
+
+        public ObservableCollection<LatestSessionsDTO> LatestSesssions
+        {
+            get { return _userLatestSessionsDTOd; }
+            set
+            {
+                _userLatestSessionsDTOd = value;
+                OnPropertyChanged(nameof(Tasks));
+            }
+        }
+
+        public ObservableCollection<LeaderboardDTO> Leaderboard
+        {
+            get { return _LeaderboardDTOd; }
+            set
+            {
+                _LeaderboardDTOd = value;
                 OnPropertyChanged(nameof(Tasks));
             }
         }
