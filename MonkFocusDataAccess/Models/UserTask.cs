@@ -15,8 +15,8 @@ namespace MonkFocusModels
         public int UserId { get; set; }
         public int StatusId { get; set; }
         public int PriorityId { get; set; }
-
         public string TaskName { get; set; }
+
         public User User { get; set; }
         public Status Status { get; set; }
         public Priority Priority { get; set; }

@@ -49,5 +49,18 @@ namespace MonkFocusRepositories
 
             return null;
         }
+
+        public IEnumerable<UserTask> GetTop10NotCompletedTasksForUser(int userId)
+        {
+            var userTasks = _context.Tasks
+                .Where(t => t.UserId == userId)
+                .Where(t => t.StatusId == 1 || t.StatusId == 3 || t.StatusId == 2) //TODO - remove statusId == 2 from here
+                .Take(10)
+                .ToList();
+
+            if (userTasks != null)return userTasks;
+
+            return null;
+        }
     }
 }

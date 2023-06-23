@@ -40,9 +40,12 @@
                     <Rectangle  Fill="Transparent" Opacity="0" />
                 </Border>
 
-                <Border Grid.Row="1" Height="90" Width="350" CornerRadius="20" Background="White">
-                    <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"
-                               FontSize="45" FontWeight="Bold" Text="MONK FOCUS" Foreground="{DynamicResource PrimaryBlueColor}" Background="White"/>
+                <Border Grid.Row="0" Grid.RowSpan="3" Height="290" Width="350" CornerRadius="20" Background="White">
+                    <StackPanel>
+                        <Image Source="BackgroundImages/monkfocusic.png" Height="190" Width="160" Margin="0 20 0 0"></Image>
+                        <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    FontSize="45" FontWeight="Bold" Text="MONK FOCUS" Margin="0 0 0 0" Foreground="{DynamicResource PrimaryBlueColor}" Background="White"/>
+                    </StackPanel>
                 </Border>
                 <TextBlock Grid.Row="3" FontWeight="Normal" FontSize="20" Margin="40 -5 0 0" Text="username" Foreground="{DynamicResource PrimaryBlueColor}" ></TextBlock>
 

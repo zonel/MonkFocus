@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MonkFocusApp.Models;
 using MonkFocusModels;
+using System.Threading.Tasks;
 
 namespace MonkFocusDataAccess
 {
@@ -75,6 +76,85 @@ namespace MonkFocusDataAccess
                     },
                 };
                 await dbContext.Users.AddRangeAsync(testusers);
+            }
+
+            //seeding test tasks
+            if (!dbContext.Tasks.Any())
+            {
+                var testTasks = new List<UserTask>()
+                {
+                    //new UserTask
+                    //{
+                    //    UserId = 1,
+                    //    TaskName = "Go to Gym",
+                    //    PriorityId = 3,
+                    //    StatusId = 1,
+                    //},
+                    //new UserTask
+                    //{
+                    //    UserId = 1,
+                    //    TaskName = "Finish today's work",
+                    //    PriorityId = 3,
+                    //    StatusId = 3,
+                    //},
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Fix Bug #123",
+                        PriorityId = 3,
+                        StatusId = 3,
+                    },
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Morning Meditation",
+                        PriorityId = 1,
+                        StatusId = 2,
+                    },
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Take Supplements",
+                        PriorityId = 1,
+                        StatusId = 2,
+                    },
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Daily Journal Entry",
+                        PriorityId = 2,
+                        StatusId = 2,
+                    },
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Groceries",
+                        PriorityId = 1,
+                        StatusId = 3,
+                    },
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Go for a run",
+                        PriorityId = 1,
+                        StatusId = 1,
+                    },
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Read 10 pages of a book",
+                        PriorityId = 3,
+                        StatusId = 3,
+                    },
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Do Stretching",
+                        PriorityId = 3,
+                        StatusId = 3,
+                    },
+                };
+                await dbContext.Tasks.AddRangeAsync(testTasks);
             }
 
             await dbContext.SaveChangesAsync();

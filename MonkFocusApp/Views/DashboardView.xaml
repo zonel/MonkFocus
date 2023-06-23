@@ -29,9 +29,37 @@
                 </Border>
 
                 <Border Grid.Row="1" Height="400" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 0 0 10">
-                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
-                            FontSize="25"  Text="TASKS" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" BorderThickness="0,0,0,0">
-                    </TextBox>
+                   <StackPanel>
+                       <TextBox HorizontalAlignment="Center" 
+                                VerticalAlignment="Top" 
+                                Margin="0 10 0 0"
+                                FontSize="25"  
+                                Text="TASKS" 
+                                Foreground="{DynamicResource PrimaryBlueColor}" 
+                                Background="Transparent" 
+                                BorderThickness="0,0,0,0"/>
+                       <ItemsControl ItemsSource="{Binding Tasks}">
+                           <ItemsControl.ItemTemplate>
+                               <DataTemplate>
+                                   <StackPanel Orientation="Horizontal">
+                                       <Border Background="{DynamicResource PrimaryBlueColor}" Margin="15 20 0 0" CornerRadius="5">
+                                          <Button Content="{Binding Status}" Height="25" Width="25" FontWeight="Bold" HorizontalAlignment="Right" FontSize="15" Background="Transparent" BorderThickness="0,0,0,0" Foreground="{DynamicResource PrimaryWhiteColor}">
+                                          </Button>
+                                       </Border>
+
+                                       <TextBlock FontSize="25" 
+                                                  Foreground="{DynamicResource PrimaryBlueColor}" 
+                                                  Text="{Binding TaskName}"
+                                                  Margin="15 15 0 0"/>
+                                       <!--<TextBlock Text="{Binding Priority}" Margin="15 15 0 0" HorizontalAlignment="Left" FontSize="25" Foreground="{DynamicResource PrimaryBlueColor}"/>-->
+                                       <!-- Add other TextBlocks for additional properties -->
+                                   </StackPanel>
+                               </DataTemplate>
+                           </ItemsControl.ItemTemplate>
+                       </ItemsControl>
+                   </StackPanel>
+
+                    
                 </Border>
 
 
@@ -146,15 +174,38 @@
                 </Border>
 
                 <Border Grid.Row="4" Height="187" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 5">
-                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
-                             FontSize="25"  Text="YOUR LATEST SESSIONS" Foreground="{DynamicResource PrimaryWhiteColor}" Background="Transparent" BorderThickness="0,0,0,0">
-                    </TextBox>
+                    <StackPanel>
+                        <TextBox HorizontalAlignment="Center" 
+                                 VerticalAlignment="Top" 
+                                 Margin="0 10 0 0"
+                                 FontSize="25"  
+                                 Text="YOUR LATEST SESSIONS" 
+                                 Foreground="{DynamicResource PrimaryWhiteColor}" 
+                                 Background="Transparent" 
+                                 BorderThickness="0,0,0,0" />
+                        <Border Height="35" Width="300" CornerRadius="8" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 5 0 10">
+                            <TextBox HorizontalAlignment="Center" 
+                                     VerticalAlignment="Center" 
+                                     FontSize="25"  
+                                     Text="YOUR LATEST SESSIONS" 
+                                     Foreground="{DynamicResource PrimaryBlueColor}" 
+                                     Background="Transparent" 
+                                     BorderThickness="0,0,0,0" />
+                        </Border>
+                        <Border Height="35" Width="300" CornerRadius="8" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 0 0 10">
+                        </Border>
+                        <Border Height="35" Width="300" CornerRadius="8" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 0 0 5">
+                        </Border>
+                    </StackPanel>
+
+                    
                 </Border>
 
                 <Border Grid.Row="5" Height="188" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 0 0 10">
                     <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
                             FontSize="25"  Text="LEADERBOARD" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" BorderThickness="0,0,0,0">
                     </TextBox>
+                    
                 </Border>
 
 
