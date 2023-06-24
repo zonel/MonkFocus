@@ -18,7 +18,6 @@ namespace MonkFocusApp.DTO
             TaskName = userTask.TaskName;
             Priority = userTask.PriorityId.ToString();
             Status = GetStatusString(userTask.StatusId);
-
         }
 
         private string GetStatusString(int statusId)

@@ -25,6 +25,7 @@ namespace MonkFocusApp.ViewModels
         private User _user;
         private string _welcome;
         private string _clock;
+        private string _timeUntilBedtime;
 
         private readonly IEnumerable<UserTask> _tasks;
         private  ObservableCollection<UserTaskDTO> _userTasks;
@@ -34,29 +35,48 @@ namespace MonkFocusApp.ViewModels
 
         private readonly IEnumerable<User> _Leaderboard;
         private ObservableCollection<LeaderboardDTO> _LeaderboardDTOd;
+        
+        private readonly Quote _quote;
+        private string _wakeuptime;
+        private string _bedtime;
 
         public DashboardViewModel(int userId, MonkFocusDbContext context)
         {
-            _userId = userId;
+            #region Repositories
             _taskRepository = new TaskRepository(context);
             _userRepository = new UserRepository(context);
             _monkRepository = new MonkFocusRepository(context);
-            _user = _userRepository.GetUserById(_userId);
+            #endregion
+            _userId = userId; // our userId retrieved from the login screen
+            _user = _userRepository.GetUserById(_userId); //getting all info about the user from DB
+            _wakeuptime = _user.WakeUpTime.ToString("HH:mm");
+            _bedtime = _user.BedTime.ToString("HH:mm");
 
+            #region Tasks
             _tasks = _taskRepository.GetTop10NotCompletedTasksForUser(_userId);
             IEnumerable<UserTaskDTO> userTaskDTOs = _tasks.Select(t => new UserTaskDTO(t));
             _userTasks = new ObservableCollection<UserTaskDTO>(userTaskDTOs);
+            #endregion
 
+            #region LatestSessions
             _userLatestSessions = _userRepository.GetTop3LatestSessionsForUser(_userId);
             IEnumerable<LatestSessionsDTO> latestSessionsDTOs = _userLatestSessions.Select(s => new LatestSessionsDTO(s));
             _userLatestSessionsDTOd = new ObservableCollection<LatestSessionsDTO>(latestSessionsDTOs);
+            #endregion
 
+            #region Leaderboard
             _Leaderboard = _monkRepository.GetTop3Leaderboard();
             IEnumerable<LeaderboardDTO> LeaderboardDto = _Leaderboard.Select(s => new LeaderboardDTO(s));
             _LeaderboardDTOd = new ObservableCollection<LeaderboardDTO>(LeaderboardDto);
+            #endregion
 
+            #region Quote
+            _quote = _monkRepository.GetRandomQuote();
+            #endregion
 
+            #region Clock
             ClockInitialize();
+            #endregion
         }
 
         #region RealTime Clock
@@ -65,11 +85,25 @@ namespace MonkFocusApp.ViewModels
             System.Windows.Threading.DispatcherTimer Timer = new System.Windows.Threading.DispatcherTimer();
 
             Timer.Tick += new EventHandler(Timer_Click);
+            Timer.Tick += new EventHandler(Bedtime_Click);
 
             Timer.Interval = new TimeSpan(0, 0, 1);
 
             Timer.Start();
         }
+
+        private void Bedtime_Click(object? sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            var BedTime = _user.BedTime;
+            DateTime bedtime = DateTime.Today.Add(_user.BedTime.ToTimeSpan());
+
+            if (bedtime < now) bedtime = bedtime.AddDays(1);
+
+            TimeSpan timeUntilBedtime = bedtime - now;
+            TimeUntilBedtime = string.Format("{0} hours {1} minutes", timeUntilBedtime.Hours, timeUntilBedtime.Minutes);
+        }
+
         public void Timer_Click(object sender, EventArgs e)
         {
             DateTime d;
@@ -134,6 +168,70 @@ namespace MonkFocusApp.ViewModels
             }
         }
 
+        public string TimeUntilBedtime 
+        {
+            get { return _timeUntilBedtime; }
+            set
+            {
+                if (_timeUntilBedtime != value)
+                {
+                    _timeUntilBedtime = value;
+                    OnPropertyChanged(nameof(TimeUntilBedtime));
+                }
+            }
+        }
+
+        public string BedTime 
+        {
+            get { return "💤 = "+_bedtime; }
+            set
+            {
+                if (_bedtime != value)
+                {
+                    _bedtime = value;
+                    OnPropertyChanged(nameof(BedTime));
+                }
+            }
+        }
+
+        public string WakeupTime 
+        {
+            get { return "🌤️ = "+_wakeuptime; }
+            set
+            {
+                if (_wakeuptime != value)
+                {
+                    _wakeuptime = value;
+                    OnPropertyChanged(nameof(WakeupTime));
+                }
+            }
+        }
+
+        public string QuoteText
+        {
+            get { return _quote.FullQuote; }
+            set
+            {
+                if (_quote.FullQuote != value)
+                {
+                    _quote.FullQuote = value;
+                    OnPropertyChanged(nameof(QuoteText));
+                }
+            }
+        }
+
+        public string QuoteAuthor
+        {
+            get { return _quote.Author; }
+            set
+            {
+                if (_quote.Author != value)
+                {
+                    _quote.Author = value;
+                    OnPropertyChanged(nameof(QuoteAuthor));
+                }
+            }
+        }
 
     }
 }

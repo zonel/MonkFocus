@@ -10,6 +10,6 @@ namespace MonkFocusRepositories.Interfaces
     public interface IMonkFocusRepository
     {
         public IEnumerable<User> GetTop3Leaderboard();
-
+        public Quote GetRandomQuote();
     }
 }

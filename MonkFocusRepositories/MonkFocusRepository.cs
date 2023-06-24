@@ -24,5 +24,16 @@ namespace MonkFocusRepositories
         {
             return _context.Users.OrderByDescending(ws => ws.Points).Take(3).ToList();
         }
+
+        /// <summary>
+        /// Retrieves random quote from DB.
+        /// </summary>
+        /// <returns>Random quote in Quote data type </returns>
+        public Quote GetRandomQuote()
+        {
+            Random random = new Random();
+            var selectedNumber = random.Next(1, 102);
+            return _context.Quotes.FirstOrDefault(q => q.QuoteId == selectedNumber) ?? throw new NullReferenceException();
+        }
     }
 }

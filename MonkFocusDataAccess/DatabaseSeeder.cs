@@ -2,6 +2,7 @@
 using MonkFocusApp.Models;
 using MonkFocusModels;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace MonkFocusDataAccess
 {
@@ -197,6 +198,32 @@ namespace MonkFocusDataAccess
                     },
                 };
                 await dbContext.WorkSessions.AddRangeAsync(worksessions);
+            }
+
+            //seeding quotes
+            if (!dbContext.Quotes.Any())
+            {
+                var quotes = new List<Quote>();
+
+                string json = await System.IO.File.ReadAllTextAsync("C:\\Users\\Bartek\\source\\MonkFocus\\MonkFocusDataAccess\\quotes.json"); //TODO: change to relative path
+
+                JObject jsonObj = JObject.Parse(json);
+
+                JArray quotesArray = (JArray)jsonObj["quotes"];
+
+                foreach (var quoteObject in quotesArray)
+                {
+                    string quoteText = quoteObject["quote"].ToString();
+                    string quoteAuthor = quoteObject["author"].ToString();
+
+                    quotes.Add(new Quote()
+                    {
+                        Author = quoteAuthor,
+                        FullQuote = quoteText
+                    });
+                }
+
+                await dbContext.Quotes.AddRangeAsync(quotes);
             }
 
             await dbContext.SaveChangesAsync();

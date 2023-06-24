@@ -292,19 +292,91 @@
                 </Border>
 
                 <Border Grid.Row="1" Height="120" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 -3">
-                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
-                            FontSize="25"  Text="STOIC QUOTE" Foreground="{DynamicResource PrimaryWhiteColor}" Background="Transparent" BorderThickness="0,0,0,0">
-                    </TextBox>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" 
+                                 VerticalAlignment="Top" 
+                                 Margin="0 10 0 0"
+                                 FontSize="25"  
+                                 Text="STOIC QUOTE" 
+                                 Foreground="{DynamicResource PrimaryWhiteColor}" 
+                                 Background="Transparent" 
+                                 />
+                        
+                            <TextBlock HorizontalAlignment="Center" 
+                                       VerticalAlignment="Top" 
+                                       Margin="0 0 0 0"
+                                       FontSize="15" 
+                                       Height="50"
+                                       Width="320"
+                                       TextWrapping="Wrap"
+                                       TextTrimming="CharacterEllipsis"
+                                       Text="{Binding QuoteText}" 
+                                       Foreground="{DynamicResource PrimaryWhiteColor}" 
+                                       Background="Transparent" />
+                        
+
+                        <TextBlock HorizontalAlignment="Right" 
+                                 VerticalAlignment="Top" 
+                                 Margin="0 0 15 0"
+                                 FontSize="15"  
+                                 Text="{Binding QuoteAuthor}" 
+                                 Foreground="{DynamicResource PrimaryWhiteColor}" 
+                                 Background="Transparent" 
+                                 />
+
+                    </StackPanel>
+
                 </Border>
                 <Border Grid.Row="2" Height="120" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Bottom" Margin="0 0 0 5">
-                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
-                             FontSize="25"  Text="TIME UNTIL BEDTIME" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" BorderThickness="0,0,0,0">
-                    </TextBox>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" 
+                                 VerticalAlignment="Top" 
+                                 Margin="0 10 0 0"
+                                 FontSize="25"  
+                                 Text="TIME UNTIL BEDTIME" 
+                                 Foreground="{DynamicResource PrimaryBlueColor}" 
+                                 Background="Transparent" />
+                        <TextBlock HorizontalAlignment="Center" 
+                                 VerticalAlignment="Top" 
+                                 Margin="0 0 0 5"
+                                 FontSize="25"  
+                                 Text="{Binding TimeUntilBedtime}" 
+                                 Foreground="{DynamicResource PrimaryBlueColor}" 
+                                 Background="Transparent" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <TextBlock  
+                                     Margin="0 0 40 0"
+                                     FontSize="25"  
+                                     Text="{Binding WakeupTime}" 
+                                     Foreground="{DynamicResource PrimaryBlueColor}" 
+                                     Background="Transparent" />
+                            <TextBlock
+                                    Margin="0 0 0 0"
+                                     FontSize="25"  
+                                     Text="{Binding BedTime}" 
+                                     Foreground="{DynamicResource PrimaryBlueColor}" 
+                                     Background="Transparent" />
+                        </StackPanel>
+                    
+                    </StackPanel>
+                    
                 </Border>
                 <Border Grid.Row="3" Height="120" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 10">
-                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0"
-                             FontSize="25"  Text="DAILY WORK TIME GOAL" Foreground="{DynamicResource PrimaryWhiteColor}" Background="Transparent" BorderThickness="0,0,0,0">
-                    </TextBox>
+                    <StackPanel Orientation="Vertical"  HorizontalAlignment="Center">
+                        <TextBox Margin="0 10 0 0"
+                                 FontSize="25"  
+                                 Text="DAILY WORK TIME GOAL" 
+                                 Foreground="{DynamicResource PrimaryWhiteColor}" 
+                                 Background="Transparent" 
+                                 BorderThickness="0,0,0,0"/>
+                        <TextBox Margin="0 10 0 0"
+                                 FontSize="25"  
+                                 Text="{Binding WorkTimeGoal}" 
+                                 Foreground="{DynamicResource PrimaryWhiteColor}" 
+                                 Background="Transparent" 
+                                 BorderThickness="0,0,0,0"/>
+
+                    </StackPanel>
                 </Border>
 
 
