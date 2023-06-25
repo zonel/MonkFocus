@@ -1,6 +1,7 @@
 ﻿using MonkFocusDataAccess;
 using MonkFocusModels;
 using MonkFocusRepositories.Interfaces;
+using System;
 
 namespace MonkFocusRepositories
 {
@@ -57,8 +58,36 @@ namespace MonkFocusRepositories
         {
             return _context.WorkSessions
                 .Where(t => t.UserId == userId)
+                .OrderByDescending(t => t.StartTime)
                 .Take(3)
                 .ToList();
+        }
+
+        /// <summary>
+        /// Returns remaining work time left today for a given user.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>TimeOnly data type in format hh:mm:ss</returns>
+        public TimeOnly GetUsersRemainingWorkTimeForToday(int userId)
+        {
+            var todaysWorkSessions = _context.WorkSessions
+                .Where(t => t.UserId == userId && t.StartTime.Date == DateTime.Today)
+                .Select(ws => ws.Duration)
+                .ToList();
+
+            todaysWorkSessions.Add(new TimeSpan(0, 0, 0)); //add a zero timespan to the list to avoid nullreferenceexception
+
+            TimeSpan totalWorkTimeToday = new TimeSpan();
+            foreach (var session in todaysWorkSessions)
+            {
+                totalWorkTimeToday += session;
+            }
+
+            var getUsersWorkTimeGoal = _context.Users.FirstOrDefault(u => u.UserId == userId)?.WorkTimeGoal ?? new TimeSpan(5,0,0);
+
+            TimeSpan remainingWorkTime = getUsersWorkTimeGoal - totalWorkTimeToday;
+
+            return new TimeOnly(remainingWorkTime.Hours, remainingWorkTime.Minutes, remainingWorkTime.Seconds);
         }
     }
 }

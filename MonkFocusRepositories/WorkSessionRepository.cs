@@ -39,7 +39,7 @@ namespace MonkFocusRepositories
             }
         }
 
-        public IEnumerable<WorkSession> GetAllUsersWorkSessions(int userId)
+        public IEnumerable<WorkSession> GetAllWorkSessionsForUser(int userId)
         {
             var usersWorkSessions = _context.WorkSessions
                 .Where(w => w.UserId == userId)

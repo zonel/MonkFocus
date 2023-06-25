@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:MonkFocusApp"
         xmlns:views1="clr-namespace:MonkFocusApp.Views"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="Monk Focus" 
         Height="900" 
         Width="1200" 
         ResizeMode="NoResize" 
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="/Views/BackgroundImages/monkfocusic.png">
 
     <Window.Effect>
         <DropShadowEffect/>
