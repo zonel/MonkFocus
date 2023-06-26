@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using MonkFocusApp.Commands;
 using MonkFocusApp.DTO;
+using MonkFocusApp.Windows;
 using MonkFocusDataAccess;
 using MonkFocusModels;
 using MonkFocusRepositories;
@@ -52,7 +53,16 @@ namespace MonkFocusApp.ViewModels
         #endregion
         #region Commands
         public ICommand WorkSessionCommand { get; }
+        public ICommand TaskManagerCommand { get; }
+        public ICommand WebsitesBlockerCommand { get; }
+        public ICommand SettingsCommand { get; }
         #endregion
+
+        /// <summary>
+        /// DashboardView is a main window of my app that is used to display all the information and interactions with user.
+        /// </summary>
+        /// <param name="userId">userId of the user for which .AuthenticateUser in LoginView returned true.</param>
+        /// <param name="context">Context of the DB created in LoginView</param>
         public DashboardViewModel(int userId, MonkFocusDbContext context)
         {
             #region Repositories
@@ -67,9 +77,12 @@ namespace MonkFocusApp.ViewModels
             _wakeuptime = _user.WakeUpTime.ToString("HH:mm");
             _bedtime = _user.BedTime.ToString("HH:mm");
             _buttonContent = "START YOUR WORK SESSION";
-            WorkSessionCommand = new RelayCommand(WorkSessionButtonCommand);
             WorkSessionClock = "00 : 00 : 00";
             ButtonColor = new SolidColorBrush(Color.FromArgb(255,60,155,176));
+            WorkSessionCommand = new RelayCommand(WorkSessionButtonCommand);
+            TaskManagerCommand = new RelayCommand(TaskManagerWindowCommand);
+            WebsitesBlockerCommand = new RelayCommand(WebsitesBlockerWindowCommand);
+            SettingsCommand = new RelayCommand(SettingsWindowCommand);
             #endregion
             #region Tasks
             _tasks = _taskRepository.GetTop10NotCompletedTasksForUser(_userId);
@@ -96,6 +109,7 @@ namespace MonkFocusApp.ViewModels
             ClockInitialize();
             #endregion
         }
+
         #region Commands
         private void WorkSessionButtonCommand()
         {
@@ -131,6 +145,24 @@ namespace MonkFocusApp.ViewModels
             }
             _timerIsRunning = !_timerIsRunning;
             WorkSessionClock = "00 : 00 : 00";
+        }
+
+        private void TaskManagerWindowCommand()
+        {
+            TaskManagerWindows taskManagerWindows = new TaskManagerWindows(_userId);
+            taskManagerWindows.Show();
+        }
+
+        private void WebsitesBlockerWindowCommand()
+        {
+            WebsiteBlockerWindow websiteblockerwindow = new WebsiteBlockerWindow(_userId);
+            websiteblockerwindow.Show();
+        }
+
+        private void SettingsWindowCommand()
+        {
+            SettingsWindow settingsWindow = new SettingsWindow(_userId);
+            settingsWindow.Show();
         }
         #endregion
         #region Clock Initialize & Clock Clicks for every service

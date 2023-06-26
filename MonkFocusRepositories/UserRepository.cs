@@ -86,8 +86,39 @@ namespace MonkFocusRepositories
             var getUsersWorkTimeGoal = _context.Users.FirstOrDefault(u => u.UserId == userId)?.WorkTimeGoal ?? new TimeSpan(5,0,0);
 
             TimeSpan remainingWorkTime = getUsersWorkTimeGoal - totalWorkTimeToday;
+            if (remainingWorkTime < TimeSpan.Zero) remainingWorkTime = TimeSpan.Zero;
 
             return new TimeOnly(remainingWorkTime.Hours, remainingWorkTime.Minutes, remainingWorkTime.Seconds);
+        }
+
+        public void UpdateUsersWakeUpTime(int userId, TimeOnly wakeUpTime)
+        {
+            var userToUpdate = _context.Users.FirstOrDefault(u => u.UserId == userId);
+            if (userToUpdate != null)
+            {
+                userToUpdate.WakeUpTime = wakeUpTime;
+                _context.SaveChanges();
+            }
+        }
+
+        public void UpdateUsersBedTime(int userId, TimeOnly bedTime)
+        {
+            var userToUpdate = _context.Users.FirstOrDefault(u => u.UserId == userId);
+            if (userToUpdate != null)
+            {
+                userToUpdate.BedTime = bedTime;
+                _context.SaveChanges();
+            }
+        }
+
+        public void UpdateUsersWorkTimeGoal(int userId, TimeSpan workTime)
+        {
+            var userToUpdate = _context.Users.FirstOrDefault(u => u.UserId == userId);
+            if (userToUpdate != null)
+            {
+                userToUpdate.WorkTimeGoal = workTime;
+                _context.SaveChanges();
+            }
         }
     }
 }
