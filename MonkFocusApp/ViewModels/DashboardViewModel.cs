@@ -1,53 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using Accessibility;
 using MonkFocusApp.Commands;
 using MonkFocusApp.DTO;
 using MonkFocusDataAccess;
 using MonkFocusModels;
 using MonkFocusRepositories;
-using MonkFocusRepositories.Interfaces;
 
 namespace MonkFocusApp.ViewModels
 {
     public class DashboardViewModel : BaseViewModel
     {
-        private readonly int _userId;
+        #region Repositories
         private UserRepository _userRepository;
         private TaskRepository _taskRepository;
         private WorkSessionRepository _WorkSessionRepository;
         private MonkFocusRepository _monkRepository;
-
+        #endregion
+        #region Properties
+        private readonly int _userId;
         private User _user;
         private string _welcome;
         private string _clock;
         private string _timeUntilBedtime;
-
-        private readonly IEnumerable<UserTask> _tasks;
-        private  ObservableCollection<UserTaskDTO> _userTasks;
-
-        private readonly IEnumerable<WorkSession> _userLatestSessions;
-        private ObservableCollection<LatestSessionsDTO> _userLatestSessionsDTOd;
-
-        private readonly IEnumerable<User> _Leaderboard;
-        private ObservableCollection<LeaderboardDTO> _LeaderboardDTOd;
-        
         private readonly Quote _quote;
         private string _wakeuptime;
         private string _bedtime;
         private TimeOnly _remainingWorkTime;
+        private bool _timerIsRunning = false;
+        private DateTime _startTime;
+        private string _buttonContent;
+        private SolidColorBrush _buttonColor;
+        private string _worksessionclock;
+        private TimeSpan duration = new TimeSpan(0, 0, 0);
+        #endregion
+        #region Properties for Tasks
+        private readonly IEnumerable<UserTask> _tasks;
+        private  ObservableCollection<UserTaskDTO> _userTasks;
+        #endregion
+        #region Properties for LatestSessions
+        private readonly IEnumerable<WorkSession> _userLatestSessions;
+        private ObservableCollection<LatestSessionsDTO> _userLatestSessionsDTOd;
+        #endregion
+        #region Properties for Leaderboard
+        private readonly IEnumerable<User> _Leaderboard;
+        private ObservableCollection<LeaderboardDTO> _LeaderboardDTOd;
+        #endregion
+        #region Commands
         public ICommand WorkSessionCommand { get; }
+        #endregion
         public DashboardViewModel(int userId, MonkFocusDbContext context)
         {
             #region Repositories
@@ -56,48 +61,42 @@ namespace MonkFocusApp.ViewModels
             _monkRepository = new MonkFocusRepository(context);
             _WorkSessionRepository = new WorkSessionRepository(context);
             #endregion
+            #region Field Assigning
             _userId = userId; // our userId retrieved from the login screen
             _user = _userRepository.GetUserById(_userId); //getting all info about the user from DB
             _wakeuptime = _user.WakeUpTime.ToString("HH:mm");
             _bedtime = _user.BedTime.ToString("HH:mm");
+            _buttonContent = "START YOUR WORK SESSION";
             WorkSessionCommand = new RelayCommand(WorkSessionButtonCommand);
+            WorkSessionClock = "00 : 00 : 00";
+            ButtonColor = new SolidColorBrush(Color.FromArgb(255,60,155,176));
+            #endregion
             #region Tasks
             _tasks = _taskRepository.GetTop10NotCompletedTasksForUser(_userId);
             IEnumerable<UserTaskDTO> userTaskDTOs = _tasks.Select(t => new UserTaskDTO(t));
             _userTasks = new ObservableCollection<UserTaskDTO>(userTaskDTOs);
             #endregion
-
             #region LatestSessions
             _userLatestSessions = _userRepository.GetTop3LatestSessionsForUser(_userId);
             IEnumerable<LatestSessionsDTO> latestSessionsDTOs = _userLatestSessions.Select(s => new LatestSessionsDTO(s));
             _userLatestSessionsDTOd = new ObservableCollection<LatestSessionsDTO>(latestSessionsDTOs);
             #endregion
-
             #region Leaderboard
             _Leaderboard = _monkRepository.GetTop3Leaderboard();
             IEnumerable<LeaderboardDTO> LeaderboardDto = _Leaderboard.Select(s => new LeaderboardDTO(s));
             _LeaderboardDTOd = new ObservableCollection<LeaderboardDTO>(LeaderboardDto);
             #endregion
-
             #region Quote
             _quote = _monkRepository.GetRandomQuote();
             #endregion
-
             #region RemainingWorkTime
             _remainingWorkTime = _userRepository.GetUsersRemainingWorkTimeForToday(_userId);
             #endregion
-
             #region Clock
             ClockInitialize();
             #endregion
-            _buttonContent = "START YOUR WORK SESSION";
-            WorkSessionClock = "00 : 00 : 00";
-            ButtonColor = new SolidColorBrush(Color.FromArgb(255,60,155,176));
-
         }
-        #region MainTimer
-        private bool _timerIsRunning = false;
-        private DateTime _startTime;
+        #region Commands
         private void WorkSessionButtonCommand()
         {
             if (_timerIsRunning)
@@ -133,34 +132,8 @@ namespace MonkFocusApp.ViewModels
             _timerIsRunning = !_timerIsRunning;
             WorkSessionClock = "00 : 00 : 00";
         }
-
-        private string _buttonContent;
-        public string ButtonContent
-        {
-            get { return _buttonContent; }
-            set
-            {
-                _buttonContent = value;
-                OnPropertyChanged(nameof(ButtonContent));
-            }
-        }
-
-        private SolidColorBrush _buttonColor;
-        private string _worksessionclock;
-
-        public SolidColorBrush ButtonColor
-        {
-            get { return _buttonColor; }
-            set
-            {
-                _buttonColor = value;
-                OnPropertyChanged(nameof(ButtonColor));
-            }
-        }
-
         #endregion
-
-        #region RealTime Clock
+        #region Clock Initialize & Clock Clicks for every service
         private void ClockInitialize()
         {
             System.Windows.Threading.DispatcherTimer Timer = new System.Windows.Threading.DispatcherTimer();
@@ -173,7 +146,6 @@ namespace MonkFocusApp.ViewModels
 
             Timer.Start();
         }
-
         private void Bedtime_Click(object? sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
@@ -185,16 +157,13 @@ namespace MonkFocusApp.ViewModels
             TimeSpan timeUntilBedtime = bedtime - now;
             TimeUntilBedtime = string.Format("{0} hours {1} minutes", timeUntilBedtime.Hours, timeUntilBedtime.Minutes);
         }
-
-        public void Timer_Click(object sender, EventArgs e)
+        private void Timer_Click(object sender, EventArgs e)
         {
             DateTime d;
             d = DateTime.Now;
             Clock = string.Format("{0} : {1} : {2}", d.Hour.ToString("00"), d.Minute.ToString("00"), d.Second.ToString("00"));
         }
-
-        TimeSpan duration = new TimeSpan(0, 0, 0);
-        public void WorkSessionTime_Click(object sender, EventArgs e)
+        private void WorkSessionTime_Click(object sender, EventArgs e)
         {
             if (_timerIsRunning)
             {
@@ -203,7 +172,7 @@ namespace MonkFocusApp.ViewModels
             }
         }
         #endregion
-
+        #region Public Fields
         public string WorkSessionClock
         {
             get { return _worksessionclock; }
@@ -216,7 +185,6 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
         public ObservableCollection<UserTaskDTO> Tasks
         {
             get { return _userTasks; }
@@ -226,7 +194,6 @@ namespace MonkFocusApp.ViewModels
                 OnPropertyChanged(nameof(Tasks));
             }
         }
-
         public ObservableCollection<LatestSessionsDTO> LatestSesssions
         {
             get { return _userLatestSessionsDTOd; }
@@ -237,7 +204,6 @@ namespace MonkFocusApp.ViewModels
                 OnPropertyChanged(nameof(WorkSessionClock));
             }
         }
-
         public ObservableCollection<LeaderboardDTO> Leaderboard
         {
             get { return _LeaderboardDTOd; }
@@ -247,7 +213,6 @@ namespace MonkFocusApp.ViewModels
                 OnPropertyChanged(nameof(Tasks));
             }
         }
-
         public string WelcomeMessage
         {
             get { return $"Hi, {_user.Name}"; }
@@ -260,7 +225,6 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
         public string Clock
         {
             get { return _clock; }
@@ -273,7 +237,6 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
         public string TimeUntilBedtime 
         {
             get { return _timeUntilBedtime; }
@@ -286,7 +249,6 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
         public string BedTime 
         {
             get { return "💤 = "+_bedtime; }
@@ -299,7 +261,6 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
         public string WakeupTime 
         {
             get { return "🌤️ = "+_wakeuptime; }
@@ -312,7 +273,6 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
         public string QuoteText
         {
             get { return _quote.FullQuote; }
@@ -325,7 +285,6 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
         public string QuoteAuthor
         {
             get { return _quote.Author; }
@@ -338,7 +297,6 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
         public string RemainingWorkTime
         {
             get { return _remainingWorkTime.Hour+" hours "+_remainingWorkTime.Minute+" minutes"; }
@@ -351,6 +309,24 @@ namespace MonkFocusApp.ViewModels
                 }
             }
         }
-
+        public SolidColorBrush ButtonColor
+        {
+            get { return _buttonColor; }
+            set
+            {
+                _buttonColor = value;
+                OnPropertyChanged(nameof(ButtonColor));
+            }
+        }
+        public string ButtonContent
+        {
+            get { return _buttonContent; }
+            set
+            {
+                _buttonContent = value;
+                OnPropertyChanged(nameof(ButtonContent));
+            }
+        }
+        #endregion
     }
 }
