@@ -7,6 +7,8 @@ namespace MonkFocusDataAccess
 {
     public class MonkFocusDbContext : DbContext
     {
+        #region Tables
+
         public DbSet<User> Users { get; set; }
         public DbSet<UserTask> Tasks { get; set; }
         public DbSet<Quote> Quotes { get; set; }
@@ -15,6 +17,8 @@ namespace MonkFocusDataAccess
 
         public DbSet<WorkSession> WorkSessions { get; set; }
         public DbSet<WebsitesToBlock> WebsitesToBlock { get; set; }
+
+        #endregion
 
         public MonkFocusDbContext(DbContextOptions options) : base(options)
         {

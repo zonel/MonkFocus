@@ -18,7 +18,7 @@ namespace MonkFocusDataAccess
         public async void SeedData()
         {
             var content = await dbContext.Statuses.ToListAsync();
-            var quotess = await dbContext.Quotes.ToListAsync();
+            //var quotess = await dbContext.Quotes.ToListAsync();
 
 
             if (!dbContext.Statuses.Any())

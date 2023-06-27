@@ -73,7 +73,6 @@ namespace MonkFocusApp.ViewModels
             BedTimeSaveCommand = new RelayCommand(BedTimeSave);
             WorkTimeGoalSaveCommand = new RelayCommand(WorkTimeSave);
         }
-
         private void WorkTimeSave()
         {
             TimeSpan timeOnly;
@@ -95,7 +94,6 @@ namespace MonkFocusApp.ViewModels
                 Console.WriteLine("Invalid time format");
             }
         }
-
         private void BedTimeSave()
         {
             TimeOnly timeOnly;
@@ -111,7 +109,6 @@ namespace MonkFocusApp.ViewModels
                 MessageBox.Show("Invalid format!");
             }
         }
-
         private void SaveWakeUpTime()
         {
             TimeOnly timeOnly;

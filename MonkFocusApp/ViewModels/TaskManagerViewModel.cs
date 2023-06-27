@@ -1,10 +1,13 @@
-﻿using System.Linq;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using MonkFocusApp.Commands;
+using MonkFocusApp.DTO;
 using MonkFocusDataAccess;
 using MonkFocusModels;
 using MonkFocusRepositories;
+using MonkFocusRepositories.Interfaces;
 
 
 namespace MonkFocusApp.ViewModels
@@ -65,6 +68,7 @@ namespace MonkFocusApp.ViewModels
         }
 
         private string _selectedstatusupdatetask;
+
         public string SelectedStatusUpdateTask
         {
             get { return _selectedstatusupdatetask; }
@@ -75,6 +79,27 @@ namespace MonkFocusApp.ViewModels
             }
         }
 
+        //private ObservableCollection<UserTask> _tasksdisplay;
+        //public ObservableCollection<UserTask> TasksDisplay
+        //{
+        //    get { return new ObservableCollection<UserTask>(_taskRepository.GetAllTasksForUser(_userId)) }
+        //    set
+        //    {
+        //        _tasksdisplay = value;
+        //        OnPropertyChanged(nameof(TasksDisplay));
+        //    }
+        //}
+        private ObservableCollection<UserTaskTableViewDTO> _tasksDisplay;
+        public ObservableCollection<UserTaskTableViewDTO> TasksDisplay
+        {
+            get { return _tasksDisplay; }
+            set
+            {
+                _tasksDisplay = value;
+                OnPropertyChanged(nameof(TasksDisplay));
+            }
+        }
+
         public TaskManagerViewModel(int userId)
         {
             _userId = userId;
@@ -82,6 +107,8 @@ namespace MonkFocusApp.ViewModels
             AddTaskCommand = new RelayCommand(AddTask);
             DeleteTaskCommand = new RelayCommand(DeleteTask);
             UpdateTaskCommand = new RelayCommand(UpdateTask);
+            //_tasksDisplay = new ObservableCollection<UserTask>(_taskRepository.GetAllTasksForUser(_userId));
+            PopulateTasksDisplay();
         }
 
         private void AddTask()
@@ -108,6 +135,8 @@ namespace MonkFocusApp.ViewModels
                 UserId = _userId,
                 StatusId = 1 
             });
+
+            PopulateTasksDisplay();
         }
         private void DeleteTask()
         {
@@ -127,22 +156,24 @@ namespace MonkFocusApp.ViewModels
 
             _taskRepository.DeleteTaskById(TaskId);
             MessageBox.Show($"Removed task with ID: {TaskId}");
+            PopulateTasksDisplay();
+
         }
         private void UpdateTask()
         {
-            int priorityNumber = SelectedPriorityUpdateTask switch
+            int? priorityNumber = SelectedPriorityUpdateTask switch
             {
                 "System.Windows.Controls.ComboBoxItem: Low" => 1,
                 "System.Windows.Controls.ComboBoxItem: Medium" => 2,
                 "System.Windows.Controls.ComboBoxItem: Crucial" => 3,
-                _ => 0 
+                _ => null 
             };
 
-            int statusNumber = SelectedStatusUpdateTask switch
+            int? statusNumber = SelectedStatusUpdateTask switch
             {
                 "System.Windows.Controls.ComboBoxItem: In Progress" => 1,
                 "System.Windows.Controls.ComboBoxItem: Done" => 2,
-                _ => 0 
+                _ => null 
             };
 
             var TaskId = TaskIdUpdate;
@@ -152,10 +183,43 @@ namespace MonkFocusApp.ViewModels
             if (taskToUpdate != null)
             {
                 taskToUpdate.TaskName = taskToUpdate.TaskName;
-                taskToUpdate.PriorityId = priorityNumber;
+                taskToUpdate.PriorityId = priorityNumber ?? taskToUpdate.PriorityId;
                 taskToUpdate.UserId = _userId;
-                taskToUpdate.StatusId = statusNumber;
+                taskToUpdate.StatusId = statusNumber ?? taskToUpdate.StatusId;
                 _taskRepository.UpdateTask(taskToUpdate);
+            }
+            PopulateTasksDisplay();
+
+        }
+
+
+
+        private void PopulateTasksDisplay()
+        {
+            var userTasks = _taskRepository.GetAllTasksForUser(_userId).OrderByDescending(c => c.PriorityId).OrderBy(s => s.StatusId);
+            var mappedTasks = userTasks.Select(task => new UserTaskTableViewDTO
+            {
+                TaskId = task.TaskId,
+                TaskName = task.TaskName,
+                Status = task.StatusId == 1 ? "In Progress" : "Done",
+                Priority = GetPriorityText(task.PriorityId)
+            });
+
+            TasksDisplay = new ObservableCollection<UserTaskTableViewDTO>(mappedTasks);
+        }
+
+        private string GetPriorityText(int priorityId)
+        {
+            switch (priorityId)
+            {
+                case 1:
+                    return "Low";
+                case 2:
+                    return "Medium";
+                case 3:
+                    return "Crucial";
+                default:
+                    return string.Empty;
             }
         }
     }
