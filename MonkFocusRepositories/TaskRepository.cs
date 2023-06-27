@@ -1,4 +1,5 @@
-﻿using MonkFocusDataAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using MonkFocusDataAccess;
 using MonkFocusModels;
 using MonkFocusRepositories.Interfaces;
 
@@ -21,7 +22,6 @@ namespace MonkFocusRepositories
             _context.Tasks.Add(userTask);
             _context.SaveChanges();
         }
-
         public void UpdateTask(UserTask userTask)
         {
             if(userTask is null) throw new System.ArgumentNullException(nameof(userTask));
@@ -29,7 +29,6 @@ namespace MonkFocusRepositories
             _context.Tasks.Update(userTask);
             _context.SaveChanges();
         }
-
         public void DeleteTaskById(int TaskId)
         {
             var taskToDelete = _context.Tasks.FirstOrDefault(t => t.TaskId == TaskId);
@@ -40,7 +39,6 @@ namespace MonkFocusRepositories
                 _context.SaveChanges();
             }
         }
-
         public IEnumerable<UserTask> GetAllTasksForUser(int userId)
         {
             var userTasks = _context.Tasks.Where(t => t.UserId == userId).ToList();
@@ -49,7 +47,6 @@ namespace MonkFocusRepositories
 
             return null;
         }
-
         public IEnumerable<UserTask> GetTop10NotCompletedTasksForUser(int userId)
         {
             var userTasks = _context.Tasks

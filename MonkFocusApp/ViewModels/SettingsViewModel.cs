@@ -94,18 +94,6 @@ namespace MonkFocusApp.ViewModels
             {
                 Console.WriteLine("Invalid time format");
             }
-
-            //bool InputInCorrectFormat = TimeSpan.TryParseExact(WorkTimeGoal, "H:mm",CultureInfo.InvariantCulture, out timeOnly);
-
-            //if (InputInCorrectFormat)
-            //{
-            //    _userRepository.UpdateUsersWorkTimeGoal(_userId, timeOnly);
-            //    MessageBox.Show("Bed time saved!");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Invalid format!");
-            //}
         }
 
         private void BedTimeSave()

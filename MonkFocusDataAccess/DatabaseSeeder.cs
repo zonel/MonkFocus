@@ -25,9 +25,8 @@ namespace MonkFocusDataAccess
             {
                 var statuses = new List<Status>()
                 {
-                    new Status { StatusId = 1, StatusName = "Working on" },
+                    new Status { StatusId = 1, StatusName = "In Progress" },
                     new Status { StatusId = 2, StatusName = "Done" },
-                    new Status { StatusId = 3, StatusName = "On Hold" },
                 };
                 await dbContext.Statuses.AddRangeAsync(statuses);
 
