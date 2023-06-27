@@ -9,12 +9,12 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="WebsiteBlockerWindow" Height="650" Width="1000">
+        Title="WebsiteBlockerWindow" Height="750" Width="1000">
     <Window.Resources>
         <SolidColorBrush x:Key="PrimaryBlueColor" Color="#3C9BB0"/>
         <SolidColorBrush x:Key="PrimaryWhiteColor" Color="White"/>
     </Window.Resources>
-    <Border Width="1000" Height="650" CornerRadius="20" BorderBrush="Black" BorderThickness="0" Padding="6"  >
+    <Border Width="1000" Height="750" CornerRadius="20" BorderBrush="Black" BorderThickness="0" Padding="6"  >
         <Border.Background>
             <SolidColorBrush Color="LightGray" Opacity="0.8"/>
         </Border.Background>
@@ -127,23 +127,36 @@
                                     </Border>
                                 </StackPanel>
                             </Grid>
-                        <Border Grid.Row="2" Height="200" Width="450" CornerRadius="30" Background="White" Margin="0 10 0 20">
+                        <Border Grid.Row="2" Height="300" Width="450" CornerRadius="30" Background="White" Margin="0 10 0 20">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50"/>
-                                    <RowDefinition Height="140"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock HorizontalAlignment="Center" 
-                                           VerticalAlignment="Top" 
-                                           Margin="0 10 0 0"
-                                           FontSize="20"  
-                                           Text="ABOUT THIS MODULE" 
-                                           Foreground="{DynamicResource PrimaryBlueColor}" 
-                                           Background="Transparent" />
-                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-
-
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                    <TextBlock HorizontalAlignment="Center" 
+                                               VerticalAlignment="Top" 
+                                               Margin="0 10 0 0"
+                                               FontSize="20"  
+                                               Text="ABOUT THIS MODULE" 
+                                               Foreground="{DynamicResource PrimaryBlueColor}" 
+                                               Background="Transparent" />
+                                    <TextBlock HorizontalAlignment="Center" 
+                                               VerticalAlignment="Top" 
+                                               Margin="10"
+                                               FontSize="20"  
+                                               Text="This module allows you to block access to any website using Windows's hosts file. By simply adding another website to list of blocked websites you redirect it's DNS to 127.0.0.1 making it impossible to connect."
+                                               TextWrapping="Wrap"
+                                               Foreground="{DynamicResource PrimaryBlueColor}" 
+                                               Background="Transparent" />
+                                    <TextBlock HorizontalAlignment="Center" 
+                                               VerticalAlignment="Top" 
+                                               Margin="10 0 10 0"
+                                               FontSize="20"  
+                                               FontWeight="Bold"
+                                               Text="Granting administrator privliges to this app is required to make this module work properly. It needs read/write access to hosts file."
+                                               TextWrapping="Wrap"
+                                               Foreground="{DynamicResource PrimaryBlueColor}" 
+                                               Background="Transparent" />
                                 </StackPanel>
 
                             </Grid>
