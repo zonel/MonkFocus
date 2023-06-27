@@ -41,5 +41,28 @@ namespace MonkFocusApp.Windows
                 DragMove();
             }
         }
+        private void WakeUpTime_focus(object sender, MouseButtonEventArgs e)
+        {
+            TaskNameAdd.Focus();
+        }
+
+
+        #region ButtonCosmetics
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Border border = (Border)sender;
+            border.Background = new SolidColorBrush(Color.FromArgb(255,33,84,95)); // Change to your desired hover color
+        }
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Border border = (Border)sender;
+            border.Background = new SolidColorBrush(Color.FromArgb(255,60,155,176)); // Change to your original color
+        }
+        #endregion
+
+        private void UpdateTask_Focus(object sender, MouseButtonEventArgs e)
+        {
+            //UpdateTaskName.Focus();
+        }
     }
 }

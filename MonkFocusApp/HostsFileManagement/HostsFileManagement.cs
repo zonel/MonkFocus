@@ -84,7 +84,6 @@ namespace MonkFocusLib
                 Console.WriteLine(host);
             }
         }
-
         public void unblockWebsite(string websiteAddress)
         {
             List<string> hostsFile = File.ReadAllLines(FilePath).ToList();
@@ -110,6 +109,13 @@ namespace MonkFocusLib
             {
                 Console.WriteLine(host);
             }
+        }
+
+        public IEnumerable<string> getBlockedWebsites()
+        {
+            return File.ReadAllLines(FilePath)
+                .Where(line => !line.Contains("#"))
+                .Select(line => line.Replace("127.0.0.1 ", "")).ToList();
         }
 
     }

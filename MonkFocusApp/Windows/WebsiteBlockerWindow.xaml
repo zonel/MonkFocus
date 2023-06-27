@@ -14,22 +14,22 @@
         <SolidColorBrush x:Key="PrimaryBlueColor" Color="#3C9BB0"/>
         <SolidColorBrush x:Key="PrimaryWhiteColor" Color="White"/>
     </Window.Resources>
-    <Border Width="1000" Height="650" CornerRadius="20" BorderBrush="Black" BorderThickness="0" Padding="6"  > 
+    <Border Width="1000" Height="650" CornerRadius="20" BorderBrush="Black" BorderThickness="0" Padding="6"  >
         <Border.Background>
             <SolidColorBrush Color="LightGray" Opacity="0.8"/>
         </Border.Background>
         <Grid>
-        <Grid.Background>            
-            <ImageBrush ImageSource="../Views/BackgroundImages/hill.jpg"/>
+            <Grid.Background>
+                <ImageBrush ImageSource="../Views/BackgroundImages/hill.jpg"/>
             </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <!--this is a bar with exit and minimize buttons-->
-        <Border Grid.Row="0" Background="LightGray" Opacity="0.8"  MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Panel.ZIndex="1">
-                <Button x:Name="MinimizeButton" 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--this is a bar with exit and minimize buttons-->
+            <Border Grid.Row="0" Background="LightGray" Opacity="0.8"  MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Panel.ZIndex="1">
+                    <Button x:Name="MinimizeButton" 
                         Background="Transparent" 
                         Foreground="White" 
                         Content="-" 
@@ -41,7 +41,7 @@
                         FontSize="30" 
                         FontWeight="Bold" 
                         FontFamily="MS UI Gothic"/>
-                <Button x:Name="CloseButton" 
+                    <Button x:Name="CloseButton" 
                         Padding="0 0 0 6" 
                         Background="Transparent" 
                         Foreground="White" 
@@ -54,19 +54,145 @@
                         BorderThickness="0,0,0,0" 
                         FontSize="25" 
                         FontFamily="MS UI Gothic"/>
-            </StackPanel>
-        </Border>
-
-        <Grid Grid.Row="1" Panel.ZIndex="1">
-            <Border Grid.Row="0" Height="60" Width="350" CornerRadius="20" Background="White" VerticalAlignment="Top" Margin="0 0 0 10">
-
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
-                           FontSize="40"  Text="WEBSITE BLOCKER" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" >
-
-                </TextBlock>
+                </StackPanel>
             </Border>
-        </Grid>
-        <Rectangle Grid.Row="1"  Fill="LightGray" Opacity="0.8" Panel.ZIndex="0"/>
+
+            <Grid Grid.Row="1" Panel.ZIndex="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Height="60" Width="350" CornerRadius="20" Background="White" VerticalAlignment="Top" Margin="0 0 0 10">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           FontSize="40"  Text="WEBSITE BLOCKER" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" />
+                    </Border>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--SETTINGS COLUMN 0-->
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="160"/>
+                                <RowDefinition Height="140"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Height="60" Width="450" CornerRadius="20" Background="White" VerticalAlignment="Top" Margin="0 0 0 0">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                           FontSize="25" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" Text="ADD WEBSITE" />
+                                </Border>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                    <Border  Height="60" Width="260" CornerRadius="20" MouseDown="WakeUpTime_focus" Background="White" VerticalAlignment="Top" Margin="20 0 -10 10">
+                                        <TextBox  x:Name="TaskNameAdd" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"
+                                          FontSize="20"  Text="{Binding TaskNameAdd}" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" />
+                                    </Border>
+                                    <Border Height="60" Width="180" CornerRadius="20"  Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Top" Margin="20 0 8 10">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TASK"
+                                             FontSize="35"  Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" >
+
+                                        </TextBlock>
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                                                        
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Height="60" Width="450" CornerRadius="20" Background="White" VerticalAlignment="Top" Margin="0 0 0 0">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                           FontSize="25" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" Text="REMOVE WEBSITE" />
+                                </Border>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                    <Border  Height="60" Width="260" CornerRadius="20" MouseDown="WakeUpTime_focus" Background="White" VerticalAlignment="Top" Margin="20 0 -10 10">
+                                        <TextBox  x:Name="TaskDNameAdd" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"
+                                          FontSize="20"  Text="{Binding TaskNameAdd}" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" />
+                                    </Border>
+                                    <Border Height="60" Width="180" CornerRadius="20"  Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Top" Margin="20 0 8 0">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TASK"
+                                             FontSize="35"  Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" >
+                                        </TextBlock>
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        <Border Grid.Row="2" Height="200" Width="450" CornerRadius="30" Background="White" Margin="0 10 0 20">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="140"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock HorizontalAlignment="Center" 
+                                           VerticalAlignment="Top" 
+                                           Margin="0 10 0 0"
+                                           FontSize="20"  
+                                           Text="ABOUT THIS MODULE" 
+                                           Foreground="{DynamicResource PrimaryBlueColor}" 
+                                           Background="Transparent" />
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+
+
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Border>
+
+                        </Grid>
+
+                        <!--Divider COLUMN 1-->
+                        <Border Grid.Column="1" Height="710" Width="15" CornerRadius="10" Background="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 10"/>
+
+                        <!--INFO & ABOUT COLUMN 2-->
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!--About section-->
+                            <Border Grid.Row="0" Height="60" Width="400" VerticalAlignment="Top" CornerRadius="20" Background="White" Margin="0 0 0 10">
+                                <TextBlock HorizontalAlignment="Center" 
+                                       VerticalAlignment="Top" 
+                                       Margin="0 10 0 0"
+                                       FontSize="25"  
+                                       Text="CURRENTLY BLOCKED WEBSITES" 
+                                       Foreground="{DynamicResource PrimaryBlueColor}" 
+                                       Background="Transparent" />
+                            </Border>
+                            <Border Grid.Row="1" Height="640" Width="420" CornerRadius="30" Background="Transparent" Margin="0 0 0 40">
+                                <Grid HorizontalAlignment="Center" Height="640" Width="420" Margin="10">
+                                    <DataGrid ItemsSource="{Binding TasksDisplay}" 
+                                              Foreground="{DynamicResource PrimaryBlueColor}" 
+                                              FontWeight="Bold" 
+                                              IsReadOnly="True" 
+                                              Padding="10" 
+                                              ColumnWidth="*" 
+                                              AutoGenerateColumns="True" 
+                                              Background="Transparent" 
+                                              BorderThickness="0"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+            <Rectangle Grid.Row="1"  Fill="LightGray" Opacity="0.8" Panel.ZIndex="0"/>
         </Grid>
     </Border>
 </Window>

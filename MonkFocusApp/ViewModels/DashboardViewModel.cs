@@ -151,7 +151,7 @@ namespace MonkFocusApp.ViewModels
         {
             TaskManagerWindow taskManagerWindow = new TaskManagerWindow(_userId);
             taskManagerWindow.Show();
-        }
+        } 
 
         private void WebsitesBlockerWindowCommand()
         {
