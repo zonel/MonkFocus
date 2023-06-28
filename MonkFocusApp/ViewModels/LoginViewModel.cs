@@ -49,12 +49,21 @@ namespace MonkFocusApp.ViewModels
 
         public ICommand LoginCommand { get; }
 
+        public ICommand RegisterCommand { get; }
+
         private MonkFocusDbContext _context = new MonkFocusDbContext();
         private UserRepository _userRepository;
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand(Login);
+            RegisterCommand = new RelayCommand(Register);
             _userRepository = new UserRepository(_context);
+        }
+
+        private void Register()
+        {
+            RegisterView registerViewModel = new RegisterView();
+            viewContainer.Content = registerViewModel;
         }
 
         ContentControl viewContainer = Application.Current.MainWindow.FindName("viewContainer") as ContentControl;

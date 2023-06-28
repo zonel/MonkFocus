@@ -95,17 +95,14 @@
                         Width="280" 
                         FontSize="15" 
                         Margin="40 10 0 0" 
+                        Command="{Binding RegisterCommand}"
                         Content="don't have an account yet? Register now!" 
                         Foreground="{DynamicResource PrimaryBlueColor}" 
                         Background="Transparent"
-BorderThickness="0,0,0,0"
+                        BorderThickness="0,0,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         />
-
-
-
-
             </Grid>
         </Grid>
 </UserControl>
