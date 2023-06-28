@@ -79,16 +79,6 @@ namespace MonkFocusApp.ViewModels
             }
         }
 
-        //private ObservableCollection<UserTask> _tasksdisplay;
-        //public ObservableCollection<UserTask> TasksDisplay
-        //{
-        //    get { return new ObservableCollection<UserTask>(_taskRepository.GetAllTasksForUser(_userId)) }
-        //    set
-        //    {
-        //        _tasksdisplay = value;
-        //        OnPropertyChanged(nameof(TasksDisplay));
-        //    }
-        //}
         private ObservableCollection<UserTaskTableViewDTO> _tasksDisplay;
         public ObservableCollection<UserTaskTableViewDTO> TasksDisplay
         {
@@ -177,6 +167,11 @@ namespace MonkFocusApp.ViewModels
             };
 
             var TaskId = TaskIdUpdate;
+            if (TaskId is null)
+            {
+                MessageBox.Show("Task with this ID does no longer exist.");
+                return;
+            }
             var taskToUpdate = _taskRepository.GetAllTasksForUser(_userId)
                 .FirstOrDefault(t => t.TaskId == int.Parse(TaskId));
 

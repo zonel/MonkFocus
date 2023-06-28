@@ -8,7 +8,7 @@ namespace MonkFocusApp.HostsFileManagement
 {
     public interface IHostsFileManagement
     {
-        public void blockWebsite(string websiteAddress);
-        public void unblockWebsite(string websiteAddress);
+        public bool blockWebsite(string websiteAddress);
+        public bool unblockWebsite(string websiteAddress);
     }
 }

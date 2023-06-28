@@ -93,16 +93,26 @@
                                            FontSize="25" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" Text="ADD WEBSITE" />
                                 </Border>
                                 <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                    <Border  Height="60" Width="260" CornerRadius="20" MouseDown="WakeUpTime_focus" Background="White" VerticalAlignment="Top" Margin="20 0 -10 10">
-                                        <TextBox  x:Name="TaskNameAdd" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"
-                                          FontSize="20"  Text="{Binding TaskNameAdd}" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" />
+                                    <Border  Height="60" Width="260" CornerRadius="20" MouseDown="WebsiteAdd_focus" Background="White" VerticalAlignment="Top" Margin="20 0 -10 10">
+                                        <TextBox  x:Name="WebsiteAdd" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"
+                                          FontSize="20"  Text="{Binding AddWebsiteName}" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" />
                                     </Border>
-                                    <Border Height="60" Width="180" CornerRadius="20"  Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Top" Margin="20 0 8 10">
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TASK"
-                                             FontSize="35"  Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" >
+                                    <Border Height="60" Width="180" CornerRadius="20"  Background="{DynamicResource PrimaryBlueColor}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="18 0 0 0">
+                                        <Button  Command="{Binding AddWebsiteCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                 FontSize="35" Content="ADD" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                                          VerticalAlignment="Center" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </Border>
 
-                                        </TextBlock>
-                                    </Border>
                                 </StackPanel>
                             </Grid>
                                                         
@@ -116,14 +126,24 @@
                                            FontSize="25" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" Text="REMOVE WEBSITE" />
                                 </Border>
                                 <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                    <Border  Height="60" Width="260" CornerRadius="20" MouseDown="WakeUpTime_focus" Background="White" VerticalAlignment="Top" Margin="20 0 -10 10">
-                                        <TextBox  x:Name="TaskDNameAdd" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"
-                                          FontSize="20"  Text="{Binding TaskNameAdd}" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" />
+                                    <Border  Height="60" Width="260" CornerRadius="20" MouseDown="WebsiteToRemove_focus" Background="White" VerticalAlignment="Top" Margin="20 0 -10 10">
+                                        <TextBox  x:Name="WebsiteToRemove" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"
+                                          FontSize="20"  Text="{Binding RemoveWebsiteName}" Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" />
                                     </Border>
-                                    <Border Height="60" Width="180" CornerRadius="20"  Background="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Top" Margin="20 0 8 0">
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TASK"
-                                             FontSize="35"  Foreground="{DynamicResource PrimaryBlueColor}" Background="Transparent" >
-                                        </TextBlock>
+                                    <Border Height="60" Width="180" CornerRadius="20"  Background="{DynamicResource PrimaryBlueColor}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="18 0 0 0">
+                                        <Button  Command="{Binding RemoveWebsiteCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                 FontSize="35" Content="REMOVE" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                                          VerticalAlignment="Center" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
                                     </Border>
                                 </StackPanel>
                             </Grid>
@@ -143,20 +163,37 @@
                                     <TextBlock HorizontalAlignment="Center" 
                                                VerticalAlignment="Top" 
                                                Margin="10"
-                                               FontSize="20"  
-                                               Text="This module allows you to block access to any website using Windows's hosts file. By simply adding another website to list of blocked websites you redirect it's DNS to 127.0.0.1 making it impossible to connect."
+                                               FontSize="15"  
+                                               Text="This module allows you to block access to any website using Windows's hosts file. By simply adding another website to list of blocked websites you redirect it's DNS to 127.0.0.1 making it ping to your localhost every time."
                                                TextWrapping="Wrap"
                                                Foreground="{DynamicResource PrimaryBlueColor}" 
                                                Background="Transparent" />
                                     <TextBlock HorizontalAlignment="Center" 
                                                VerticalAlignment="Top" 
                                                Margin="10 0 10 0"
-                                               FontSize="20"  
+                                               FontSize="15"  
                                                FontWeight="Bold"
                                                Text="Granting administrator privliges to this app is required to make this module work properly. It needs read/write access to hosts file."
                                                TextWrapping="Wrap"
                                                Foreground="{DynamicResource PrimaryBlueColor}" 
                                                Background="Transparent" />
+                                    <TextBlock HorizontalAlignment="Center" 
+                                               VerticalAlignment="Top" 
+                                               Margin="10 10 0 0"
+                                               FontSize="15"  
+                                               FontWeight="Bold"
+                                               Text="Sometimes it is required to restart your PC or Flush your DNS using ipconfig /flushdns command to make your changes apply."
+                                               TextWrapping="Wrap"
+                                               Foreground="{DynamicResource PrimaryBlueColor}" 
+                                               Background="Transparent">
+                                        <TextBlock.TextDecorations>
+                                            <TextDecoration Location="Underline">
+                                                <TextDecoration.Pen>
+                                                    <Pen Brush="{DynamicResource PrimaryBlueColor}" />
+                                                </TextDecoration.Pen>
+                                            </TextDecoration>
+                                        </TextBlock.TextDecorations>
+                                    </TextBlock>
                                 </StackPanel>
 
                             </Grid>
@@ -187,15 +224,15 @@
                             </Border>
                             <Border Grid.Row="1" Height="640" Width="420" CornerRadius="30" Background="Transparent" Margin="0 0 0 40">
                                 <Grid HorizontalAlignment="Center" Height="640" Width="420" Margin="10">
-                                    <DataGrid ItemsSource="{Binding TasksDisplay}" 
+                                    <DataGrid ItemsSource="{Binding WebsitesToBlock}" 
                                               Foreground="{DynamicResource PrimaryBlueColor}" 
                                               FontWeight="Bold" 
                                               IsReadOnly="True" 
                                               Padding="10" 
                                               ColumnWidth="*" 
-                                              AutoGenerateColumns="True" 
                                               Background="Transparent" 
-                                              BorderThickness="0"/>
+                                              BorderThickness="0">
+                                    </DataGrid>
                                 </Grid>
                             </Border>
                         </Grid>

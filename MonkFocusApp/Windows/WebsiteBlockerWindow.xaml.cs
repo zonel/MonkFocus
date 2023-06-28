@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MonkFocusApp.ViewModels;
 
 namespace MonkFocusApp.Windows
 {
@@ -22,6 +23,7 @@ namespace MonkFocusApp.Windows
         public WebsiteBlockerWindow(int userId)
         {
             InitializeComponent();
+            DataContext = new WebsiteBlockerViewModel(userId);
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
@@ -43,7 +45,7 @@ namespace MonkFocusApp.Windows
         }
         private void WakeUpTime_focus(object sender, MouseButtonEventArgs e)
         {
-            TaskNameAdd.Focus();
+            WebsiteAdd.Focus();
         }
 
 
@@ -60,9 +62,16 @@ namespace MonkFocusApp.Windows
         }
         #endregion
 
-        private void UpdateTask_Focus(object sender, MouseButtonEventArgs e)
+
+
+        private void WebsiteToRemove_focus(object sender, MouseButtonEventArgs e)
         {
-            //UpdateTaskName.Focus();
+            WebsiteToRemove.Focus();
+        }
+
+        private void WebsiteAdd_focus(object sender, MouseButtonEventArgs e)
+        {
+            WebsiteAdd.Focus();
         }
     }
 }
