@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MonkFocusApp.Services;
-using MonkFocusApp.Services.Interfaces;
 using MonkFocusApp.ViewModels;
 using MonkFocusApp.Views;
 using MonkFocusDataAccess;

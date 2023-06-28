@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusApp", "MonkFocusAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusDataAccess", "MonkFocusDataAccess\MonkFocusDataAccess.csproj", "{A70283AB-D511-4ECE-8C15-7D1010C08466}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkFocusRepositories", "MonkFocusRepositories\MonkFocusRepositories.csproj", "{F8D59700-7703-419A-A3D1-235FC4734D93}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonkFocusUnitTests", "MonkFocusUnitTests", "{7D782F35-BFC5-453C-9A3D-CB09C4DCB75C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusRepositories", "MonkFocusRepositories\MonkFocusRepositories.csproj", "{F8D59700-7703-419A-A3D1-235FC4734D93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

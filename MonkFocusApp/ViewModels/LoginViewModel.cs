@@ -8,8 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MonkFocusApp.Commands;
-using MonkFocusApp.Services;
-using MonkFocusApp.Services.Interfaces;
 using MonkFocusApp.Views;
 using MonkFocusDataAccess;
 using MonkFocusRepositories;

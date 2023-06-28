@@ -24,8 +24,8 @@ public class HostsFileManagement : IHostsFileManagement
     /// <param name="websiteAddress">string of website to block, for example: site.com</param>
     /// <returns>True if operation was successful.</returns>
     public bool blockWebsite(string websiteAddress)
-    {
-        if (IsRunningAsAdmin()) return false;
+        {
+        if (!IsRunningAsAdmin()) return false;
         if (string.IsNullOrEmpty(websiteAddress)) return false;
 
         var hostsFile = File.ReadAllLines(FilePath).ToList();
@@ -52,12 +52,14 @@ public class HostsFileManagement : IHostsFileManagement
     /// <returns>True if operation was successful.</returns>
     public bool unblockWebsite(string websiteAddress)
     {
+        if (!IsRunningAsAdmin()) return false;
+        if (string.IsNullOrEmpty(websiteAddress)) return false;
+
         var hostsFile = File.ReadAllLines(FilePath).ToList();
         var containsThatWebsite = hostsFile
             .Any(line => line
                 .Contains("127.0.0.1 " + websiteAddress) || line
                 .Contains("127.0.0.1 www." + websiteAddress));
-        if (string.IsNullOrEmpty(websiteAddress)) return false;
         if (!containsThatWebsite) return false;
 
 
