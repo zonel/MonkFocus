@@ -1,128 +1,139 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using MonkFocusApp.Commands;
 using MonkFocusDataAccess;
-using MonkFocusModels;
 using MonkFocusRepositories;
 
-namespace MonkFocusApp.ViewModels
+namespace MonkFocusApp.ViewModels;
+
+/// <summary>
+///     This is view model for the settings page.
+/// </summary>
+internal class SettingsViewModel : BaseViewModel
 {
-    class SettingsViewModel : BaseViewModel
+    private readonly int _userId;
+
+    private readonly UserRepository _userRepository;
+    private string _bedtime;
+    private string _wakeuptime;
+    private string _worktimegoal;
+
+
+    public SettingsViewModel(int userId)
     {
-        private string _wakeuptime;
-        private string _bedtime;
-        private string _worktimegoal;
+        _userId = userId;
+        _userRepository = new UserRepository(new MonkFocusDbContext());
 
-        private readonly UserRepository _userRepository;
-        private readonly int _userId;
+        WakeUpTimeSaveCommand = new RelayCommand(SaveWakeUpTime);
+        BedTimeSaveCommand = new RelayCommand(BedTimeSave);
+        WorkTimeGoalSaveCommand = new RelayCommand(WorkTimeSave);
+    }
 
-        public ICommand WakeUpTimeSaveCommand { get; }
-        public ICommand BedTimeSaveCommand { get; }
-        public ICommand WorkTimeGoalSaveCommand { get; }
-        public string WakeUpTime
+    public ICommand WakeUpTimeSaveCommand { get; }
+    public ICommand BedTimeSaveCommand { get; }
+    public ICommand WorkTimeGoalSaveCommand { get; }
+
+    public string WakeUpTime
+    {
+        get => _wakeuptime;
+        set
         {
-            get { return _wakeuptime; }
-            set
+            if (_wakeuptime != value)
             {
-                if (_wakeuptime != value)
-                {
-                    _wakeuptime = value;
-                    OnPropertyChanged(nameof(WakeUpTime));
-                }
+                _wakeuptime = value;
+                OnPropertyChanged();
             }
         }
-        public string BedTime
+    }
+
+    public string BedTime
+    {
+        get => _bedtime;
+        set
         {
-            get { return _bedtime; }
-            set
+            if (_bedtime != value)
             {
-                if (_bedtime != value)
-                {
-                    _bedtime = value;
-                    OnPropertyChanged(nameof(BedTime));
-                }
+                _bedtime = value;
+                OnPropertyChanged();
             }
         }
-        public string WorkTimeGoal
+    }
+
+    public string WorkTimeGoal
+    {
+        get => _worktimegoal;
+        set
         {
-            get { return _worktimegoal; }
-            set
+            if (_worktimegoal != value)
             {
-                if (_worktimegoal != value)
-                {
-                    _worktimegoal = value;
-                    OnPropertyChanged(nameof(WorkTimeGoal));
-                }
+                _worktimegoal = value;
+                OnPropertyChanged();
             }
         }
+    }
 
+    /// <summary>
+    ///     This method saves the work time goal to the database.
+    /// </summary>
+    private void WorkTimeSave()
+    {
+        TimeSpan timeOnly;
+        var pattern = @"^(0?[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$";
+        var match = Regex.Match(WorkTimeGoal, pattern);
 
-        public SettingsViewModel(int userId)
+        if (match.Success)
         {
-            _userId = userId;
-            _userRepository = new UserRepository(new MonkFocusDbContext());
+            var hours = int.Parse(match.Groups[1].Value);
+            var minutes = int.Parse(match.Groups[2].Value);
 
-            WakeUpTimeSaveCommand = new RelayCommand(SaveWakeUpTime);
-            BedTimeSaveCommand = new RelayCommand(BedTimeSave);
-            WorkTimeGoalSaveCommand = new RelayCommand(WorkTimeSave);
+            var timeSpan = new TimeSpan(hours, minutes, 0);
+
+            _userRepository.UpdateUsersWorkTimeGoal(_userId, timeSpan);
+            MessageBox.Show("Work Time Goal saved!");
         }
-        private void WorkTimeSave()
+        else
         {
-            TimeSpan timeOnly;
-            string pattern = @"^(0?[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$";
-            Match match = Regex.Match(WorkTimeGoal, pattern);
-
-            if (match.Success)
-            {
-                int hours = int.Parse(match.Groups[1].Value);
-                int minutes = int.Parse(match.Groups[2].Value);
-
-                TimeSpan timeSpan = new TimeSpan(hours, minutes, 0);
-
-                _userRepository.UpdateUsersWorkTimeGoal(_userId, timeSpan);
-                MessageBox.Show("Work Time Goal saved!");
-            }
-            else
-            {
-                Console.WriteLine("Invalid time format");
-            }
+            Console.WriteLine("Invalid time format");
         }
-        private void BedTimeSave()
-        {
-            TimeOnly timeOnly;
-            bool InputInCorrectFormat = TimeOnly.TryParseExact(BedTime, "H:mm", out timeOnly);
+    }
 
-            if (InputInCorrectFormat)
-            {
-                _userRepository.UpdateUsersBedTime(_userId, timeOnly);
-                MessageBox.Show("Bed time saved!");
-            }
-            else
-            {
-                MessageBox.Show("Invalid format!");
-            }
+    /// <summary>
+    ///     This method saves the bed time to the database.
+    /// </summary>
+    private void BedTimeSave()
+    {
+        TimeOnly timeOnly;
+        var InputInCorrectFormat = TimeOnly.TryParseExact(BedTime, "H:mm", out timeOnly);
+
+        if (InputInCorrectFormat)
+        {
+            _userRepository.UpdateUsersBedTime(_userId, timeOnly);
+            MessageBox.Show("Bed time saved!");
         }
-        private void SaveWakeUpTime()
+        else
         {
-            TimeOnly timeOnly;
-            bool InputInCorrectFormat = TimeOnly.TryParseExact(WakeUpTime, "H:mm", out timeOnly);
+            MessageBox.Show("Invalid format!");
+        }
+    }
 
-            if (InputInCorrectFormat)
-            {
-                _userRepository.UpdateUsersWakeUpTime(_userId, timeOnly);
-                MessageBox.Show("Wake up time saved!");
-            }
-            else
-            {
-                MessageBox.Show("Invalid format!");
-            }
+    /// <summary>
+    ///     This method saves the wake up time to the database.
+    /// </summary>
+    private void SaveWakeUpTime()
+    {
+        TimeOnly timeOnly;
+        var InputInCorrectFormat = TimeOnly.TryParseExact(WakeUpTime, "H:mm", out timeOnly);
+
+        if (InputInCorrectFormat)
+        {
+            _userRepository.UpdateUsersWakeUpTime(_userId, timeOnly);
+            MessageBox.Show("Wake up time saved!");
+        }
+        else
+        {
+            MessageBox.Show("Invalid format!");
         }
     }
 }

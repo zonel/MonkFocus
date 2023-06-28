@@ -1,30 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace MonkFocusDataAccess
+namespace MonkFocusDataAccess;
+
+/// <summary>
+///     This class is used to create a database context for the database.
+/// </summary>
+public class MonkFocusDbContextFactory : IDesignTimeDbContextFactory<MonkFocusDbContext>
 {
-    public class MonkFocusDbContextFactory : IDesignTimeDbContextFactory<MonkFocusDbContext>
+    public MonkFocusDbContext CreateDbContext(string[] args)
     {
-        public MonkFocusDbContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<MonkFocusDbContext>();
-            optionsBuilder.UseSqlite("DataSource=C:\\monkfocus\\Monkfocus.db");
+        var optionsBuilder = new DbContextOptionsBuilder<MonkFocusDbContext>();
+        optionsBuilder.UseSqlite("DataSource=");
 
-            return new MonkFocusDbContext(optionsBuilder.Options);
-        }
+        return new MonkFocusDbContext(optionsBuilder.Options);
+    }
 
-        public MonkFocusDbContext CreateDbContext()
-        {
-            //var optionsBuilder = new DbContextOptionsBuilder<MonkFocusDbContext>();
-            //optionsBuilder.UseSqlite("DataSource=Monkfocus.db");
-
-            return new MonkFocusDbContext();
-
-        }
+    public MonkFocusDbContext CreateDbContext()
+    {
+        return new MonkFocusDbContext();
     }
 }

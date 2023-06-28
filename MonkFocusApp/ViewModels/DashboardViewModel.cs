@@ -156,45 +156,6 @@ public class DashboardViewModel : BaseViewModel
 
     #region Commands Functions
 
-    //private void WorkSessionButtonCommand()
-    //{
-    //    if (_timerIsRunning)
-    //    {
-    //        //stop the clock and save the session if session is >1 minute.
-    //        if (duration > new TimeSpan(0, 1, 0))
-    //        {
-    //            _WorkSessionRepository.AddWorkSession(new WorkSession
-    //            {
-    //                Duration = duration,
-    //                StartTime = _startTime,
-    //                EndTime = DateTime.Now,
-    //                UserId = _userId,
-    //                Points = Math.Floor(duration.TotalMinutes).ToString("####")
-    //            });
-    //            MessageBox.Show("You have earned " + Math.Floor(duration.TotalMinutes).ToString("####") + " points!");
-    //            LatestSesssions =
-    //                new ObservableCollection<LatestSessionsDTO>(
-    //                    _userLatestSessions.Select(s => new LatestSessionsDTO(s)));
-    //        }
-    //        else
-    //        {
-    //            MessageBox.Show("Session was shorter than 1 minutes. No points for you :(");
-    //        }
-
-    //        ButtonContent = "START YOUR WORK SESSION";
-    //        ButtonColor = new SolidColorBrush(Color.FromArgb(255, 60, 155, 176));
-    //    }
-    //    else
-    //    {
-    //        //start the clock.
-    //        _startTime = DateTime.Now;
-    //        ButtonContent = "END YOUR WORK SESSION";
-    //        ButtonColor = new SolidColorBrush(Color.FromArgb(255, 33, 84, 95));
-    //    }
-
-    //    _timerIsRunning = !_timerIsRunning;
-    //    WorkSessionClock = "00 : 00 : 00";
-    //}
     private void WorkSessionButtonCommand()
     {
         if (_timerIsRunning)
@@ -257,7 +218,6 @@ public class DashboardViewModel : BaseViewModel
         ButtonContent = content;
         ButtonColor = new SolidColorBrush(color);
     }
-    //end
     private void TaskManagerWindowCommand()
     {
         var taskManagerWindow = new TaskManagerWindow(_userId);
@@ -289,7 +249,6 @@ public class DashboardViewModel : BaseViewModel
         Timer.Tick += WorkSessionTime_Click;
 
         Timer.Interval = new TimeSpan(0, 0, 1);
-
         Timer.Start();
     }
 

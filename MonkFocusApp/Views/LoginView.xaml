@@ -60,7 +60,7 @@
                     <TextBox x:Name="Password" SelectionBrush="#FFE0E0E0" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="25" FontWeight="Bold" Tag="password" Text="{Binding Password}" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0">
                         <TextBox.Resources>
-                            <BlurEffect x:Key="TextBoxBlurEffect" Radius="10" /> <!-- Adjust the Radius value to control the blur intensity -->
+                            <BlurEffect x:Key="TextBoxBlurEffect" Radius="10" /> 
                         </TextBox.Resources>
                         <TextBox.Style>
                             <Style TargetType="TextBox">

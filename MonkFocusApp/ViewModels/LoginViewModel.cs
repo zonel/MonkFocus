@@ -1,9 +1,4 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,80 +6,85 @@ using MonkFocusApp.Commands;
 using MonkFocusApp.Views;
 using MonkFocusDataAccess;
 using MonkFocusRepositories;
-using SQLitePCL;
 
-namespace MonkFocusApp.ViewModels
+namespace MonkFocusApp.ViewModels; 
+
+/// <summary>
+/// This class is the view model for the login view.
+/// </summary>
+internal class LoginViewModel : BaseViewModel
 {
-    class LoginViewModel : BaseViewModel
+    private readonly MonkFocusDbContext _context = new();
+    private string _password;
+    private string _username;
+    private readonly UserRepository _userRepository;
+
+    private readonly ContentControl viewContainer =
+        Application.Current.MainWindow.FindName("viewContainer") as ContentControl;
+
+    public LoginViewModel()
     {
-        private string _username;
-        private string _password;
+        LoginCommand = new RelayCommand(Login);
+        RegisterCommand = new RelayCommand(Register);
+        _userRepository = new UserRepository(_context);
+    }
 
-        public string Username
+    public string Username
+    {
+        get => _username;
+        set
         {
-            get { return _username; }
-            set
+            if (_username != value)
             {
-                if (_username != value)
-                {
-                    _username = value;
-                    OnPropertyChanged(nameof(Username));
-                }
+                _username = value;
+                OnPropertyChanged(nameof(Username));
             }
         }
-        public string Password
+    }
+
+    public string Password
+    {
+        get => _password;
+        set
         {
-            get { return _password; }
-            set
+            if (_password != value)
             {
-                if (_password != value)
-                {
-                    _password = value;
-                    OnPropertyChanged(nameof(Password));
-                }
+                _password = value;
+                OnPropertyChanged(nameof(Password));
             }
         }
+    }
 
-        public ICommand LoginCommand { get; }
+    public ICommand LoginCommand { get; }
 
-        public ICommand RegisterCommand { get; }
+    public ICommand RegisterCommand { get; }
 
-        private MonkFocusDbContext _context = new MonkFocusDbContext();
-        private UserRepository _userRepository;
-        public LoginViewModel()
+    private void Register()
+    {
+        var registerViewModel = new RegisterView();
+        viewContainer.Content = registerViewModel;
+    }
+
+    private void Login()
+    {
+        var isAuthenticated = _userRepository.AuthenticateUser(Username, Password);
+
+        if (isAuthenticated)
         {
-            LoginCommand = new RelayCommand(Login);
-            RegisterCommand = new RelayCommand(Register);
-            _userRepository = new UserRepository(_context);
+            var UserId = _userRepository.GetUserByUsername(Username).UserId;
+            var dashboardViewModel = new DashboardView(UserId, _context);
+            viewContainer.Content = dashboardViewModel;
         }
-
-        private void Register()
+        else
         {
-            RegisterView registerViewModel = new RegisterView();
-            viewContainer.Content = registerViewModel;
+            MessageBox.Show("Invalid username or password. Please try again.");
         }
+    }
 
-        ContentControl viewContainer = Application.Current.MainWindow.FindName("viewContainer") as ContentControl;
-        private void Login()
-        {
-            bool isAuthenticated = _userRepository.AuthenticateUser(Username, Password);
+    public event PropertyChangedEventHandler PropertyChanged;
 
-            if (isAuthenticated)
-            {
-                var UserId = _userRepository.GetUserByUsername(Username).UserId;
-                DashboardView dashboardViewModel = new DashboardView(UserId, _context);
-                viewContainer.Content = dashboardViewModel;
-            }
-            else
-            {
-                MessageBox.Show("Invalid username or password. Please try again.");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

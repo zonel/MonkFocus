@@ -13,7 +13,6 @@
     <None Remove="Views\BackgroundImages\mountains.jpg" />
     <None Remove="Views\BackgroundImages\mountainsRound.png" />
     <None Remove="Views\BackgroundImages\mountainsRounded.png" />
-    <None Remove="Views\BackgroundImages\wanderer.jpg" />
     <None Remove="Views\BackgroundImages\wandererhd.jpg" />
   </ItemGroup>
 
@@ -26,7 +25,6 @@
     <Resource Include="Views\BackgroundImages\monkfocusic.png" />
     <Resource Include="Views\BackgroundImages\mountains.jpg" />
     <Resource Include="Views\BackgroundImages\mountainsRounded.png" />
-    <Resource Include="Views\BackgroundImages\wanderer.jpg" />
     <Resource Include="Views\BackgroundImages\wandererhd.jpg" />
   </ItemGroup>
 

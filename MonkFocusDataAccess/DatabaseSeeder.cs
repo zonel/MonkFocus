@@ -17,10 +17,7 @@ namespace MonkFocusDataAccess
 
         public async void SeedData()
         {
-            var content = await dbContext.Statuses.ToListAsync();
-            //var quotess = await dbContext.Quotes.ToListAsync();
-
-
+            //seeding Statuses
             if (!dbContext.Statuses.Any())
             {
                 var statuses = new List<Status>()
@@ -32,6 +29,7 @@ namespace MonkFocusDataAccess
 
             }
 
+            //seeding Priorities
             if (!dbContext.Priorities.Any())
             {
                 var priorities = new List<Priority>()
@@ -48,19 +46,19 @@ namespace MonkFocusDataAccess
             {
                 var testusers = new List<User>()
                 {
-                    //new User
-                    //{
-                    //    Username = "root",
-                    //    Name = "Robert",
-                    //    Password = "toor",
-                    //    City = "Kraków",
-                    //    Email = "root@root.com",
-                    //    JoinDate = new System.DateTime(2019, 1, 1),
-                    //    Points = 1337,
-                    //    WakeUpTime = new System.TimeOnly(8, 0, 0),
-                    //    BedTime = new System.TimeOnly(23, 0, 0),
-                    //    WorkTimeGoal = new System.TimeSpan(8, 0, 0),
-                    //},
+                    new User
+                    {
+                        Username = "root",
+                        Name = "Robert",
+                        Password = "toor",
+                        City = "Kraków",
+                        Email = "root@root.com",
+                        JoinDate = new System.DateTime(2019, 1, 1),
+                        Points = 1337,
+                        WakeUpTime = new System.TimeOnly(8, 0, 0),
+                        BedTime = new System.TimeOnly(23, 0, 0),
+                        WorkTimeGoal = new System.TimeSpan(8, 0, 0),
+                    },
                     new User
                     {
                         Username = "adam",
@@ -83,20 +81,20 @@ namespace MonkFocusDataAccess
             {
                 var testTasks = new List<UserTask>()
                 {
-                    //new UserTask
-                    //{
-                    //    UserId = 1,
-                    //    TaskName = "Go to Gym",
-                    //    PriorityId = 3,
-                    //    StatusId = 1,
-                    //},
-                    //new UserTask
-                    //{
-                    //    UserId = 1,
-                    //    TaskName = "Finish today's work",
-                    //    PriorityId = 3,
-                    //    StatusId = 3,
-                    //},
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Go to Gym",
+                        PriorityId = 3,
+                        StatusId = 1,
+                    },
+                    new UserTask
+                    {
+                        UserId = 1,
+                        TaskName = "Finish today's work",
+                        PriorityId = 3,
+                        StatusId = 3,
+                    },
                     new UserTask
                     {
                         UserId = 1,
@@ -134,21 +132,21 @@ namespace MonkFocusDataAccess
                     },
                     new UserTask
                     {
-                        UserId = 1,
+                        UserId = 2,
                         TaskName = "Go for a run",
                         PriorityId = 1,
                         StatusId = 1,
                     },
                     new UserTask
                     {
-                        UserId = 1,
+                        UserId = 2,
                         TaskName = "Read 10 pages of a book",
                         PriorityId = 3,
                         StatusId = 3,
                     },
                     new UserTask
                     {
-                        UserId = 1,
+                        UserId = 2,
                         TaskName = "Do Stretching",
                         PriorityId = 3,
                         StatusId = 3,
@@ -157,44 +155,11 @@ namespace MonkFocusDataAccess
                 await dbContext.Tasks.AddRangeAsync(testTasks);
             }
 
-            //seeding test users
+            //seeding work sessions
             if (!dbContext.WorkSessions.Any())
             {
                 var worksessions = new List<WorkSession>()
                 {
-
-                    //new WorkSession()
-                    //{
-                    //     StartTime   = DateTime.Now.AddHours(-1),
-                    //     EndTime     = DateTime.Now,
-                    //     Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
-                    //     Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
-                    //     UserId      = 1,
-                    //},
-                    //new WorkSession()
-                    //{
-                    //    StartTime   = DateTime.Now.AddHours(-2),
-                    //    EndTime     = DateTime.Now.AddHours(-1),
-                    //    Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
-                    //    Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
-                    //    UserId      = 1,
-                    //},
-                    //new WorkSession()
-                    //{
-                    //    StartTime   = DateTime.Now.AddHours(-4),
-                    //    EndTime     = DateTime.Now.AddHours(-3),
-                    //    Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
-                    //    Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
-                    //    UserId      = 1,
-                    //},
-                    //new WorkSession()
-                    //{
-                    //    StartTime   = DateTime.Now.AddHours(-5),
-                    //    EndTime     = DateTime.Now.AddHours(-4),
-                    //    Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
-                    //    Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
-                    //    UserId      = 1,
-                    //},
                     new WorkSession()
                     {
                          StartTime   = DateTime.Now.AddHours(-1),
@@ -202,6 +167,38 @@ namespace MonkFocusDataAccess
                          Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
                          Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
                          UserId      = 1,
+                    },
+                    new WorkSession()
+                    {
+                        StartTime   = DateTime.Now.AddHours(-2),
+                        EndTime     = DateTime.Now.AddHours(-1),
+                        Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
+                        Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
+                        UserId      = 1,
+                    },
+                    new WorkSession()
+                    {
+                        StartTime   = DateTime.Now.AddHours(-4),
+                        EndTime     = DateTime.Now.AddHours(-3),
+                        Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
+                        Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
+                        UserId      = 1,
+                    },
+                    new WorkSession()
+                    {
+                        StartTime   = DateTime.Now.AddHours(-5),
+                        EndTime     = DateTime.Now.AddHours(-4),
+                        Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
+                        Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
+                        UserId      = 2,
+                    },
+                    new WorkSession()
+                    {
+                         StartTime   = DateTime.Now.AddHours(-1),
+                         EndTime     = DateTime.Now,
+                         Duration    = DateTime.Now - DateTime.Now.AddHours(-1),
+                         Points      = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
+                         UserId      = 2,
                     },
                 };
                 await dbContext.WorkSessions.AddRangeAsync(worksessions);

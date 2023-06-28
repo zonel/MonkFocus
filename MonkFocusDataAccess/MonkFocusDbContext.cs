@@ -5,6 +5,9 @@ using MonkFocusModels;
 
 namespace MonkFocusDataAccess
 {
+    /// <summary>
+    /// This class is used to connect to the database and to create tables.
+    /// </summary>
     public class MonkFocusDbContext : DbContext
     {
         #region Tables
@@ -14,10 +17,7 @@ namespace MonkFocusDataAccess
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Priority> Priorities { get; set; }
-
         public DbSet<WorkSession> WorkSessions { get; set; }
-        public DbSet<WebsitesToBlock> WebsitesToBlock { get; set; }
-
         #endregion
 
         public MonkFocusDbContext(DbContextOptions options) : base(options)
