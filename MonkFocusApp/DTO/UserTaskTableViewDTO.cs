@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MonkFocusApp.DTO
 {
+    /// <summary>
+    /// This class is used to display the user's tasks in the table view.
+    /// </summary>
     public class UserTaskTableViewDTO
     {
         public int TaskId { get; set; }

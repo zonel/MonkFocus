@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace MonkFocusApp.Commands
 {
+    /// <summary>
+    /// This class is used to create a command that can be bound to a button action.
+    /// </summary>
     public class RelayCommand : ICommand
     {
         private readonly Action _execute;

@@ -50,14 +50,14 @@
                 <TextBlock Grid.Row="3" FontWeight="Normal" FontSize="20" Margin="40 -5 0 0" Text="username" Foreground="{DynamicResource PrimaryBlueColor}" ></TextBlock>
 
                 <Border Grid.Row="3" Height="60" Width="350" CornerRadius="20" Background="White" MouseDown="Username_focus" Margin="0 0 0 -10">
-                    <TextBox x:Name="Username" Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus"  Text="{Binding Username}"
+                    <TextBox x:Name="Username" Text="{Binding Username}"
                              Tag="username" SelectionBrush="#FFD0D0D0" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="25" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
                 </Border>
                 <TextBlock Grid.Row="4" FontWeight="Normal" FontSize="20" Margin="40 -10 0 0" Text="password" Foreground="{DynamicResource PrimaryBlueColor}" ></TextBlock>
 
                 <Border Grid.Row="4" Height="60" Width="350" CornerRadius="20" Background="White" MouseDown="Password_focus">
-                    <TextBox x:Name="Password"  Loaded="UsernameTextBox_LostFocus" GotFocus="UsernameTextBox_GotFocus" SelectionBrush="#FFE0E0E0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    <TextBox x:Name="Password" SelectionBrush="#FFE0E0E0" HorizontalAlignment="Center" VerticalAlignment="Center"
                              FontSize="25" FontWeight="Bold" Tag="password" Text="{Binding Password}" Foreground="{DynamicResource PrimaryBlueColor}" Background="{x:Null}" BorderThickness="0,0,0,0">
                         <TextBox.Resources>
                             <BlurEffect x:Key="TextBoxBlurEffect" Radius="10" /> <!-- Adjust the Radius value to control the blur intensity -->

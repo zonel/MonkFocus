@@ -9,6 +9,9 @@ using MonkFocusModels;
 
 namespace MonkFocusApp.DTO
 {
+    /// <summary>
+    /// This class is used to display a UserTask in the UI with fewer accessible fields than UserTask itself.
+    /// </summary>
     public class UserTaskDTO : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;

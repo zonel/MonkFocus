@@ -9,6 +9,9 @@ using MonkFocusModels;
 
 namespace MonkFocusApp.DTO
 {
+    /// <summary>
+    /// This class is used to convert UserSession data type to format that is possible to display the latest sessions in the main window.
+    /// </summary>
     public class LatestSessionsDTO : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -19,6 +22,8 @@ namespace MonkFocusApp.DTO
             Duration = ws.Duration.ToString("hh\\:mm\\:ss");
             Points = "+"+ws.Points.ToString();
         }
+
+        #region Fields
 
         private string _date;
         public string Date
@@ -61,6 +66,8 @@ namespace MonkFocusApp.DTO
                 }
             }
         }
+
+        #endregion
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {

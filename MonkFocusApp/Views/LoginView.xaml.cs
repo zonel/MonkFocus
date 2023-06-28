@@ -16,25 +16,6 @@ namespace MonkFocusApp.Views
             InitializeComponent();
             DataContext = new LoginViewModel();
         }
-
-        private void UsernameTextBox_GotFocus(object sender, RoutedEventArgs e) //TODO REMOVE
-        {
-            //TextBox textBox = (TextBox)sender;
-            //if (textBox.Text == textBox.Tag?.ToString())
-            //{
-            //    textBox.Text = string.Empty;
-            //}
-        }
-
-        private void UsernameTextBox_LostFocus(object sender, RoutedEventArgs e) //TODO REMOVE
-        {
-            //TextBox textBox = (TextBox)sender;
-            //if (string.IsNullOrWhiteSpace(textBox.Text))
-            //{
-            //    textBox.Text = textBox.Tag?.ToString();
-            //}
-        }
-
         #region TextBox Focus Helper
         private void Username_focus(object sender, MouseButtonEventArgs e)
         {

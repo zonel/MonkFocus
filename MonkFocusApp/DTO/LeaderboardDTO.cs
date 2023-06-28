@@ -9,6 +9,9 @@ using MonkFocusModels;
 
 namespace MonkFocusApp.DTO
 {
+    /// <summary>
+    /// This class is used to help display the leaderboard in the LeaderboardPage.
+    /// </summary>
     public class LeaderboardDTO : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -18,6 +21,8 @@ namespace MonkFocusApp.DTO
             Username = user.Username;
             Points = user.Points.ToString();
         }
+
+        #region Fields
 
         private string _username;
         public string Username
@@ -46,6 +51,8 @@ namespace MonkFocusApp.DTO
                 }
             }
         }
+
+        #endregion
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
