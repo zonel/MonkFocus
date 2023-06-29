@@ -95,7 +95,7 @@ internal class SettingsViewModel : BaseViewModel
         }
         else
         {
-            Console.WriteLine("Invalid time format");
+            MessageBox.Show("Invalid time format");
         }
     }
 

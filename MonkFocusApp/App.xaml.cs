@@ -15,7 +15,6 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        //using (var dbContext = new MonkFocusDbContextFactory().CreateDbContext())
         using (var dbContext = new MonkFocusDbContext())
         {
             if (dbContext.Database.GetPendingMigrations().Any())
@@ -30,7 +29,6 @@ public partial class App : Application
 
     private IServiceProvider ConfigureServices()
     {
-        //Set up your dependency injection container and register services
         var services = new ServiceCollection();
         services.AddDbContext<MonkFocusDbContext>();
 

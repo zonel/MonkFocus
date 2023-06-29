@@ -150,6 +150,8 @@ internal class RegisterViewModel : BaseViewModel
         };
 
         _userRepository.AddUser(user);
+        MessageBox.Show("Registration successful");
+        NavigateToLoginView();
     }
 
     /// <summary>

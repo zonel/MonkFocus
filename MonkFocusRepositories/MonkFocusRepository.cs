@@ -36,7 +36,7 @@ public class MonkFocusRepository : IMonkFocusRepository
     public Quote GetRandomQuote()
     {
         var random = new Random();
-        var selectedNumber = random.Next(1, 102);
+        var selectedNumber = random.Next(1, 30);
         return _context.Quotes.FirstOrDefault(q => q.QuoteId == selectedNumber) ?? throw new NullReferenceException();
     }
 }
