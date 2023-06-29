@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +25,43 @@ namespace MonkFocusApp.Windows
         {
             InitializeComponent();
             DataContext = new SettingsViewModel(userId);
+            ProjectRepoButton.Click += Button_Click;
+            GitHubProfileButton.Click += Button_Click;
+
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Retrieve the URL based on the clicked button
+            Button button = (Button)sender;
+            string url = GetUrlForButton(button.Name);
+
+            // Launch the default browser with the URL
+            //Process.Start(new ProcessStartInfo(url));
+            var sInfo = new System.Diagnostics.ProcessStartInfo(url)
+            {
+                UseShellExecute = true,
+            };
+            System.Diagnostics.Process.Start(sInfo);
+        }
+
+        private string GetUrlForButton(string buttonName)
+        {
+            // Provide the URL for each button based on its name
+            switch (buttonName)
+            {
+                case "ProjectRepoButton":
+                    return "https://github.com/zoneel/MonkFocus";
+                case "GitHubProfileButton":
+                    return "https://github.com/zoneel";
+                default:
+                    return string.Empty;
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

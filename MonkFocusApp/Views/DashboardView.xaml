@@ -62,7 +62,7 @@
 
 
                 <Border Grid.Row="2" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 25" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding TaskManagerCommand}"
+                    <Button HorizontalAlignment="Center" Height="60" Width="350" VerticalAlignment="Center" Command="{Binding TaskManagerCommand}"
                              FontSize="25"  Content="TASKS MANAGER" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
@@ -260,7 +260,7 @@
 
 
                 <Border Grid.Row="6" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 25" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding WebsitesBlockerCommand}"
+                    <Button HorizontalAlignment="Center" Height="60" Width="350" VerticalAlignment="Center" Command="{Binding WebsitesBlockerCommand}"
                              FontSize="25"  Content="WEBSITES BLOCKER" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
@@ -380,7 +380,7 @@
 
 
                 <Border Grid.Row="5" Height="60" Width="350" CornerRadius="20" Background="{DynamicResource PrimaryBlueColor}" VerticalAlignment="Bottom" Margin="0 0 0 25" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding SettingsCommand}"
+                    <Button HorizontalAlignment="Center" Height="60" Width="350" VerticalAlignment="Center" Command="{Binding SettingsCommand}"
                              FontSize="25"  Content="SETTINGS" Foreground="White" Background="Transparent" BorderThickness="0,0,0,0">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">

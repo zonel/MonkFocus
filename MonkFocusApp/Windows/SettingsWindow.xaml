@@ -204,7 +204,7 @@
                                            Text="Thank you for checking out my project!" 
                                            Foreground="{DynamicResource PrimaryBlueColor}" 
                                            Background="Transparent" />
-                                <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                                <StackPanel Grid.Row="1" Orientation="Vertical" Height="120" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                     <Ellipse Fill="Green" Width="80" Height="80" ></Ellipse>
                                     <TextBlock  
                                                HorizontalAlignment="Center"
@@ -216,18 +216,22 @@
                                                Background="Transparent" />
                                 </StackPanel>
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock 
+                                    <Button 
+                                        x:Name="ProjectRepoButton"
                                         VerticalAlignment="Bottom" 
-                                        Margin="0 0 0 20"
+                                        Margin="0 0 0 10"
                                         FontSize="20"  
-                                        Text="PROJECT REPO" 
+                                        Content="PROJECT REPO" 
+                                        BorderThickness="0"
                                         Foreground="{DynamicResource PrimaryBlueColor}" 
                                         Background="Transparent" />
-                                    <TextBlock  
+                                    <Button  
+                                        x:Name="GitHubProfileButton"
                                         VerticalAlignment="Bottom" 
-                                        Margin="40 0 0 20"
+                                        Margin="40 0 0 10"
                                         FontSize="20"  
-                                        Text="MY GITHUB PROFILE" 
+                                        BorderThickness="0"
+                                        Content="MY GITHUB PROFILE" 
                                         Foreground="{DynamicResource PrimaryBlueColor}" 
                                         Background="Transparent" />
                                 </StackPanel>
@@ -235,15 +239,30 @@
                             </Grid>
 
                         </Border>
-                        <Border Grid.Row="1" Height="230" Width="400" CornerRadius="30" Background="White" Margin="0 0 0 20">
-                            <TextBlock HorizontalAlignment="Center" 
-                                       VerticalAlignment="Top" 
-                                       Margin="0 10 0 0"
-                                       FontSize="25"  
-                                       Text="ABOUT THE PROJECT" 
-                                       Foreground="{DynamicResource PrimaryBlueColor}" 
-                                       Background="Transparent" />
-                        </Border>
+                        
+                            <Border  Grid.Row="1" Height="230" Width="400" CornerRadius="30" Background="White" Margin="0 0 0 20">
+                                <StackPanel  Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center" 
+                                           VerticalAlignment="Top" 
+                                           Margin="0 10 0 0"
+                                           FontSize="25"  
+                                           Text="ABOUT THE PROJECT" 
+                                           Foreground="{DynamicResource PrimaryBlueColor}" 
+                                           Background="Transparent" />
+                                <TextBlock HorizontalAlignment="Center" 
+                                           VerticalAlignment="Top" 
+                                           Margin="10"
+                                           FontSize="15"  
+                                           TextWrapping="Wrap"
+                                           Text="This project is a productivity manager designed to enhance individuals work efficiency. It offers a range of features, including work session tracking, task management, and sleep habit monitoring. Users can easily organize their work tasks and track their progress. Additionally, the software includes a website blocking module, empowering users to eliminate distractions by blocking specific websites on their computers."
+                                           Foreground="{DynamicResource PrimaryBlueColor}" 
+                                           Background="Transparent" />
+                                </StackPanel>
+                            </Border>
+
+                        
+
+
 
                     </Grid>
                    
