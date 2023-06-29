@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MonkFocusDataAccess;
 
@@ -13,15 +15,17 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        var serviceProvider = ConfigureServices();
-        var dbContext = new MonkFocusDbContextFactory().CreateDbContext();
+        //using (var dbContext = new MonkFocusDbContextFactory().CreateDbContext())
+        using (var dbContext = new MonkFocusDbContext())
+        {
+            if (dbContext.Database.GetPendingMigrations().Any())
+            {
+                dbContext.Database.Migrate();
+            }
 
-        #region Seeding
-
-        var DatabaseSeeder = new DatabaseSeeder(dbContext);
-        DatabaseSeeder.SeedData();
-
-        #endregion
+            var DatabaseSeeder = new DatabaseSeeder(dbContext);
+            DatabaseSeeder.SeedData();
+        }
     }
 
     private IServiceProvider ConfigureServices()
