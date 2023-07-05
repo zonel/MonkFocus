@@ -84,7 +84,7 @@ public class TaskRepository : ITaskRepository
     {
         var userTasks = _context.Tasks
             .Where(t => t.UserId == userId)
-            .Where(t => t.StatusId == 1 || t.StatusId == 3 || t.StatusId == 2) //TODO - remove statusId == 2 from here
+            .Where(t => t.StatusId == 1)
             .Take(10)
             .ToList();
 

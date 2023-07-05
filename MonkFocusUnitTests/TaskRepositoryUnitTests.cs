@@ -2,6 +2,7 @@
 using MonkFocusDataAccess;
 using MonkFocusModels;
 using MonkFocusRepositories;
+using MonkFocusRepositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace MonkFocusUnitTests
                 .Options;
             _dbContext = new MonkFocusMockDbContext(_options);
             SeedTestData();
+            _taskrepository = new TaskRepository(_dbContext);
+
         }
 
         [TestCleanup]
@@ -37,7 +40,6 @@ namespace MonkFocusUnitTests
         [TestMethod]
         public void AddTask_CheckIfTaskExists()
         {
-            _taskrepository = new TaskRepository(_dbContext);
             var usertask = new UserTask
             {
                 UserId = 1,
@@ -51,13 +53,57 @@ namespace MonkFocusUnitTests
             Assert.IsNotNull(checkForTestTask);
         }
 
-        [TestMethod]
-        public void GetRandomQuote_ReturnsRandomQuote()
+                [TestMethod]
+        public void UpdateTask_ValidUserTask_TaskUpdatedInDatabase()
         {
-            //_taskrepository = new MonkFocusRepository(_dbContext);
-            //var result = _taskrepository.GetRandomQuote();
+            var userTask = new UserTask
+            {
+                UserId = 1,
+                TaskName = "Updated Task",
+                PriorityId = 2,
+                StatusId = 2,
+            };
 
-            //Assert.IsNotNull(result);
+            _taskrepository.UpdateTask(userTask);
+
+            var updatedTask = _dbContext.Tasks.FirstOrDefault(t => t.TaskName == "Updated Task");
+            Assert.IsNotNull(updatedTask);
+            Assert.AreEqual("Updated Task", updatedTask.TaskName);
+            Assert.AreEqual(2, updatedTask.PriorityId);
+            Assert.AreEqual(2, updatedTask.StatusId);
+        }
+
+        [TestMethod]
+        public void DeleteTaskById_ExistingTaskId_TaskDeletedFromDatabase()
+        {
+            var taskIdToDelete = 1;
+
+            _taskrepository.DeleteTaskById(taskIdToDelete);
+
+            var deletedTask = _dbContext.Tasks.FirstOrDefault(t => t.TaskId == taskIdToDelete);
+            Assert.IsNull(deletedTask);
+        }
+
+        [TestMethod]
+        public void GetAllTasksForUser_ExistingUserId_ReturnsUserTasks()
+        {
+            var userId = 1; 
+
+            var tasks = _taskrepository.GetAllTasksForUser(userId);
+
+            Assert.IsNotNull(tasks);
+            Assert.AreEqual(7, tasks.Count());
+        }
+
+        [TestMethod]
+        public void GetTop10NotCompletedTasksForUser_ExistingUserId_ReturnsTop10Tasks()
+        {
+            var userId = 2; 
+
+            var tasks = _taskrepository.GetTop10NotCompletedTasksForUser(userId);
+
+            Assert.IsNotNull(tasks);
+            Assert.AreEqual(3, tasks.Count()); 
         }
 
         private void SeedTestData()
