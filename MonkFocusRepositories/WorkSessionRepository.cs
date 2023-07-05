@@ -11,11 +11,11 @@ public class WorkSessionRepository : IWorkSessionRepository
 {
     #region DI Fields
 
-    private readonly MonkFocusDbContext _context;
+    private readonly IMonkFocusDbContext _context;
 
     #endregion
 
-    public WorkSessionRepository(MonkFocusDbContext context)
+    public WorkSessionRepository(IMonkFocusDbContext context)
     {
         _context = context;
     }
