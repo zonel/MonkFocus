@@ -13,7 +13,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        WindowStartupLocation="CenterScreen" Icon="/Views/BackgroundImages/monkfocusic.png">
+        WindowStartupLocation="CenterScreen" Icon="/Views/BackgroundImages/monkfocusic.ico">
 
     <Window.Effect>
         <DropShadowEffect/>

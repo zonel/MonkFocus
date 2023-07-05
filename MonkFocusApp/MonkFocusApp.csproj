@@ -5,20 +5,15 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Views\BackgroundImages\monkfocusic.png</ApplicationIcon>
+	  <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Views\BackgroundImages\hill.jpg" />
+    <None Remove="Views\BackgroundImages\monkfocusic.ico" />
     <None Remove="Views\BackgroundImages\monkfocusic.png" />
-    <None Remove="Views\BackgroundImages\mountains.jpg" />
     <None Remove="Views\BackgroundImages\mountainsRound.png" />
     <None Remove="Views\BackgroundImages\mountainsRounded.png" />
-    <None Remove="Views\BackgroundImages\wandererhd.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Views\BackgroundImages\monkfocusic.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,10 +22,9 @@
 
   <ItemGroup>
     <Resource Include="Views\BackgroundImages\hill.jpg" />
+    <Resource Include="Views\BackgroundImages\monkfocusic.ico" />
     <Resource Include="Views\BackgroundImages\monkfocusic.png" />
-    <Resource Include="Views\BackgroundImages\mountains.jpg" />
     <Resource Include="Views\BackgroundImages\mountainsRounded.png" />
-    <Resource Include="Views\BackgroundImages\wandererhd.jpg" />
   </ItemGroup>
 
 </Project>

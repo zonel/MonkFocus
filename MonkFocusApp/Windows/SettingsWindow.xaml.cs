@@ -37,12 +37,9 @@ namespace MonkFocusApp.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Retrieve the URL based on the clicked button
             Button button = (Button)sender;
             string url = GetUrlForButton(button.Name);
 
-            // Launch the default browser with the URL
-            //Process.Start(new ProcessStartInfo(url));
             var sInfo = new System.Diagnostics.ProcessStartInfo(url)
             {
                 UseShellExecute = true,
@@ -52,7 +49,6 @@ namespace MonkFocusApp.Windows
 
         private string GetUrlForButton(string buttonName)
         {
-            // Provide the URL for each button based on its name
             switch (buttonName)
             {
                 case "ProjectRepoButton":
@@ -66,7 +62,7 @@ namespace MonkFocusApp.Windows
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Close();    
         }
 
         private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

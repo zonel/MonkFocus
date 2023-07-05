@@ -11,11 +11,11 @@ public class MonkFocusRepository : IMonkFocusRepository
 {
     #region DI Fields
 
-    private readonly MonkFocusDbContext _context;
+    private readonly IMonkFocusDbContext _context;
 
     #endregion
 
-    public MonkFocusRepository(MonkFocusDbContext context)
+    public MonkFocusRepository(IMonkFocusDbContext context)
     {
         _context = context;
     }
@@ -36,7 +36,7 @@ public class MonkFocusRepository : IMonkFocusRepository
     public Quote GetRandomQuote()
     {
         var random = new Random();
-        var selectedNumber = random.Next(1, 30);
-        return _context.Quotes.FirstOrDefault(q => q.QuoteId == selectedNumber) ?? throw new NullReferenceException();
+        var selectedNumber = random.Next(1, _context.Quotes.Count());
+        return _context.Quotes.FirstOrDefault(q => q.QuoteId == selectedNumber) ?? throw new NullReferenceException(); //TODO: change exception to default quote
     }
 }

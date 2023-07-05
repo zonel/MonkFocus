@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusDataAccess", "Monk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusRepositories", "MonkFocusRepositories\MonkFocusRepositories.csproj", "{F8D59700-7703-419A-A3D1-235FC4734D93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkFocusUnitTests", "MonkFocusUnitTests\MonkFocusUnitTests.csproj", "{B4267570-F09A-43D5-AA91-CEF18537A277}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F8D59700-7703-419A-A3D1-235FC4734D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8D59700-7703-419A-A3D1-235FC4734D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8D59700-7703-419A-A3D1-235FC4734D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4267570-F09A-43D5-AA91-CEF18537A277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4267570-F09A-43D5-AA91-CEF18537A277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4267570-F09A-43D5-AA91-CEF18537A277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4267570-F09A-43D5-AA91-CEF18537A277}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,7 +8,7 @@ namespace MonkFocusDataAccess
     /// <summary>
     /// This class is used to connect to the database and to create tables.
     /// </summary>
-    public class MonkFocusDbContext : DbContext, IMonkFocusDbContext
+    public class MonkFocusMockDbContext : DbContext, IMonkFocusDbContext
     {
         #region Tables
 
@@ -18,23 +18,26 @@ namespace MonkFocusDataAccess
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Priority> Priorities { get; set; }
         public DbSet<WorkSession> WorkSessions { get; set; }
-        #endregion
 
+        #endregion
         void IMonkFocusDbContext.SaveChanges()
         {
             base.SaveChanges();
         }
 
-        public MonkFocusDbContext(DbContextOptions options) : base(options)
+        public MonkFocusMockDbContext(DbContextOptions options) : base(options)
         {
         }
 
-        public MonkFocusDbContext()
+        public MonkFocusMockDbContext(DbContextOptions<MonkFocusMockDbContext> options) : base(options)
         {
         }
 
+        public MonkFocusMockDbContext()
+        {
+        }
 
-
+        //TODO :Change absolute path to relative
        private readonly string _connectionString = "Monkfocus.db";
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -134,7 +137,6 @@ namespace MonkFocusDataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($"Data Source={_connectionString}");
         }
     }
 }

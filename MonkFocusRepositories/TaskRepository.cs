@@ -11,11 +11,11 @@ public class TaskRepository : ITaskRepository
 {
     #region DI Fields
 
-    private readonly MonkFocusDbContext _context;
+    private readonly IMonkFocusDbContext _context;
 
     #endregion
 
-    public TaskRepository(MonkFocusDbContext context)
+    public TaskRepository(IMonkFocusDbContext context)
     {
         _context = context;
     }
