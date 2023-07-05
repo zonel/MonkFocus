@@ -11,11 +11,11 @@ public class UserRepository : IUserRepository
 {
     #region DI Fields
 
-    private readonly MonkFocusDbContext _context;
+    private readonly IMonkFocusDbContext _context;
 
     #endregion
 
-    public UserRepository(MonkFocusDbContext context)
+    public UserRepository(IMonkFocusDbContext context)
     {
         _context = context;
     }
