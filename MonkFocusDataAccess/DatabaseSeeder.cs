@@ -71,6 +71,16 @@ namespace MonkFocusDataAccess
                         BedTime = new System.TimeOnly(22, 0, 0),
                         WorkTimeGoal = new System.TimeSpan(6, 0, 0),
                     },
+                    new User { Username = "user1", Name = "John", Password = "password1", City = "Warsaw", Email = "john@example.com", JoinDate = new System.DateTime(2022, 5, 10), Points = 500, WakeUpTime = new System.TimeOnly(7, 30, 0), BedTime = new System.TimeOnly(23, 30, 0), WorkTimeGoal = new System.TimeSpan(7, 30, 0) },
+                    new User { Username = "Sara", Name = "Sarah", Password = "abc123", City = "London", Email = "sarah@example.com", JoinDate = new System.DateTime(2021, 8, 15), Points = 1000, WakeUpTime = new System.TimeOnly(6, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(8, 30, 0) },
+                    new User { Username = "user3", Name = "Emily", Password = "qwerty", City = "New York", Email = "emily@example.com", JoinDate = new System.DateTime(2020, 3, 20), Points = 250, WakeUpTime = new System.TimeOnly(8, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(6, 0, 0) },
+                    new User { Username = "user4", Name = "Olivia", Password = "mike456", City = "Los Angeles", Email = "michael@example.com", JoinDate = new System.DateTime(2023, 1, 5), Points = 750, WakeUpTime = new System.TimeOnly(7, 0, 0), BedTime = new System.TimeOnly(22, 0, 0), WorkTimeGoal = new System.TimeSpan(7, 30, 0) },
+                    new User { Username = "user5", Name = "Emma", Password = "emma789", City = "Paris", Email = "emma@example.com", JoinDate = new System.DateTime(2022, 9, 1), Points = 800, WakeUpTime = new System.TimeOnly(6, 0, 0), BedTime = new System.TimeOnly(23, 30, 0), WorkTimeGoal = new System.TimeSpan(8, 0, 0) },
+                    new User { Username = "user6", Name = "Daniel", Password = "daniel321", City = "Berlin", Email = "daniel@example.com", JoinDate = new System.DateTime(2021, 4, 12), Points = 600, WakeUpTime = new System.TimeOnly(7, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(6, 30, 0) },
+                    new User { Username = "Michael", Name = "Michael", Password = "olivia555", City = "Sydney", Email = "olivia@example.com", JoinDate = new System.DateTime(2020, 11, 8), Points = 900, WakeUpTime = new System.TimeOnly(8, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(7, 0, 0) },
+                    new User { Username = "user8", Name = "Matthew", Password = "matt777", City = "Toronto", Email = "matthew@example.com", JoinDate = new System.DateTime(2023, 3, 17), Points = 400, WakeUpTime = new System.TimeOnly(6, 0, 0), BedTime = new System.TimeOnly(22, 0, 0), WorkTimeGoal = new System.TimeSpan(8, 30, 0) },
+                    new User { Username = "user9", Name = "Ava", Password = "ava123", City = "Melbourne", Email = "ava@example.com", JoinDate = new System.DateTime(2022, 7, 25), Points = 350, WakeUpTime = new System.TimeOnly(7, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(6, 30, 0) },
+                    new User { Username = "user10", Name = "Liam", Password = "liam999", City = "Vancouver", Email = "liam@example.com", JoinDate = new System.DateTime(2021, 2, 3), Points = 700, WakeUpTime = new System.TimeOnly(8, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(7, 0, 0) }
                 };
                 await dbContext.Users.AddRangeAsync(testusers);
             }
@@ -80,76 +90,41 @@ namespace MonkFocusDataAccess
             {
                 var testTasks = new List<UserTask>()
                 {
-                    new UserTask
-                    {
-                        UserId = 1,
-                        TaskName = "Go to Gym",
-                        PriorityId = 3,
-                        StatusId = 1,
-                    },
-                    new UserTask
-                    {
-                        UserId = 1,
-                        TaskName = "Finish today's work",
-                        PriorityId = 3,
-                        StatusId = 2,
-                    },
-                    new UserTask
-                    {
-                        UserId = 1,
-                        TaskName = "Fix Bug #123",
-                        PriorityId = 3,
-                        StatusId = 2,
-                    },
-                    new UserTask
-                    {
-                        UserId = 1,
-                        TaskName = "Morning Meditation",
-                        PriorityId = 1,
-                        StatusId = 2,
-                    },
-                    new UserTask
-                    {
-                        UserId = 1,
-                        TaskName = "Take Supplements",
-                        PriorityId = 1,
-                        StatusId = 2,
-                    },
-                    new UserTask
-                    {
-                        UserId = 1,
-                        TaskName = "Daily Journal Entry",
-                        PriorityId = 2,
-                        StatusId = 2,
-                    },
-                    new UserTask
-                    {
-                        UserId = 1,
-                        TaskName = "Groceries",
-                        PriorityId = 1,
-                        StatusId = 2,
-                    },
-                    new UserTask
-                    {
-                        UserId = 2,
-                        TaskName = "Go for a run",
-                        PriorityId = 1,
-                        StatusId = 1,
-                    },
-                    new UserTask
-                    {
-                        UserId = 2,
-                        TaskName = "Read 10 pages of a book",
-                        PriorityId = 3,
-                        StatusId = 1,
-                    },
-                    new UserTask
-                    {
-                        UserId = 2,
-                        TaskName = "Do Stretching",
-                        PriorityId = 3,
-                        StatusId = 1,
-                    },
+                    new UserTask { UserId = 1, TaskName = "Go to Gym", PriorityId = 3, StatusId = 1 },
+    new UserTask { UserId = 1, TaskName = "Finish today's work", PriorityId = 3, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Fix Bug #123", PriorityId = 3, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Morning Meditation", PriorityId = 1, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Take Supplements", PriorityId = 1, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Daily Journal Entry", PriorityId = 2, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Groceries", PriorityId = 1, StatusId = 2 },
+    new UserTask { UserId = 2, TaskName = "Go for a run", PriorityId = 1, StatusId = 1 },
+    new UserTask { UserId = 2, TaskName = "Read 10 pages of a book", PriorityId = 3, StatusId = 1 },
+    new UserTask { UserId = 2, TaskName = "Do Stretching", PriorityId = 3, StatusId = 1 },
+    new UserTask { UserId = 1, TaskName = "Attend Meeting", PriorityId = 2, StatusId = 1 },
+    new UserTask { UserId = 1, TaskName = "Write Report", PriorityId = 2, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Prepare Presentation", PriorityId = 1, StatusId = 1 },
+    new UserTask { UserId = 1, TaskName = "Send Emails", PriorityId = 2, StatusId = 1 },
+    new UserTask { UserId = 1, TaskName = "Review Documents", PriorityId = 1, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Attend Training", PriorityId = 3, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Submit Expense Report", PriorityId = 3, StatusId = 1 },
+    new UserTask { UserId = 2, TaskName = "Complete Coding Assignment", PriorityId = 1, StatusId = 2 },
+    new UserTask { UserId = 2, TaskName = "Prepare for Presentation", PriorityId = 2, StatusId = 1 },
+    new UserTask { UserId = 2, TaskName = "Attend Team Meeting", PriorityId = 1, StatusId = 2 },
+    new UserTask { UserId = 2, TaskName = "Review Project Plan", PriorityId = 3, StatusId = 1 },
+    new UserTask { UserId = 2, TaskName = "Code Refactoring", PriorityId = 2, StatusId = 1 },
+    new UserTask { UserId = 2, TaskName = "Test New Feature", PriorityId = 3, StatusId = 2 },
+    new UserTask { UserId = 2, TaskName = "Update Documentation", PriorityId = 1, StatusId = 1 },
+    new UserTask { UserId = 2, TaskName = "Attend Webinar", PriorityId = 3, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Review Code Pull Request", PriorityId = 2, StatusId = 1 },
+    new UserTask { UserId = 1, TaskName = "Create Test Cases", PriorityId = 1, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Deploy Application", PriorityId = 3, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Conduct User Testing", PriorityId = 2, StatusId = 1 },
+    new UserTask { UserId = 1, TaskName = "Prepare Project Documentation", PriorityId = 1, StatusId = 1 },
+    new UserTask { UserId = 1, TaskName = "Attend Client Meeting", PriorityId = 3, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Review System Architecture", PriorityId = 2, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Write Test Scripts", PriorityId = 1, StatusId = 2 },
+    new UserTask { UserId = 1, TaskName = "Prepare Project Budget", PriorityId = 3, StatusId = 1 },
+    new UserTask { UserId = 2, TaskName = "Attend Code Review", PriorityId = 2, StatusId = 1 }
                 };
                 await dbContext.Tasks.AddRangeAsync(testTasks);
             }
@@ -166,6 +141,38 @@ namespace MonkFocusDataAccess
                         Duration = DateTime.Now - DateTime.Now.AddHours(-1),
                         Points = Math.Floor((DateTime.Now - DateTime.Now.AddHours(-1)).TotalMinutes).ToString(),
                         UserId = 1,
+                    },
+                    new WorkSession()
+                    {
+                        StartTime = DateTime.Now.AddMinutes(-45),
+                        EndTime = DateTime.Now,
+                        Duration = DateTime.Now - DateTime.Now.AddMinutes(-45),
+                        Points = Math.Floor((DateTime.Now - DateTime.Now.AddMinutes(-45)).TotalMinutes).ToString(),
+                        UserId = 1
+                    },
+                    new WorkSession()
+                    {
+                        StartTime = DateTime.Now.AddHours(-2).AddMinutes(-30),
+                        EndTime = DateTime.Now.AddHours(-1).AddMinutes(-30),
+                        Duration = DateTime.Now.AddHours(-1).AddMinutes(-30) - DateTime.Now.AddHours(-2).AddMinutes(-30),
+                        Points = Math.Floor((DateTime.Now.AddHours(-1).AddMinutes(-30) - DateTime.Now.AddHours(-2).AddMinutes(-30)).TotalMinutes).ToString(),
+                        UserId = 2
+                    },
+                    new WorkSession()
+                    {
+                        StartTime = DateTime.Now.AddMinutes(-20),
+                        EndTime = DateTime.Now,
+                        Duration = DateTime.Now - DateTime.Now.AddMinutes(-20),
+                        Points = Math.Floor((DateTime.Now - DateTime.Now.AddMinutes(-20)).TotalMinutes).ToString(),
+                        UserId = 1
+                    },
+                    new WorkSession()
+                    {
+                        StartTime = DateTime.Now.AddHours(-3).AddMinutes(-15),
+                        EndTime = DateTime.Now.AddHours(-2).AddMinutes(-30),
+                        Duration = DateTime.Now.AddHours(-2).AddMinutes(-30) - DateTime.Now.AddHours(-3).AddMinutes(-15),
+                        Points = Math.Floor((DateTime.Now.AddHours(-2).AddMinutes(-30) - DateTime.Now.AddHours(-3).AddMinutes(-15)).TotalMinutes).ToString(),
+                        UserId = 2
                     },
                     new WorkSession()
                     {
