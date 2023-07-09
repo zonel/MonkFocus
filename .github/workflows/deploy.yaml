@@ -1,9 +1,9 @@
 name: "Deploy MonkFocus"
 
 on:
- push:
-  tags:
-   - "MonkFocus/v*"
+  push:
+    tags:
+      - "MonkFocus/v*"
 
 env: 
   APP_NAME: "MonkFocus"
@@ -11,30 +11,31 @@ env:
   PROJECT_PATH: MonkFocusApp/MonkFocusApp.csproj
 
 jobs:
- deploy:
-  runs-on: windows-latest
-  steps:
-    - uses: actions/checkout@v2
-  
-    - uses: actions/setup-dotnet@v1
-      with:
-       dotnet-version: 6.0.x
+  deploy:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
 
-    - run: dotnet restore ${{ env.PROJECT_PATH }}
-  
-    - run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
-  
-    - run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
+      - run: dotnet restore ${{ env.PROJECT_PATH }}
+    
+      - run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
+    
+      - run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
 
-    - run: actions/create-release@v1
-      id: create_release
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-       tag_name: ${{github.ref}}
+      - run: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
 
-    - uses: csexton/release-asset-action@v2
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        pattern: MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/*.exe
-        release-url: ${{ steps.create_release.outputs.upload_url }}
+      - uses: csexton/release-asset-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/*.exe
+          release-url: ${{ steps.create_release.outputs.upload_url }}

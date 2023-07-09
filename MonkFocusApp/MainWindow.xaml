@@ -40,7 +40,6 @@
                 </StackPanel>
             </Border>
 
-            <!--<views1:LoginView Grid.Row="1" />-->
             <ContentControl Grid.Row="1" x:Name="viewContainer">
                 <views1:LoginView Grid.Row="1" />
             </ContentControl>
