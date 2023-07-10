@@ -38,9 +38,15 @@ jobs:
          tag_name: ${{ github.ref }}
          release_name: ${{ github.ref }}
 
+      - name: Zip Publish Folder
+        run: |
+          7z a publish.zip MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/*
+
       - uses: csexton/release-asset-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          pattern: MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/*
-          flatten: true
+          asset_path: publish.zip
+          asset_name: ${{ env.APP_NAME }}.zip
+          asset_content_type: application/zip
+          #pattern: MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/*
           release-url: ${{ steps.create_release.outputs.upload_url }}
