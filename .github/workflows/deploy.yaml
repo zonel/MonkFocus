@@ -26,6 +26,9 @@ jobs:
       - name: Build
         run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
 
+      - name: Unit Tests
+        run: dotnet test ${{ env.PROJECT_PATH }} --configuration Release --no-build
+
       - name: Publish
         run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true
 
@@ -40,11 +43,10 @@ jobs:
 
       - name: Zip Publish Folder
         run: |
-          7z a publish.zip MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/*
+          7z a publish.zip MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/bin/Release/net6.0-windows/win-x64/publish/*
 
       - uses: csexton/release-asset-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: publish.zip
-          #pattern: MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/*
           release-url: ${{ steps.create_release.outputs.upload_url }}
