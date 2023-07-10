@@ -43,7 +43,15 @@
                                <DataTemplate>
                                    <StackPanel Orientation="Horizontal">
                                        <Border Background="{DynamicResource PrimaryBlueColor}" Margin="15 20 0 0" CornerRadius="5">
-                                          <Button Content="{Binding Status}" Height="25" Width="25" FontWeight="Bold" HorizontalAlignment="Right" FontSize="15" Background="Transparent" BorderThickness="0,0,0,0" Foreground="{DynamicResource PrimaryWhiteColor}">
+                                          <Button Content="{Binding Status}" 
+                                                  Height="25" 
+                                                  Width="25" 
+                                                  FontWeight="Bold" 
+                                                  HorizontalAlignment="Right" 
+                                                  FontSize="15" 
+                                                  Background="Transparent" 
+                                                  BorderThickness="0,0,0,0" 
+                                                  Foreground="{DynamicResource PrimaryWhiteColor}">
                                           </Button>
                                        </Border>
 

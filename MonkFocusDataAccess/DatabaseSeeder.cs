@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MonkFocusApp.Models;
+﻿using MonkFocusApp.Models;
 using MonkFocusModels;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 
 namespace MonkFocusDataAccess
 {
