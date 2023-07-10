@@ -37,9 +37,6 @@ namespace MonkFocusDataAccess
         {
         }
 
-        //TODO :Change absolute path to relative
-       private readonly string _connectionString = "Monkfocus.db";
-       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region User
