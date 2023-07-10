@@ -43,7 +43,7 @@ jobs:
 
       - name: Zip Publish Folder
         run: |
-          7z a publish.zip MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/bin/Release/net6.0-windows/win-x64/publish/*
+          7z a publish.zip MonkFocusApp/bin/Release/net6.0-windows/win-x64/publish/*
 
       - uses: csexton/release-asset-action@v2
         with:
