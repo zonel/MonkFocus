@@ -1,7 +1,7 @@
 # Monk Focus
 
 
-https://github.com/zoneel/MonkFocus/assets/40122657/a18b6d4c-6d07-4ff1-b8d6-23335f29f346
+[https://github.com/zoneel/MonkFocus/assets/40122657/a18b6d4c-6d07-4ff1-b8d6-23335f29f346](https://github.com/zoneel/zoneel/assets/40122657/ea816fd7-0d14-4e5b-b1ba-a89779df47e6)
 
 
 Monk Focus is a productivity manager designed to enhance individuals' work efficiency. It offers a range of features, including work session tracking, task management, and sleep habit monitoring. Users can easily organize their work tasks and track their progress. Additionally, the software includes a website blocking module, empowering users to eliminate distractions by blocking specific websites on their computers.
