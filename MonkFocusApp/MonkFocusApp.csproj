@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Views\BackgroundImages\monkfocusic.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MonkFocusRepositories\MonkFocusRepositories.csproj" />
   </ItemGroup>
 
