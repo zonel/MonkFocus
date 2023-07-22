@@ -9,30 +9,45 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusDataAccess", "Monk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusRepositories", "MonkFocusRepositories\MonkFocusRepositories.csproj", "{F8D59700-7703-419A-A3D1-235FC4734D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkFocusUnitTests", "MonkFocusUnitTests\MonkFocusUnitTests.csproj", "{B4267570-F09A-43D5-AA91-CEF18537A277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkFocusUnitTests", "MonkFocusUnitTests\MonkFocusUnitTests.csproj", "{B4267570-F09A-43D5-AA91-CEF18537A277}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MonkFocusSetupCreation", "MonkFocusSetupCreation\MonkFocusSetupCreation.vdproj", "{A085D597-9930-4CFE-9FE3-23C2DDEB1255}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04E47424-1029-4836-8CAA-28F3072F41AC}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{04E47424-1029-4836-8CAA-28F3072F41AC}.All|Any CPU.Build.0 = Release|Any CPU
 		{04E47424-1029-4836-8CAA-28F3072F41AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{04E47424-1029-4836-8CAA-28F3072F41AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04E47424-1029-4836-8CAA-28F3072F41AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04E47424-1029-4836-8CAA-28F3072F41AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A70283AB-D511-4ECE-8C15-7D1010C08466}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{A70283AB-D511-4ECE-8C15-7D1010C08466}.All|Any CPU.Build.0 = Release|Any CPU
 		{A70283AB-D511-4ECE-8C15-7D1010C08466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A70283AB-D511-4ECE-8C15-7D1010C08466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A70283AB-D511-4ECE-8C15-7D1010C08466}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A70283AB-D511-4ECE-8C15-7D1010C08466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D59700-7703-419A-A3D1-235FC4734D93}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D59700-7703-419A-A3D1-235FC4734D93}.All|Any CPU.Build.0 = Release|Any CPU
 		{F8D59700-7703-419A-A3D1-235FC4734D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F8D59700-7703-419A-A3D1-235FC4734D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8D59700-7703-419A-A3D1-235FC4734D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8D59700-7703-419A-A3D1-235FC4734D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4267570-F09A-43D5-AA91-CEF18537A277}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{B4267570-F09A-43D5-AA91-CEF18537A277}.All|Any CPU.Build.0 = Release|Any CPU
 		{B4267570-F09A-43D5-AA91-CEF18537A277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4267570-F09A-43D5-AA91-CEF18537A277}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4267570-F09A-43D5-AA91-CEF18537A277}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4267570-F09A-43D5-AA91-CEF18537A277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A085D597-9930-4CFE-9FE3-23C2DDEB1255}.All|Any CPU.ActiveCfg = Release
+		{A085D597-9930-4CFE-9FE3-23C2DDEB1255}.All|Any CPU.Build.0 = Release
+		{A085D597-9930-4CFE-9FE3-23C2DDEB1255}.Debug|Any CPU.ActiveCfg = Debug
+		{A085D597-9930-4CFE-9FE3-23C2DDEB1255}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

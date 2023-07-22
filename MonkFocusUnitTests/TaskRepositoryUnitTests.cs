@@ -87,6 +87,7 @@ public class TaskRepositoryUnitTests
 
         Assert.IsNotNull(tasks);
         Assert.AreEqual(8, tasks.Count());
+
     }
 
     [TestMethod]

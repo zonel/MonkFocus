@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	  <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -14,6 +15,10 @@
     <None Remove="Views\BackgroundImages\monkfocusic.png" />
     <None Remove="Views\BackgroundImages\mountainsRound.png" />
     <None Remove="Views\BackgroundImages\mountainsRounded.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\BackgroundImages\monkfocusic.ico" />
   </ItemGroup>
 
   <ItemGroup>

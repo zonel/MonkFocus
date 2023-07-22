@@ -13,7 +13,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        WindowStartupLocation="CenterScreen" Icon="/Views/BackgroundImages/monkfocusic.ico">
+        WindowStartupLocation="CenterScreen">
 
     <Window.Effect>
         <DropShadowEffect/>
@@ -40,7 +40,6 @@
                 </StackPanel>
             </Border>
 
-            <!--<views1:LoginView Grid.Row="1" />-->
             <ContentControl Grid.Row="1" x:Name="viewContainer">
                 <views1:LoginView Grid.Row="1" />
             </ContentControl>
