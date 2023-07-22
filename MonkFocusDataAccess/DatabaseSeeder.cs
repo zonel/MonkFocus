@@ -3,6 +3,7 @@ using MonkFocusApp.Models;
 using MonkFocusModels;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using BC = BCrypt.Net.BCrypt;
 
 namespace MonkFocusDataAccess
 {
@@ -49,7 +50,7 @@ namespace MonkFocusDataAccess
                     {
                         Username = "root",
                         Name = "Robert",
-                        Password = "toor",
+                        Password = BC.HashPassword("toor"),
                         City = "Kraków",
                         Email = "root@root.com",
                         JoinDate = new System.DateTime(2019, 1, 1),
@@ -62,7 +63,7 @@ namespace MonkFocusDataAccess
                     {
                         Username = "adam",
                         Name = "Adam",
-                        Password = "adam321",
+                        Password = BC.HashPassword("adam321"),
                         City = "Katowice",
                         Email = "adam@gmail.com",
                         JoinDate = new System.DateTime(2023, 2, 25),
@@ -71,16 +72,16 @@ namespace MonkFocusDataAccess
                         BedTime = new System.TimeOnly(22, 0, 0),
                         WorkTimeGoal = new System.TimeSpan(6, 0, 0),
                     },
-                    new User { Username = "user1", Name = "John", Password = "password1", City = "Warsaw", Email = "john@example.com", JoinDate = new System.DateTime(2022, 5, 10), Points = 500, WakeUpTime = new System.TimeOnly(7, 30, 0), BedTime = new System.TimeOnly(23, 30, 0), WorkTimeGoal = new System.TimeSpan(7, 30, 0) },
-                    new User { Username = "Sara", Name = "Sarah", Password = "abc123", City = "London", Email = "sarah@example.com", JoinDate = new System.DateTime(2021, 8, 15), Points = 1000, WakeUpTime = new System.TimeOnly(6, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(8, 30, 0) },
-                    new User { Username = "user3", Name = "Emily", Password = "qwerty", City = "New York", Email = "emily@example.com", JoinDate = new System.DateTime(2020, 3, 20), Points = 250, WakeUpTime = new System.TimeOnly(8, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(6, 0, 0) },
-                    new User { Username = "user4", Name = "Olivia", Password = "mike456", City = "Los Angeles", Email = "michael@example.com", JoinDate = new System.DateTime(2023, 1, 5), Points = 750, WakeUpTime = new System.TimeOnly(7, 0, 0), BedTime = new System.TimeOnly(22, 0, 0), WorkTimeGoal = new System.TimeSpan(7, 30, 0) },
-                    new User { Username = "user5", Name = "Emma", Password = "emma789", City = "Paris", Email = "emma@example.com", JoinDate = new System.DateTime(2022, 9, 1), Points = 800, WakeUpTime = new System.TimeOnly(6, 0, 0), BedTime = new System.TimeOnly(23, 30, 0), WorkTimeGoal = new System.TimeSpan(8, 0, 0) },
-                    new User { Username = "user6", Name = "Daniel", Password = "daniel321", City = "Berlin", Email = "daniel@example.com", JoinDate = new System.DateTime(2021, 4, 12), Points = 600, WakeUpTime = new System.TimeOnly(7, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(6, 30, 0) },
-                    new User { Username = "Michael", Name = "Michael", Password = "olivia555", City = "Sydney", Email = "olivia@example.com", JoinDate = new System.DateTime(2020, 11, 8), Points = 900, WakeUpTime = new System.TimeOnly(8, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(7, 0, 0) },
-                    new User { Username = "user8", Name = "Matthew", Password = "matt777", City = "Toronto", Email = "matthew@example.com", JoinDate = new System.DateTime(2023, 3, 17), Points = 400, WakeUpTime = new System.TimeOnly(6, 0, 0), BedTime = new System.TimeOnly(22, 0, 0), WorkTimeGoal = new System.TimeSpan(8, 30, 0) },
-                    new User { Username = "user9", Name = "Ava", Password = "ava123", City = "Melbourne", Email = "ava@example.com", JoinDate = new System.DateTime(2022, 7, 25), Points = 350, WakeUpTime = new System.TimeOnly(7, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(6, 30, 0) },
-                    new User { Username = "user10", Name = "Liam", Password = "liam999", City = "Vancouver", Email = "liam@example.com", JoinDate = new System.DateTime(2021, 2, 3), Points = 700, WakeUpTime = new System.TimeOnly(8, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(7, 0, 0) }
+                    new User { Username = "user1", Name = "John", Password = BC.HashPassword("password1"), City = "Warsaw", Email = "john@example.com", JoinDate = new System.DateTime(2022, 5, 10), Points = 500, WakeUpTime = new System.TimeOnly(7, 30, 0), BedTime = new System.TimeOnly(23, 30, 0), WorkTimeGoal = new System.TimeSpan(7, 30, 0) },
+                    new User { Username = "Sara", Name = "Sarah", Password = BC.HashPassword("abc123"), City = "London", Email = "sarah@example.com", JoinDate = new System.DateTime(2021, 8, 15), Points = 1000, WakeUpTime = new System.TimeOnly(6, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(8, 30, 0) },
+                    new User { Username = "user3", Name = "Emily", Password = BC.HashPassword("qwerty"), City = "New York", Email = "emily@example.com", JoinDate = new System.DateTime(2020, 3, 20), Points = 250, WakeUpTime = new System.TimeOnly(8, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(6, 0, 0) },
+                    new User { Username = "user4", Name = "Olivia", Password = BC.HashPassword("mike456"), City = "Los Angeles", Email = "michael@example.com", JoinDate = new System.DateTime(2023, 1, 5), Points = 750, WakeUpTime = new System.TimeOnly(7, 0, 0), BedTime = new System.TimeOnly(22, 0, 0), WorkTimeGoal = new System.TimeSpan(7, 30, 0) },
+                    new User { Username = "user5", Name = "Emma", Password = BC.HashPassword("emma789"), City = "Paris", Email = "emma@example.com", JoinDate = new System.DateTime(2022, 9, 1), Points = 800, WakeUpTime = new System.TimeOnly(6, 0, 0), BedTime = new System.TimeOnly(23, 30, 0), WorkTimeGoal = new System.TimeSpan(8, 0, 0) },
+                    new User { Username = "user6", Name = "Daniel", Password = BC.HashPassword("daniel321"), City = "Berlin", Email = "daniel@example.com", JoinDate = new System.DateTime(2021, 4, 12), Points = 600, WakeUpTime = new System.TimeOnly(7, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(6, 30, 0) },
+                    new User { Username = "Michael", Name = "Michael", Password = BC.HashPassword("olivia555"), City = "Sydney", Email = "olivia@example.com", JoinDate = new System.DateTime(2020, 11, 8), Points = 900, WakeUpTime = new System.TimeOnly(8, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(7, 0, 0) },
+                    new User { Username = "user8", Name = "Matthew", Password = BC.HashPassword("matt777"), City = "Toronto", Email = "matthew@example.com", JoinDate = new System.DateTime(2023, 3, 17), Points = 400, WakeUpTime = new System.TimeOnly(6, 0, 0), BedTime = new System.TimeOnly(22, 0, 0), WorkTimeGoal = new System.TimeSpan(8, 30, 0) },
+                    new User { Username = "user9", Name = "Ava", Password = BC.HashPassword("ava123"), City = "Melbourne", Email = "ava@example.com", JoinDate = new System.DateTime(2022, 7, 25), Points = 350, WakeUpTime = new System.TimeOnly(7, 0, 0), BedTime = new System.TimeOnly(23, 0, 0), WorkTimeGoal = new System.TimeSpan(6, 30, 0) },
+                    new User { Username = "user10", Name = "Liam", Password = BC.HashPassword("liam999"), City = "Vancouver", Email = "liam@example.com", JoinDate = new System.DateTime(2021, 2, 3), Points = 700, WakeUpTime = new System.TimeOnly(8, 30, 0), BedTime = new System.TimeOnly(22, 30, 0), WorkTimeGoal = new System.TimeSpan(7, 0, 0) }
                 };
                 await dbContext.Users.AddRangeAsync(testusers);
             }

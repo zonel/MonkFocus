@@ -9,6 +9,8 @@ using MonkFocusApp.Views;
 using MonkFocusDataAccess;
 using MonkFocusModels;
 using MonkFocusRepositories;
+using BC = BCrypt.Net.BCrypt;
+
 
 namespace MonkFocusApp.ViewModels;
 
@@ -135,10 +137,11 @@ internal class RegisterViewModel : BaseViewModel
             return;
         }
 
+        
         var user = new User
         {
             Username = Username,
-            Password = Password,
+            Password = BC.HashPassword(Password),
             Name = Name,
             Email = Email,
             City = City,
