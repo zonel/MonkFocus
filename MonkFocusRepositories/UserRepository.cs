@@ -1,6 +1,7 @@
 ﻿using MonkFocusDataAccess;
 using MonkFocusModels;
 using MonkFocusRepositories.Interfaces;
+using BC = BCrypt.Net.BCrypt;
 
 namespace MonkFocusRepositories;
 
@@ -73,7 +74,8 @@ public class UserRepository : IUserRepository
 
         if (userToValidate is null) return false;
 
-        return userToValidate.Password == password;
+        //return userToValidate.Password == password;
+        return BC.Verify(password, userToValidate.Password);
     }
 
     /// <summary>

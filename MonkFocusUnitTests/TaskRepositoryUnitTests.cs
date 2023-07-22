@@ -86,6 +86,8 @@ public class TaskRepositoryUnitTests
         var tasks = _taskrepository.GetAllTasksForUser(userId);
 
         Assert.IsNotNull(tasks);
+        Assert.AreEqual(8, tasks.Count());
+
     }
 
     [TestMethod]

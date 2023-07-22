@@ -46,7 +46,7 @@ namespace MonkFocusUnitTests
                 City = "testcity",
                 Email = "TestEmail@email.com",
                 Name = "Test Name",
-                Password = "testpassword",
+                Password = "$2a$11$cWG/qsXtyTsacD3xvBa7nOMzN5OmIXLpzlL4eyIyCV2Tutl4pTHWm",
                 // Set other properties as needed
             };
 
@@ -105,7 +105,7 @@ namespace MonkFocusUnitTests
         {
             // Arrange
             var username = "testuser";
-            var password = "wrongpassword";
+            var password = "$2a$11$6cGIykg3XpsLH2J0xew21uZXp2JkI.Hwf5ALX8hLbGlwp75huZz/2";
 
             // Act
             var result = _userRepository.AuthenticateUser(username, password);
